@@ -902,6 +902,79 @@
     margin-bottom: 8px;
   }
 
+  /* EISENHOWER MATRIX */
+  .eisenhower-matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 16px 0;
+  }
+  .eisenhower-axis-labels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .eisenhower-axis-label {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    padding: 0 4px;
+  }
+  .eisenhower-quadrant {
+    padding: 16px;
+    border: 1px solid var(--border);
+    margin: -1px 0 0 -1px;
+  }
+  .eisenhower-quadrant:first-child { border-top-left-radius: 0; }
+  .eq-label {
+    font-size: 0.62rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .eq-action {
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .eq-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .eq-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.45;
+    margin: 0;
+  }
+  .eq-q1 { background: rgba(253,30,62,0.06); border-left: 3px solid var(--red); }
+  .eq-q1 .eq-label, .eq-q1 .eq-action { color: var(--red); }
+  .eq-q2 { background: rgba(2,243,218,0.06); border-left: 3px solid var(--accent); }
+  .eq-q2 .eq-label, .eq-q2 .eq-action { color: #00a99a; }
+  .eq-q3 { background: rgba(255,201,66,0.08); border-left: 3px solid var(--yellow); }
+  .eq-q3 .eq-label, .eq-q3 .eq-action { color: #b45309; }
+  .eq-q4 { background: #fafafa; border-left: 3px solid var(--border); }
+  .eq-q4 .eq-label, .eq-q4 .eq-action { color: var(--muted); }
+  .eisenhower-y-label {
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.8rem; }
@@ -1765,26 +1838,39 @@ const AREAS = [
           <p>Diese zwei Fragen ergeben vier Quadranten – und zeigen dir, wo du deine Energie wirklich einsetzen solltest.</p>
         ` },
         { tab: '📐 Die 4 Quadranten', kicker: 'Das Modell', title: 'Q1 bis Q4 im Überblick', html: `
-          <div class="concept-cards">
-            <div class="concept-card red">
-              <div class="concept-card-label">Q1 · Tu es jetzt</div>
-              <div class="concept-card-title">Dringend & Wichtig</div>
-              <p>Krisen, Deadlines, unvorhergesehene Probleme. Sofort erledigen – aber: Wer dauerhaft hier lebt, ist im Reaktionsmodus gefangen.</p>
-            </div>
-            <div class="concept-card accent">
-              <div class="concept-card-label">Q2 · Investiere hier</div>
-              <div class="concept-card-title">Wichtig, nicht dringend</div>
-              <p>Strategie, Weiterbildung, Beziehungsaufbau. Der wertvollste Quadrant – wird am häufigsten vernachlässigt, weil er nie „brennt".</p>
-            </div>
-            <div class="concept-card yellow">
-              <div class="concept-card-label">Q3 · Delegiere oder kürze</div>
-              <div class="concept-card-title">Dringend, nicht wichtig</div>
-              <p>Viele E-Mails, spontane Meetings, anderer Leute Prioritäten. Fühlen sich wichtig an – sind es aber oft nicht.</p>
-            </div>
-            <div class="concept-card">
-              <div class="concept-card-label">Q4 · Eliminiere</div>
-              <div class="concept-card-title">Weder dringend noch wichtig</div>
-              <p>Ablenkungen, endloses Scrollen, Aufgaben ohne Mehrwert. Kosten Zeit und geben nichts zurück.</p>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:0;align-items:stretch;">
+            <div style="writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);padding:0 6px 0 0;">← nicht wichtig · Wichtig →</div>
+            <div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;text-align:center;margin-bottom:3px;">
+                <div style="font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">nicht dringend</div>
+                <div style="font-size:0.62rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">dringend →</div>
+              </div>
+              <div class="eisenhower-matrix">
+                <div class="eisenhower-quadrant eq-q2">
+                  <div class="eq-label">Q2</div>
+                  <div class="eq-action">⭐ Investiere hier</div>
+                  <div class="eq-title">Wichtig · nicht dringend</div>
+                  <p class="eq-desc">Strategie, Weiterbildung, Beziehungsaufbau. Der wertvollste Quadrant – brennt nie, wird deshalb oft verdrängt.</p>
+                </div>
+                <div class="eisenhower-quadrant eq-q1">
+                  <div class="eq-label">Q1</div>
+                  <div class="eq-action">🔥 Tu es jetzt</div>
+                  <div class="eq-title">Wichtig · dringend</div>
+                  <p class="eq-desc">Krisen, Deadlines, unvorhergesehene Probleme. Sofort erledigen – aber wer dauerhaft hier lebt, steckt im Reaktionsmodus.</p>
+                </div>
+                <div class="eisenhower-quadrant eq-q4">
+                  <div class="eq-label">Q4</div>
+                  <div class="eq-action">🗑 Eliminiere</div>
+                  <div class="eq-title">Unwichtig · nicht dringend</div>
+                  <p class="eq-desc">Ablenkungen, endloses Scrollen, Aufgaben ohne Mehrwert. Kosten Zeit, geben nichts zurück.</p>
+                </div>
+                <div class="eisenhower-quadrant eq-q3">
+                  <div class="eq-label">Q3</div>
+                  <div class="eq-action">↗ Delegiere</div>
+                  <div class="eq-title">Unwichtig · dringend</div>
+                  <p class="eq-desc">E-Mails, spontane Meetings, anderer Leute Prioritäten. Fühlen sich wichtig an – sind es oft nicht.</p>
+                </div>
+              </div>
             </div>
           </div>
         ` },
