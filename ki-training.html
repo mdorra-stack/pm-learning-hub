@@ -2407,6 +2407,345 @@ const AREAS = [
       ]
     }
   ]},
+  { id: 'risikomanagement', icon: '⚖️', color: '#699fff', title: 'Risikomanagement', desc: 'Initiativen als Portfolio denken – und die richtigen Wetten eingehen', status: 'active', modules: [
+    { id: 'rm-1', icon: '📊', title: 'Der PM als Portfoliomanager', desc: 'Warum Risiko die fehlende Dimension jeder Roadmap ist',
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Die fehlende Dimension', title: 'Impact & Effort reichen nicht', html: `
+          <p>Als PM denkst du wahrscheinlich in Impact und Effort. Das ist sinnvoll – aber es greift zu kurz.</p>
+          <div class="key-insight">Es fehlt eine entscheidende Dimension: Risiko.</div>
+          <div class="concept-cards">
+            <div class="concept-card blue">
+              <div class="concept-card-title">Was du investierst</div>
+              <p>Nicht Geld – sondern Entwicklungskapazität, Team-Energie und strategische Aufmerksamkeit.</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-title">Was Portfolio-Denken bedeutet</div>
+              <p>Nicht alles in sichere Maßnahmen – und nicht alles auf eine riskante Großwette. Diversifikation schützt. Ein ausgewogener Risikomix macht resilient.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '📊 Dein Portfolio', kicker: 'Die Analogie', title: 'Du bist der Hedgefonds-Manager', html: `
+          <p>Ein Hedgefonds-Manager investiert nicht alles in eine Aktie – er verteilt bewusst auf Risikoklassen. Du auch.</p>
+          <svg viewBox="0 0 460 155" style="width:100%;height:auto;display:block;margin:14px 0;" xmlns="http://www.w3.org/2000/svg">
+            <text x="230" y="13" text-anchor="middle" font-size="9" font-weight="800" fill="#bbb" font-family="Manrope,sans-serif" letter-spacing="1">DEINE ENTWICKLUNGSKAPAZITÄT</text>
+            <rect x="10" y="22" width="230" height="56" fill="#e6fffe" rx="3"/>
+            <rect x="10" y="22" width="230" height="56" fill="none" stroke="#02f3da" stroke-width="1.5" rx="3"/>
+            <rect x="245" y="22" width="138" height="56" fill="#fffbeb" rx="3"/>
+            <rect x="245" y="22" width="138" height="56" fill="none" stroke="#ffc942" stroke-width="1.5" rx="3"/>
+            <rect x="388" y="22" width="62" height="56" fill="#fff0f2" rx="3"/>
+            <rect x="388" y="22" width="62" height="56" fill="none" stroke="#fd1e3e" stroke-width="1.5" rx="3"/>
+            <text x="125" y="44" text-anchor="middle" font-size="10" font-weight="800" fill="#00a69a" font-family="Manrope,sans-serif">LOW RISK</text>
+            <text x="125" y="62" text-anchor="middle" font-size="19" font-weight="800" fill="#00a69a" font-family="Manrope,sans-serif">~50 %</text>
+            <text x="314" y="44" text-anchor="middle" font-size="10" font-weight="800" fill="#b45309" font-family="Manrope,sans-serif">MEDIUM RISK</text>
+            <text x="314" y="62" text-anchor="middle" font-size="19" font-weight="800" fill="#b45309" font-family="Manrope,sans-serif">~35 %</text>
+            <text x="419" y="43" text-anchor="middle" font-size="9" font-weight="800" fill="#fd1e3e" font-family="Manrope,sans-serif">HIGH</text>
+            <text x="419" y="58" text-anchor="middle" font-size="14" font-weight="800" fill="#fd1e3e" font-family="Manrope,sans-serif">~15 %</text>
+            <text x="125" y="97" text-anchor="middle" font-size="9.5" fill="#555" font-family="Manrope,sans-serif">Optimierungen · sichere Rendite</text>
+            <text x="314" y="97" text-anchor="middle" font-size="9.5" fill="#555" font-family="Manrope,sans-serif">Neue Chancen entdecken</text>
+            <text x="419" y="97" text-anchor="middle" font-size="9" fill="#555" font-family="Manrope,sans-serif">Strategische Wetten</text>
+            <text x="230" y="120" text-anchor="middle" font-size="9.5" fill="#bbb" font-family="Manrope,sans-serif">Kein universelles Rezept – aber: alle drei Klassen brauchen einen Platz.</text>
+          </svg>
+          <p style="font-size:0.85rem;color:var(--muted);">Das Ziel ist nicht, jede Einzelinvestition zu maximieren – sondern das Portfolio als Ganzes zu optimieren.</p>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'Was passiert ohne Wetten', title: 'Das optimierende Team', html: `
+          <blockquote>Ein Team arbeitet ausschließlich an kleinen, datengestützten Optimierungen – Conversion-Rate hier, Ladezeit da. Alles mit gutem ROI, alles mit niedrigem Risiko. Nach einem Jahr: viele kleine Verbesserungen, aber kein Wachstum, kein strategischer Sprung. Ein Wettbewerber hat inzwischen ein komplett neues Nutzungsmodell eingeführt.</blockquote>
+          <div class="key-insight">Das Team hat gut gespielt – aber das falsche Spiel. Ein reines Low-Risk-Portfolio optimiert das Bestehende, schützt aber nicht vor Disruption.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt prüfen', title: 'Wie riskant ist deine Roadmap?', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Schau auf deine aktuelle Roadmap oder dein Backlog:</p>
+            <ul>
+              <li>Wie viele Initiativen sind „sicher" – wie viele sind echte Wetten?</li>
+              <li>Gibt es überhaupt High-Risk-Initiativen?</li>
+              <li>Ist die Verteilung eine bewusste Entscheidung – oder einfach so entstanden?</li>
+            </ul>
+          </div>
+          <div class="key-insight">Ein Portfolio lässt sich nur als Portfolio verteidigen. „Diese Initiative hat hohes Risiko" ist eine Schwäche. „Wir haben 70 % sichere Bets und 30 % Wetten – das ist Absicht" ist eine Stärke.</div>
+        ` }
+      ],
+      questions: [
+        { text: 'Warum reicht Impact/Effort-Denken für PM-Entscheidungen allein nicht aus?', options: ['Weil Impact schwer messbar ist', 'Weil Risiko als dritte Dimension fehlt – ohne sie optimiert man möglicherweise das falsche Portfolio', 'Weil Effort in der Praxis immer unterschätzt wird', 'Weil PMs keine Finanzentscheidungen treffen sollten'], correct: 1, explanation: 'Impact und Effort beschreiben den Wert einer einzelnen Initiative. Risiko beschreibt, wie die Gesamtheit aller Initiativen aufgestellt ist. Ohne diese Dimension fehlt die strategische Perspektive.' },
+        { text: 'Was haben ein PM und ein Hedgefonds-Manager gemeinsam?', options: ['Beide arbeiten mit denselben Finanzinstrumenten', 'Beide verteilen begrenzte Ressourcen bewusst auf verschiedene Risikoklassen', 'Beide maximieren kurzfristige Renditen', 'Beide sind für die Budgetplanung verantwortlich'], correct: 1, explanation: 'Ein PM investiert keine Euros, sondern Entwicklungskapazität, Team-Energie und strategische Aufmerksamkeit. Die Logik der Diversifikation ist identisch: nicht alles auf eine Karte, bewusst mischen.' },
+        { text: 'Was ist das Kernproblem eines Teams, das ausschließlich Low-Risk-Initiativen betreibt?', options: ['Es macht zu viele Fehler', 'Es optimiert das Bestehende, baut aber keine Zukunft auf und ist anfällig für Disruption', 'Es hat zu wenig Daten für Entscheidungen', 'Es vernachlässigt die Nutzerperspektive'], correct: 1, explanation: 'Low-Risk-Initiativen liefern stabile, vorhersehbare Ergebnisse – aber sie schützen nicht vor dem nächsten Disruptions-Zyklus. Ohne High-Risk-Wetten fehlt der strategische Sprung.' },
+        { text: 'Worin unterscheidet sich das Investment eines PMs von dem eines Hedgefonds?', options: ['PMs haben keine Vergleichbarkeit mit Finanzinvestoren', 'PMs investieren Entwicklungskapazität und Team-Energie statt Kapital – die Portfolio-Logik ist dieselbe', 'Hedgefonds können Risiken besser messen', 'PMs setzen nur auf sichere Investitionen'], correct: 1, explanation: 'Der Grundgedanke ist identisch: Diversifikation über Risikoklassen. Das Investitionsgut ist anders – statt Kapital investiert ein PM Zeit, Aufmerksamkeit und Team-Kapazität.' },
+        { text: 'Was bedeutet „Diversifikation" im PM-Kontext?', options: ['Das Team arbeitet an möglichst vielen verschiedenen Features', 'Initiativen werden bewusst auf verschiedene Risikoklassen verteilt, um resilient zu sein', 'Jeder Entwickler arbeitet an einem anderen Projekt', 'Das Produkt bedient möglichst viele Marktsegmente'], correct: 1, explanation: 'PM-Diversifikation bedeutet: bewusste Verteilung auf Low-, Medium- und High-Risk-Initiativen. Nicht Vielzahl um ihrer selbst willen – sondern ein ausgewogener Mix, der kurzfristige Ergebnisse und strategische Zukunftssicherung ermöglicht.' }
+      ]
+    },
+    { id: 'rm-2', icon: '🎚️', title: 'Low, Medium, High Risk', desc: 'Das Risikomodell – Klassen erkennen und richtig handeln',
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Nicht alle Risiken sind gleich', title: 'Drei Klassen – drei Strategien', html: `
+          <p>Nicht alle Initiativen tragen das gleiche Risiko. Entscheidend ist: Woher kommen deine Signale? Wie groß ist deine Hypothese? Was ist die richtige Handlungsstrategie?</p>
+          <div class="key-insight">Das Modell hilft dir, den Unterschied zu erkennen – und daraus die richtige Herangehensweise abzuleiten.</div>
+          <div class="concept-cards">
+            <div class="concept-card accent"><div class="concept-card-title">🟢 Low Risk</div><p>Du weißt, was du optimierst. Testen, iterieren, hohe Trefferquote.</p></div>
+            <div class="concept-card yellow"><div class="concept-card-title">🟡 Medium Risk</div><p>Du siehst eine Richtung, aber das Bild ist unvollständig. Discovery betreiben.</p></div>
+            <div class="concept-card red"><div class="concept-card-title">🔴 High Risk</div><p>Externe Entwicklungen, keine Datenbasis. Kleine Experimente statt Big Bang.</p></div>
+          </div>
+        ` },
+        { tab: '📐 Das Modell', kicker: 'Alle drei im Vergleich', title: 'Signal · Hypothese · Strategie', html: `
+          <svg viewBox="0 0 460 234" style="width:100%;height:auto;display:block;" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="8" width="140" height="34" rx="5" fill="#e6fffe"/>
+            <rect x="160" y="8" width="140" height="34" rx="5" fill="#fffbeb"/>
+            <rect x="310" y="8" width="140" height="34" rx="5" fill="#fff0f2"/>
+            <text x="80" y="22" text-anchor="middle" font-size="9.5" font-weight="800" fill="#00a69a" font-family="Manrope,sans-serif">LOW RISK</text>
+            <text x="80" y="35" text-anchor="middle" font-size="9" fill="#00a69a" font-family="Manrope,sans-serif">Optimieren</text>
+            <text x="230" y="22" text-anchor="middle" font-size="9.5" font-weight="800" fill="#b45309" font-family="Manrope,sans-serif">MEDIUM RISK</text>
+            <text x="230" y="35" text-anchor="middle" font-size="9" fill="#b45309" font-family="Manrope,sans-serif">Entdecken</text>
+            <text x="380" y="22" text-anchor="middle" font-size="9.5" font-weight="800" fill="#fd1e3e" font-family="Manrope,sans-serif">HIGH RISK</text>
+            <text x="380" y="35" text-anchor="middle" font-size="9" fill="#fd1e3e" font-family="Manrope,sans-serif">Wetten</text>
+            <line x1="10" y1="53" x2="450" y2="53" stroke="#eee" stroke-width="1"/>
+            <text x="10" y="49" font-size="8" font-weight="800" fill="#bbb" font-family="Manrope,sans-serif" letter-spacing="0.5">SIGNAL</text>
+            <text x="80" y="67" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Interne Daten &amp;</text>
+            <text x="80" y="80" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Nutzerfeedback</text>
+            <text x="230" y="67" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Intern + extern,</text>
+            <text x="230" y="80" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Bild unvollständig</text>
+            <text x="380" y="67" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Extern, disruptiv,</text>
+            <text x="380" y="80" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">keine Datenbasis</text>
+            <line x1="10" y1="98" x2="450" y2="98" stroke="#eee" stroke-width="1"/>
+            <text x="10" y="94" font-size="8" font-weight="800" fill="#bbb" font-family="Manrope,sans-serif" letter-spacing="0.5">HYPOTHESE</text>
+            <text x="80" y="112" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Eng &amp; spezifisch</text>
+            <text x="80" y="128" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">„Checkout -2 Schritte</text>
+            <text x="80" y="141" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">→ +X % Conversion"</text>
+            <text x="230" y="112" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Breiter gefasst</text>
+            <text x="230" y="128" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">„Segment X hat ein</text>
+            <text x="230" y="141" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">unerfülltes Bedürfnis"</text>
+            <text x="380" y="112" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Groß &amp; fundamental</text>
+            <text x="380" y="128" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">„Unser Geschäftsmodell</text>
+            <text x="380" y="141" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">wird obsolet"</text>
+            <line x1="10" y1="158" x2="450" y2="158" stroke="#eee" stroke-width="1"/>
+            <text x="10" y="154" font-size="8" font-weight="800" fill="#bbb" font-family="Manrope,sans-serif" letter-spacing="0.5">STRATEGIE</text>
+            <text x="80" y="172" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Testen · Iterieren</text>
+            <text x="80" y="186" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">Hohe Trefferquote</text>
+            <text x="230" y="172" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Discovery · Prototypen</text>
+            <text x="230" y="186" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">Früh validieren</text>
+            <text x="380" y="172" text-anchor="middle" font-size="9.5" fill="#333" font-family="Manrope,sans-serif">Kleine Experimente</text>
+            <text x="380" y="186" text-anchor="middle" font-size="8.5" fill="#888" font-family="Manrope,sans-serif">Kein Big-Bang</text>
+            <line x1="150" y1="8" x2="150" y2="195" stroke="#eee" stroke-width="1"/>
+            <line x1="300" y1="8" x2="300" y2="195" stroke="#eee" stroke-width="1"/>
+            <rect x="10" y="198" width="140" height="4" rx="2" fill="#02f3da"/>
+            <rect x="160" y="198" width="140" height="4" rx="2" fill="#ffc942"/>
+            <rect x="310" y="198" width="140" height="4" rx="2" fill="#fd1e3e"/>
+          </svg>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'Alle drei gleichzeitig', title: 'Das SaaS-Unternehmen', html: `
+          <p>Ein SaaS-Unternehmen betreibt drei parallele Initiativen – eine pro Risikoklasse:</p>
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Low Risk</div>
+              <div class="concept-card-title">A/B-Test auf dem Onboarding-Flow</div>
+              <p>Klare Datenbasis, enge Hypothese, schnell iterierbar.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Medium Risk</div>
+              <div class="concept-card-title">Neues Feature für unterversorgtes Segment</div>
+              <p>Erste Interviews zeigen Bedarf – Discovery läuft, Prototyp geplant.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">High Risk</div>
+              <div class="concept-card-title">KI-Assistent als langfristiger Kernersatz</div>
+              <p>Kein direkter Datenbeweis – aber die Marktentwicklung lässt es vermuten. Kleines Experiment startet parallel.</p>
+            </div>
+          </div>
+          <div class="key-insight">Das ist kein Zufall – es ist eine bewusste Portfolioentscheidung.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Einordnen üben', title: 'Deine drei Initiativen', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Nimm drei Initiativen aus deinem aktuellen Kontext. Ordne jede einer Risikoklasse zu:</p>
+            <ul>
+              <li>Welche Signalquellen hast du genutzt?</li>
+              <li>Wie breit oder eng ist deine Hypothese?</li>
+              <li>Welche Strategie passt dazu?</li>
+            </ul>
+          </div>
+          <p style="margin-top:14px;font-size:0.87rem;">Die Einordnung verändert, wie du die Initiative planst – und womit du sie gegenüber Stakeholdern verteidigst.</p>
+        ` }
+      ],
+      questions: [
+        { text: 'Welche Signalquellen beschreiben typischerweise eine Low-Risk-Initiative?', options: ['Externe, disruptive Marktentwicklungen', 'Interne Daten und direktes Nutzerfeedback mit klarer Problemdiagnose', 'Erste Marktbeobachtungen und explorative Interviews', 'Technologische Trendberichte'], correct: 1, explanation: 'Low-Risk-Initiativen basieren auf internen Daten und Nutzerfeedback, die klar zeigen, wo ein Problem liegt. Die Ursache ist bekannt – es geht um Optimierung mit hoher Trefferquote.' },
+        { text: 'Was beschreibt eine High-Risk-Hypothese im Unterschied zu einer Low-Risk-Hypothese?', options: ['High-Risk-Hypothesen sind präziser formuliert', 'High-Risk-Hypothesen sind groß und fundamental, oft ohne direkte interne Datenbasis', 'High-Risk bedeutet technische Komplexität', 'High-Risk-Hypothesen erfordern immer externe Dienstleister'], correct: 1, explanation: 'High-Risk-Hypothesen adressieren fundamentale Veränderungen – z.B. dass ein bestehendes Geschäftsmodell obsolet werden könnte. Sie entstehen aus externen, disruptiven Signalen ohne direkte Datenbasis.' },
+        { text: 'Was ist die richtige Strategie für High-Risk-Initiativen?', options: ['Sofort vollständig entwickeln und launchen', 'Erst abwarten, bis mehr Daten vorliegen', 'Kleine, gezielte Experimente – kein Big-Bang-Investment', 'Extern einkaufen statt selbst entwickeln'], correct: 2, explanation: 'High-Risk-Initiativen brauchen kleine Experimente, die die fundamentale Hypothese prüfen – ohne das Team zu überlasten. Netflix (Streaming) und AWS (Cloud) begannen beide als kleine Parallelprojekte.' },
+        { text: 'Was unterscheidet Medium Risk von Low Risk?', options: ['Medium Risk hat immer höhere Kosten', 'Bei Medium Risk ist das Signal unvollständig – man sieht eine Richtung, muss aber noch Discovery betreiben', 'Medium Risk bedeutet, man hat keine Nutzerdaten', 'Medium Risk braucht immer externe Validierung'], correct: 1, explanation: 'Medium Risk: Das Bild ist unvollständiger als bei Low Risk. Man sieht eine Chance, hat aber keine gesicherte Datenbasis. Die richtige Antwort ist Discovery – mit Interviews, Prototypen und früher Validierung.' },
+        { text: 'Welche Denkfragen passen zu High-Risk-Initiativen?', options: ['Was passiert gerade? Welchen Unterschied macht diese Änderung?', 'Wo sollten wir als nächstes hin? Verdoppeln wir eine Wette, die funktioniert?', 'Was tun wir, wenn diese Entwicklung eintritt? Was tun wir, wenn sie es nicht tut?', 'Welche Conversion-Metriken verbessert diese Initiative?'], correct: 2, explanation: 'High-Risk-Denkfragen sind szenariobasiert: Was passiert, wenn sich die Entwicklung bewahrheitet? Was, wenn nicht? Diese Perspektive hilft, kleine Experimente zu designen, die beide Szenarien informieren.' }
+      ]
+    },
+    { id: 'rm-3', icon: '9️⃣', title: 'Die 9x-Falle', desc: 'Warum Kunden neue Produkte systematisch geringer bewerten',
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Der systematische Fehler', title: 'Eager Sellers, Stony Buyers', html: `
+          <p>Dieser Gedanke stammt aus dem Harvard Business Review: <em>„Eager Sellers and Stony Buyers"</em> – John T. Gourville, 2006.</p>
+          <p>Wenn ein Unternehmen ein neues Produkt entwickelt, passieren zwei Dinge gleichzeitig:</p>
+          <div class="concept-cards">
+            <div class="concept-card blue">
+              <div class="concept-card-title">Das Unternehmen überschätzt den Wert</div>
+              <p>Die Entwickler kennen jede Funktion, sehen jede Verbesserung, haben jeden Schmerz des alten Systems erlebt. Ihre Einschätzung ist verzerrt – nach oben.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-title">Die Kunden unterschätzen den Wert</div>
+              <p>Sie sind mit dem Status quo vertraut. Das Neue ist fremd, die Umstellung kostet Energie. Psychologisch verlieren sie etwas Bekanntes – und Verluste schmerzen stärker als äquivalente Gewinne.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '📊 Der 9x-Effekt', kicker: 'Die Bewertungslücke', title: 'Neunmal besser – oder gar nicht', html: `
+          <svg viewBox="0 0 460 215" style="width:100%;height:auto;display:block;margin:6px 0;" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L6,3 z" fill="#ccc"/>
+              </marker>
+            </defs>
+            <line x1="40" y1="177" x2="430" y2="177" stroke="#e8e8e8" stroke-width="1.5"/>
+            <rect x="65" y="42" width="110" height="135" rx="5" fill="#699fff" opacity="0.88"/>
+            <text x="120" y="30" text-anchor="middle" font-size="10" font-weight="800" fill="#699fff" font-family="Manrope,sans-serif">UNTERNEHMEN</text>
+            <text x="120" y="76" text-anchor="middle" font-size="38" font-weight="800" fill="white" font-family="Manrope,sans-serif">9</text>
+            <text x="120" y="100" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)" font-family="Manrope,sans-serif">Kennt jeden Vorteil</text>
+            <text x="120" y="115" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)" font-family="Manrope,sans-serif">Sieht jede Verbesserung</text>
+            <text x="120" y="130" text-anchor="middle" font-size="9.5" fill="rgba(255,255,255,0.85)" font-family="Manrope,sans-serif">„Das ist viel besser!"</text>
+            <text x="120" y="160" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.65)" font-family="Manrope,sans-serif">Bewertung: nach oben verzerrt</text>
+            <rect x="285" y="162" width="110" height="15" rx="5" fill="#fd1e3e" opacity="0.88"/>
+            <text x="340" y="150" text-anchor="middle" font-size="10" font-weight="800" fill="#fd1e3e" font-family="Manrope,sans-serif">KUNDE</text>
+            <text x="340" y="173" text-anchor="middle" font-size="9" font-weight="700" fill="white" font-family="Manrope,sans-serif">1</text>
+            <text x="340" y="195" text-anchor="middle" font-size="9" fill="#888" font-family="Manrope,sans-serif">Verliert Vertrautes · Loss Aversion</text>
+            <line x1="185" y1="42" x2="278" y2="42" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3"/>
+            <line x1="185" y1="162" x2="278" y2="162" stroke="#ddd" stroke-width="1" stroke-dasharray="4,3"/>
+            <line x1="231" y1="46" x2="231" y2="158" stroke="#ccc" stroke-width="1.5" marker-start="url(#arrowhead)" marker-end="url(#arrowhead)"/>
+            <text x="248" y="108" font-size="26" font-weight="800" fill="#111" font-family="Manrope,sans-serif">9x</text>
+            <text x="248" y="124" font-size="9" fill="#888" font-family="Manrope,sans-serif">Lücke</text>
+          </svg>
+          <p style="font-size:0.85rem;"><strong>Die Faustregel (Gourville):</strong> Damit Kunden ein neues Produkt ernsthaft in Betracht ziehen, muss es rund neunmal besser sein als die bestehende Lösung – nicht zweimal, nicht dreimal.</p>
+        ` },
+        { tab: '⚡ Was das bedeutet', kicker: 'Für PMs', title: 'Der 9x-Effekt als Risikosignal', html: `
+          <div class="key-insight">Der 9x-Effekt ist kein Kundenproblem – es ist ein Risikofaktor im Produktportfolio.</div>
+          <p>Wenn du eine Initiative planst, die ein bestehendes Verhalten fundamental verändern soll, ist das per Definition High Risk. Nicht weil die Technologie riskant ist – sondern weil die <strong>Adoption riskant ist</strong>.</p>
+          <div class="concept-cards">
+            <div class="concept-card red">
+              <div class="concept-card-title">Verhaltensänderung verlangt?</div>
+              <p>→ Automatisch High-Risk-Signal. Klein starten, früh validieren, nicht zu früh skalieren.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-title">3 Fragen vor jeder Initiative</div>
+              <p>Verlange ich vom Nutzer eine Verhaltensänderung?<br>Wie groß ist die Umstellungshürde?<br>Ist der Mehrwert neunmal fühlbar – oder nur intern offensichtlich?</p>
+            </div>
+          </div>
+          <p style="font-size:0.84rem;color:var(--muted);margin-top:12px;">Warum 47 Waschprogramme nicht genutzt werden: Hersteller sind stolz auf 44 davon – Kunden ignorieren sie. Wahrgenommener Wert ≠ objektiver Wert.</p>
+        ` },
+        { tab: '💡 Beispiel & Übung', kicker: 'In der Praxis', title: 'Das Kollaborationstool', html: `
+          <blockquote>Ein PM-Team entwickelt ein neues Kollaborationstool: schneller, strukturierter, mobiltauglich. Das Team ist begeistert. Die Nutzer wechseln trotzdem kaum. Der Grund: Die alten Tools sind vertraut, die Lernkurve kostet Zeit – gefühlte Verluste (Routinen, muscle memory, bestehende Dokumente) überwiegen die abstrakten Gewinne. Das neue Tool ist vielleicht zweimal besser – aber nicht neunmal.</blockquote>
+          <div class="exercise-box" style="margin-top:16px;">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Denk an ein Feature, das du oder dein Team zuletzt gebaut hat:</p>
+            <ul>
+              <li>Wie hoch war die tatsächliche Adoption?</li>
+              <li>Wie groß war die verlangte Verhaltensänderung?</li>
+              <li>Was hätte geholfen, die Hürde zu senken?</li>
+            </ul>
+          </div>
+        ` }
+      ],
+      questions: [
+        { text: 'Was besagt der 9x-Effekt nach Gourville?', options: ['Neue Produkte sind durchschnittlich neunmal teurer zu entwickeln als geplant', 'Kunden müssen ein neues Produkt als rund neunmal besser wahrnehmen, bevor sie ernsthaft wechseln', 'Unternehmen überschätzen ihre Marktanteile um den Faktor 9', 'Es dauert neunmal länger, Nutzer für ein neues Produkt zu gewinnen'], correct: 1, explanation: 'Gourville: Die Kombination aus Verlustaversion und systematischer Bewertungsverzerrung führt zu einer hohen Wechselhürde – die liegt rund neunmal höher, als Unternehmen erwarten.' },
+        { text: 'Warum überschätzen Unternehmen den Wert ihrer eigenen Produkte systematisch?', options: ['Weil sie mehr Marketingbudget haben', 'Weil sie jede Funktion kennen, jeden Schmerz erlebt haben und jede Verbesserung sehen – ihre Einschätzung ist nach oben verzerrt', 'Weil Kunden keine Zeit haben, Produkte richtig zu testen', 'Weil interne Tests immer bessere Ergebnisse zeigen'], correct: 1, explanation: 'Entwickler und PMs sind mit dem neuen Produkt vertraut, kennen seine Vorteile in und auswendig. Das verzerrt ihre Einschätzung systematisch – sie erleben keinen Wechselschmerz, weil sie schon im neuen System leben.' },
+        { text: 'Was ist Loss Aversion im Kontext des 9x-Effekts?', options: ['Die Tendenz, Verluste in Finanzmärkten zu vermeiden', 'Das psychologische Phänomen, dass Verluste stärker schmerzen als äquivalente Gewinne gut tun', 'Die Abneigung von Nutzern gegen komplexe Produkte', 'Der Effekt, dass Menschen Risiken immer überschätzen'], correct: 1, explanation: 'Kunden verlieren etwas Bekanntes (vertraute Routinen, muscle memory) und gewinnen etwas Unbekanntes. Verluste wiegen psychologisch schwerer als äquivalente Gewinne – das erhöht die Wechselhürde erheblich.' },
+        { text: 'Wann ist eine Initiative laut 9x-Logik per Definition High Risk?', options: ['Wenn sie über 6 Monate Entwicklungszeit benötigt', 'Wenn sie ein bestehendes Nutzerverhalten fundamental verändern soll', 'Wenn keine A/B-Tests möglich sind', 'Wenn sie ein neues Marktsegment adressiert'], correct: 1, explanation: 'Eine Initiative, die fundamentale Verhaltensänderung verlangt, ist High Risk – nicht wegen der Technologie, sondern wegen der Adoption. Der 9x-Effekt macht die Hürde klar: Ohne neunfach fühlbaren Mehrwert wird kaum jemand wechseln.' },
+        { text: 'Was ist die praktische Konsequenz aus dem 9x-Effekt?', options: ['Nur noch inkrementelle Features bauen', 'Verhaltensändernde Initiativen als High Risk einordnen und mit kleinen Experimenten früh validieren', 'Grundsätzlich keine neuen Produkte einführen', 'Den wahrgenommenen Wert durch mehr Marketing steigern'], correct: 1, explanation: 'Der 9x-Effekt ist ein Risikosignal, kein Stoppsignal. Er sagt: Wenn du Verhalten verändern willst, starte klein, validiere früh, und stelle die richtige Frage – ist der Mehrwert für den Nutzer wirklich neunmal fühlbar?' }
+      ]
+    },
+    { id: 'rm-4', icon: '🗂️', title: 'Den richtigen Portfolio-Mix finden', desc: 'Risikomischung nach Unternehmensphase und strategischen Zielen',
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Kein Monokultur-Portfolio', title: 'Die richtige Mischung', html: `
+          <p>Wie sieht ein gutes Risikoportfolio aus? Es gibt keine universelle Antwort – aber klare Heuristiken.</p>
+          <div class="concept-cards">
+            <div class="concept-card red">
+              <div class="concept-card-title">Nur Low Risk</div>
+              <p>Optimiert das Bestehende – baut aber keine Zukunft. Anfällig für Disruption.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-title">Nur High Risk</div>
+              <p>Verbrennt Ressourcen ohne kurzfristige Ergebnisse. Verliert die Unterstützung der Organisation.</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-title">Bewusste Mischung aller drei</div>
+              <p>Liefert heute, entdeckt morgen, schützt übermorgen. Die Verteilung variiert je nach Unternehmensphase.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '📊 Mix nach Phase', kicker: 'Unternehmensphase entscheidet', title: 'Startup · Wachstum · Reife', html: `
+          <svg viewBox="0 0 460 220" style="width:100%;height:auto;display:block;margin:8px 0;" xmlns="http://www.w3.org/2000/svg">
+            <text x="8" y="44" font-size="8.5" font-weight="800" fill="#fd1e3e" font-family="Manrope,sans-serif">HIGH</text>
+            <text x="8" y="108" font-size="8.5" font-weight="800" fill="#b45309" font-family="Manrope,sans-serif">MED</text>
+            <text x="8" y="170" font-size="8.5" font-weight="800" fill="#00a69a" font-family="Manrope,sans-serif">LOW</text>
+            <rect x="55" y="50" width="100" height="52" fill="#fee2e2" rx="2"/>
+            <rect x="55" y="50" width="100" height="52" fill="none" stroke="#fd1e3e" stroke-width="1.2" rx="2"/>
+            <text x="105" y="80" text-anchor="middle" font-size="12" font-weight="700" fill="#fd1e3e" font-family="Manrope,sans-serif">40 %</text>
+            <rect x="55" y="102" width="100" height="52" fill="#fffbeb" rx="2"/>
+            <rect x="55" y="102" width="100" height="52" fill="none" stroke="#ffc942" stroke-width="1.2" rx="2"/>
+            <text x="105" y="133" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309" font-family="Manrope,sans-serif">40 %</text>
+            <rect x="55" y="154" width="100" height="26" fill="#e6fffe" rx="2"/>
+            <rect x="55" y="154" width="100" height="26" fill="none" stroke="#02f3da" stroke-width="1.2" rx="2"/>
+            <text x="105" y="171" text-anchor="middle" font-size="12" font-weight="700" fill="#00a69a" font-family="Manrope,sans-serif">20 %</text>
+            <text x="105" y="198" text-anchor="middle" font-size="10" font-weight="800" fill="#333" font-family="Manrope,sans-serif">Startup</text>
+            <text x="105" y="211" text-anchor="middle" font-size="9" fill="#888" font-family="Manrope,sans-serif">Entdecken &amp; Wetten</text>
+            <rect x="180" y="50" width="100" height="19" fill="#fee2e2" rx="2"/>
+            <rect x="180" y="50" width="100" height="19" fill="none" stroke="#fd1e3e" stroke-width="1.2" rx="2"/>
+            <text x="230" y="63" text-anchor="middle" font-size="12" font-weight="700" fill="#fd1e3e" font-family="Manrope,sans-serif">15 %</text>
+            <rect x="180" y="69" width="100" height="46" fill="#fffbeb" rx="2"/>
+            <rect x="180" y="69" width="100" height="46" fill="none" stroke="#ffc942" stroke-width="1.2" rx="2"/>
+            <text x="230" y="97" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309" font-family="Manrope,sans-serif">35 %</text>
+            <rect x="180" y="115" width="100" height="65" fill="#e6fffe" rx="2"/>
+            <rect x="180" y="115" width="100" height="65" fill="none" stroke="#02f3da" stroke-width="1.2" rx="2"/>
+            <text x="230" y="153" text-anchor="middle" font-size="12" font-weight="700" fill="#00a69a" font-family="Manrope,sans-serif">50 %</text>
+            <text x="230" y="198" text-anchor="middle" font-size="10" font-weight="800" fill="#333" font-family="Manrope,sans-serif">Wachstum</text>
+            <text x="230" y="211" text-anchor="middle" font-size="9" fill="#888" font-family="Manrope,sans-serif">Skalieren &amp; absichern</text>
+            <rect x="305" y="50" width="100" height="19" fill="#fee2e2" rx="2"/>
+            <rect x="305" y="50" width="100" height="19" fill="none" stroke="#fd1e3e" stroke-width="2" rx="2"/>
+            <text x="355" y="63" text-anchor="middle" font-size="12" font-weight="700" fill="#fd1e3e" font-family="Manrope,sans-serif">15 % ★</text>
+            <rect x="305" y="69" width="100" height="33" fill="#fffbeb" rx="2"/>
+            <rect x="305" y="69" width="100" height="33" fill="none" stroke="#ffc942" stroke-width="1.2" rx="2"/>
+            <text x="355" y="90" text-anchor="middle" font-size="12" font-weight="700" fill="#b45309" font-family="Manrope,sans-serif">25 %</text>
+            <rect x="305" y="102" width="100" height="78" fill="#e6fffe" rx="2"/>
+            <rect x="305" y="102" width="100" height="78" fill="none" stroke="#02f3da" stroke-width="1.2" rx="2"/>
+            <text x="355" y="146" text-anchor="middle" font-size="12" font-weight="700" fill="#00a69a" font-family="Manrope,sans-serif">60 %</text>
+            <text x="355" y="198" text-anchor="middle" font-size="10" font-weight="800" fill="#333" font-family="Manrope,sans-serif">Reife</text>
+            <text x="355" y="211" text-anchor="middle" font-size="9" fill="#888" font-family="Manrope,sans-serif">Optimieren + ★ Wetten</text>
+          </svg>
+          <p style="font-size:0.82rem;color:var(--muted);">★ In der Reifephase ist High Risk am schwersten durchzusetzen – aber am wichtigsten. Kurzfristiger Erfolg des Bestehenden steht gegen die langfristige Notwendigkeit des Neuen.</p>
+        ` },
+        { tab: '💡 3 Heuristiken', kicker: 'Roadmap-Check', title: 'Drei Fragen für dein Portfolio', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Frage 1</div>
+              <div class="concept-card-title">Habe ich alle drei Risikoklassen?</div>
+              <p>Wenn nicht: Was fehlt – und warum? Ein unbewusstes Portfolio ist kein Portfolio.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Frage 2</div>
+              <div class="concept-card-title">Sind meine High-Risk-Bets klein genug?</div>
+              <p>Klein genug, um zu scheitern – ohne das Team zu lähmen. Wenn ein Experiment das gesamte Team bindet, ist es kein Experiment mehr.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">Frage 3</div>
+              <div class="concept-card-title">Verteidigst du das Portfolio – oder einzelne Maßnahmen?</div>
+              <p>„Diese Initiative hat hohes Risiko" ist eine Schwäche. „Wir haben 70 % sichere Bets und 30 % Wetten – das ist Absicht" ist eine Stärke.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'Konkret gemacht', title: 'Die Jahresroadmap', html: `
+          <blockquote>Ein etabliertes E-Commerce-Unternehmen plant seine Jahresroadmap: 60 % der Kapazität für bewährte Conversion-Optimierungen (Low Risk). 30 % für neue Kundensegmente und experimentelle Kategorien (Medium Risk). 10 % für eine explorative KI-gestützte Personalisierung, deren Geschäftsmodellimpakt noch unklar ist (High Risk).</blockquote>
+          <div class="key-insight">Das Team kann das gegenüber dem Management klar begründen – als bewusste Portfolioentscheidung, nicht als Zufall.</div>
+          <div class="exercise-box" style="margin-top:16px;">
+            <div class="exercise-label">✍️ Portfolio-Audit</div>
+            <p>Nimm deine aktuelle Roadmap. Ordne jede Initiative einer Risikoklasse zu. Berechne die prozentuale Verteilung. Dann ein Satz: Ist das eine bewusste Entscheidung – oder einfach so entstanden?</p>
+          </div>
+        ` }
+      ],
+      questions: [
+        { text: 'Was beschreibt ein „Monokultur-Portfolio" im PM-Kontext?', options: ['Ein Portfolio, das nur auf ein Produktsegment fokussiert', 'Ein Portfolio, das ausschließlich eine Risikoklasse enthält', 'Ein Portfolio ohne klare Priorisierung', 'Ein Portfolio, das von einer Person allein gepflegt wird'], correct: 1, explanation: 'Ein Monokultur-Portfolio enthält nur eine Risikoklasse. Nur Low Risk optimiert ohne Zukunft. Nur High Risk verbrennt Ressourcen. Ein gesundes Portfolio enthält alle drei Klassen bewusst.' },
+        { text: 'Welche Portfolio-Mischung passt typischerweise zu einer Wachstumsphase?', options: ['Viel High Risk, wenig Low Risk', 'Mehr Low und Medium Risk, bewusst etwas High Risk', 'Ausschließlich Low Risk zur Skalierung', 'Ausschließlich High Risk für disruptives Wachstum'], correct: 1, explanation: 'In der Wachstumsphase steht Skalierung im Vordergrund: mehr Low Risk für das bewährte Kernprodukt, Medium Risk für neue Chancen, und ein kleiner High-Risk-Anteil für Zukunftssicherung.' },
+        { text: 'Warum ist High Risk in der Reifephase am schwersten durchzusetzen?', options: ['Weil große Unternehmen keine Innovationsbudgets haben', 'Weil der kurzfristige Erfolg des Bestehenden gegen die langfristige Notwendigkeit des Neuen steht', 'Weil reife Produkte technisch keine Neuerungen zulassen', 'Weil Stakeholder in der Reifephase keine Zustimmung geben'], correct: 1, explanation: 'In der Reifephase läuft das Bestehende gut – das erzeugt Druck, bewährte Initiativen zu priorisieren. Gleichzeitig ist jetzt der richtige Zeitpunkt für High-Risk-Wetten, bevor Disruption eintritt.' },
+        { text: 'Was bedeutet „ein Portfolio als Portfolio verteidigen"?', options: ['Jede Initiative mit ROI-Kalkulation rechtfertigen', 'Den bewussten Risikomix als strategische Entscheidung kommunizieren, nicht einzelne Maßnahmen isoliert', 'Das Portfolio vor dem Management geheim halten', 'Alle Initiativen unter einen gemeinsamen Projektnamen stellen'], correct: 1, explanation: 'Einzelne High-Risk-Initiativen wirken isoliert wie Schwächen. Aber: „Wir haben 70 % bewährte Optimierungen und 30 % strategische Wetten – das ist unsere bewusste Entscheidung" ist eine fundierte strategische Argumentation.' },
+        { text: 'Was ist die Bedingung dafür, dass eine High-Risk-Initiative wirklich ein Experiment bleibt?', options: ['Sie muss von externen Beratern geleitet werden', 'Sie muss klein genug sein, um zu scheitern, ohne das Team zu lähmen', 'Sie braucht ein eigenes Budget außerhalb der Roadmap', 'Sie darf maximal 30 % der Entwicklungskapazität verbrauchen'], correct: 1, explanation: 'Ein Experiment, das das gesamte Team bindet, ist kein Experiment mehr – es ist eine Großwette. High-Risk-Initiativen müssen so dimensioniert sein, dass ein Scheitern lernbar ist, nicht lähmend.' }
+      ]
+    }
+  ]},
   { id: 'financial-basics', icon: '💰', color: '#10b981', title: 'Financial Basics', desc: 'Grundlagen der Unternehmensfinanzierung und Produktkennzahlen verstehen', status: 'coming-soon', modules: [] },
   { id: 'testing-experimentation', icon: '🧪', color: '#8b5cf6', title: 'Testing & Experimentation', desc: 'A/B-Tests, Hypothesen validieren und datengetriebene Entscheidungen treffen', status: 'coming-soon', modules: [] },
   { id: 'kommunikation', icon: '📣', color: '#a855f7', title: 'Effektive Kommunikation', desc: 'Stakeholder überzeugen, Präsentationen halten und klar kommunizieren', status: 'coming-soon', modules: [] }
