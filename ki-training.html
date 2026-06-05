@@ -713,6 +713,195 @@
     margin-top: 1px;
   }
 
+  /* ─── CONTENT SLIDER ─────────────────────────────────────────────────────── */
+  .lesson-slider {
+    margin-bottom: 24px;
+  }
+
+  /* Slide tab bar */
+  .slider-tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 0;
+  }
+  .slider-tabs::-webkit-scrollbar { display: none; }
+  .slider-tab {
+    flex-shrink: 0;
+    padding: 9px 16px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Manrope', sans-serif;
+  }
+  .slider-tab:hover { color: var(--primary); }
+  .slider-tab.active { color: var(--primary); border-bottom-color: var(--accent); }
+
+  /* Slide panel */
+  .slide-panel {
+    display: none;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 28px;
+    animation: slideFadeIn 0.2s ease;
+  }
+  .slide-panel.active { display: block; }
+  @keyframes slideFadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* Slide header inside panel */
+  .slide-kicker {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .slide-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 18px;
+    line-height: 1.3;
+  }
+
+  /* Slide nav footer */
+  .slider-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 28px;
+    background: #f8f8f8;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    margin-top: -1px;
+  }
+  .slider-arrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    padding: 6px 4px;
+    font-family: 'Manrope', sans-serif;
+    transition: opacity 0.15s;
+  }
+  .slider-arrow:hover { opacity: 0.65; }
+  .slider-arrow:disabled { opacity: 0.2; cursor: default; }
+  .slider-dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+  }
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    border: none;
+    padding: 0;
+  }
+  .slider-dot.active { background: var(--accent); transform: scale(1.35); }
+
+  /* Content inside slides */
+  .slide-panel p { font-size: 0.9rem; line-height: 1.75; color: #333; margin-bottom: 12px; }
+  .slide-panel p:last-child { margin-bottom: 0; }
+  .slide-panel h3 { font-size: 0.95rem; font-weight: 800; margin: 18px 0 10px; color: var(--primary); }
+  .slide-panel ul, .slide-panel ol { padding-left: 20px; font-size: 0.9rem; line-height: 1.7; margin-bottom: 12px; }
+  .slide-panel li { margin-bottom: 5px; }
+  .slide-panel blockquote {
+    background: #f8f9fa;
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin: 0;
+    font-size: 0.87rem;
+    line-height: 1.65;
+    color: #444;
+    font-style: italic;
+  }
+
+  /* Concept cards inside slides */
+  .concept-cards { display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .concept-card {
+    background: #f8f8f8;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .concept-card-label {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .concept-card-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 5px;
+  }
+  .concept-card p { font-size: 0.87rem; line-height: 1.6; margin: 0; color: #444; }
+  .concept-card.accent { border-left: 4px solid var(--accent); }
+  .concept-card.yellow { border-left: 4px solid var(--yellow); }
+  .concept-card.red { border-left: 4px solid var(--red); }
+  .concept-card.blue { border-left: 4px solid var(--blue); }
+
+  /* Pull quote / key insight */
+  .key-insight {
+    background: rgba(2,243,218,0.07);
+    border: 1px solid rgba(2,243,218,0.3);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--primary);
+  }
+  .key-insight::before { content: '💡 '; }
+
+  /* Exercise box */
+  .exercise-box {
+    background: #fff8e7;
+    border: 1px solid #fcd34d;
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #444;
+  }
+  .exercise-box .exercise-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: #b45309;
+    margin-bottom: 8px;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 600px) {
     .hero h1 { font-size: 1.8rem; }
@@ -1219,14 +1408,55 @@ const AREAS = [
   },
   { id: 'fuehrung-ohne-macht', icon: '🤝', color: '#699fff', title: 'Führung ohne Macht', desc: 'Einfluss nehmen, Vertrauen aufbauen und Teams bewegen – ohne disziplinarische Autorität', status: 'active', modules: [
     { id: 'fom-1', icon: '⚖️', title: 'Management vs. Leadership', desc: 'Den Unterschied verstehen – und warum er für PMs entscheidend ist',
-      content: `<h2>Management vs. Leadership – Was ist der Unterschied?</h2>
-<p>Als Produktmanager trägst du Verantwortung für Ergebnisse – aber du hast in der Regel keine Disziplinargewalt über die Menschen, mit denen du arbeitest. Entwickler, Designer, Data Scientists berichten nicht an dich. Du kannst niemanden anweisen. Wie führst du trotzdem?</p>
-<div class="info-box"><strong>Management</strong> bedeutet, Systeme, Prozesse und Ressourcen zu koordinieren, damit vorgegebene Ziele erreicht werden. Es setzt formale Autorität voraus und beantwortet die Frage: <em>Wie machen wir die Dinge richtig?</em></div>
-<div class="info-box"><strong>Leadership</strong> bedeutet, Menschen in eine Richtung zu bewegen – durch Inspiration, Überzeugung, Vertrauen und geteilte Ziele. Leadership braucht keine formale Autorität und beantwortet: <em>Machen wir die richtigen Dinge?</em></div>
-<p>Der Ökonom John Kotter beschreibt es so: Manager sorgen für Komplexitätsbewältigung – sie bringen Ordnung und Berechenbarkeit. Leader sorgen für Wandel – sie entwickeln Visionen und bewegen Menschen, diese zu verfolgen.</p>
-<p><strong>Für Produktmanager gilt:</strong> Euer Job ist fast ausschließlich Leadership. Ihr habt eine Produktvision, ihr müsst Teams überzeugen, Stakeholder alignen, Prioritäten verteidigen – ohne jemandem etwas befehlen zu können. Das ist kein Makel eurer Rolle, sondern ihr Kern.</p>
-<h3>Beispiel</h3>
-<blockquote>Lena ist Product Managerin bei einem FinTech-Startup. In einem Sprint-Planning schlägt ein Entwickler vor, ein Feature technisch anders umzusetzen als geplant. Als Manager könnte Lena sagen: „Mach es so, wie ich es sage." Als Leader fragt sie: „Was versprichst du dir davon? Lass uns gemeinsam schauen, welche Lösung am besten zu unseren Nutzerzielen passt." Das Ergebnis: bessere Lösung, mehr Commitment des Entwicklers.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Die Grundfrage', title: 'Wie führst du, ohne zu befehlen?', html: `
+          <p>Als Produktmanager trägst du Verantwortung für Ergebnisse – aber du hast in der Regel keine Disziplinargewalt über die Menschen, mit denen du arbeitest. Entwickler, Designer, Data Scientists berichten nicht an dich.</p>
+          <div class="key-insight">Du kannst niemanden anweisen. Wie führst du trotzdem?</div>
+          <p>Die Antwort liegt in einem grundlegenden Unterschied, den viele PMs erst spät verstehen: Management und Leadership sind nicht dasselbe.</p>
+        ` },
+        { tab: '📐 Die Unterscheidung', kicker: 'Das Konzept', title: 'Management vs. Leadership', html: `
+          <div class="concept-cards">
+            <div class="concept-card blue">
+              <div class="concept-card-label">Management</div>
+              <div class="concept-card-title">Wie machen wir die Dinge richtig?</div>
+              <p>Systeme, Prozesse und Ressourcen koordinieren, damit vorgegebene Ziele erreicht werden. Setzt formale Autorität voraus: Stellenbeschreibung, Hierarchie, Weisungsbefugnis.</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">Leadership</div>
+              <div class="concept-card-title">Machen wir die richtigen Dinge?</div>
+              <p>Menschen durch Inspiration, Überzeugung, Vertrauen und geteilte Ziele in eine Richtung bewegen. Braucht keine formale Autorität.</p>
+            </div>
+          </div>
+          <p style="margin-top:14px;">John Kotter: Manager sorgen für <strong>Komplexitätsbewältigung</strong> – Ordnung und Berechenbarkeit. Leader sorgen für <strong>Wandel</strong> – Visionen und Bewegung.</p>
+          <div class="key-insight">Der Job von Produktmanagern ist fast ausschließlich Leadership.</div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Lenas Sprint-Planning', html: `
+          <p>Lena ist Product Managerin bei einem FinTech-Startup. In einem Sprint-Planning schlägt ein Entwickler vor, ein Feature technisch anders umzusetzen als geplant.</p>
+          <div class="concept-cards">
+            <div class="concept-card blue">
+              <div class="concept-card-label">Als Manager</div>
+              <p>„Mach es so, wie ich es sage."</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">Als Leader</div>
+              <p>„Was versprichst du dir davon? Lass uns gemeinsam schauen, welche Lösung am besten zu unseren Nutzerzielen passt."</p>
+            </div>
+          </div>
+          <div class="key-insight">Ergebnis der Leadership-Reaktion: bessere Lösung, mehr Commitment des Entwicklers.</div>
+        ` },
+        { tab: '✍️ Reflexion', kicker: 'Jetzt anwenden', title: 'Dein Führungsalltag', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Denk an eine Situation aus deinem Arbeitsalltag, in der du etwas von jemandem brauchtest, über den du keine formale Autorität hattest.</p>
+            <ul>
+              <li>Wie hast du es angegangen?</li>
+              <li>Hast du eher „gemanagt" (koordiniert, kontrolliert) oder „geführt" (überzeugt, eingebunden)?</li>
+              <li>Was hätte besser funktioniert?</li>
+            </ul>
+          </div>
+          <div class="key-insight">Die PM-Rolle gibt dir keine Autorität – aber sie gibt dir jeden Grund, Leadership zu entwickeln.</div>
+        ` }
+      ],
       questions: [
         { text: 'Welche Aussage beschreibt Leadership (nicht Management) am treffendsten?', options: ['Prozesse und Ressourcen so koordinieren, dass Ziele erreicht werden', 'Menschen durch Inspiration und geteilte Ziele in eine Richtung bewegen', 'Weisungsbefugnis nutzen, um Aufgaben zu delegieren', 'Kontrolle über Ergebnisse durch regelmäßige Reviews sicherstellen'], correct: 1, explanation: 'Leadership bedeutet, Menschen durch Inspiration, Überzeugung und geteilte Ziele zu bewegen – ohne formale Autorität. Management hingegen koordiniert Ressourcen und kontrolliert Zielerreichung.' },
         { text: 'Warum ist die PM-Rolle fast ausschließlich Leadership, nicht Management?', options: ['PMs haben zu wenig Fachkenntnis für Managementaufgaben', 'PMs haben keine Disziplinargewalt über ihr Team', 'Management ist für Product Owner zuständig', 'PMs arbeiten nur in Start-ups ohne Hierarchien'], correct: 1, explanation: 'Der Kern der PM-Rolle ist, dass du Ergebnisse verantworten musst, aber niemanden formell anweisen kannst – Entwickler, Designer und Analysten berichten an andere Führungskräfte, nicht an dich.' },
@@ -1236,16 +1466,60 @@ const AREAS = [
       ]
     },
     { id: 'fom-2', icon: '🔗', title: 'Laterale Führung', desc: 'Führen ohne Weisungsbefugnis – die Realität moderner Produktarbeit',
-      content: `<h2>Laterale Führung – Führen ohne Weisungsbefugnis</h2>
-<p>Laterale Führung ist kein Notbehelf. Sie ist die Realität moderner Produktarbeit – und eine Fähigkeit, die sich gezielt entwickeln lässt.</p>
-<p>„Lateral" kommt vom Lateinischen <em>latus</em> – seitlich. Du führst Menschen auf derselben Hierarchieebene oder in anderen Linien. Es gibt keine Über- oder Unterordnung – du arbeitest <em>mit</em> Menschen, nicht <em>über</em> ihnen.</p>
-<div class="info-box">Das Forscherpaar Friedrich Glasl und Bernd Heitger beschreiben drei Kernmechanismen lateraler Führung:<br><br>
-<strong>1. Vertrauen:</strong> Menschen folgen denen, denen sie vertrauen. Entsteht durch Verlässlichkeit, Kompetenz und Integrität.<br><br>
-<strong>2. Expertise und Glaubwürdigkeit:</strong> Du verdienst dir Einfluss durch Wissen. Wenn du über Nutzerprobleme und Produktzusammenhänge mehr weißt, folgen Menschen dir aus Überzeugung.<br><br>
-<strong>3. Gemeinsame Ziele:</strong> Wenn alle verstehen, <em>warum</em> etwas wichtig ist, ändert sich das Gespräch.</div>
-<p>In cross-funktionalen Teams kommt ein vierter Faktor hinzu: <strong>Beziehungspflege</strong>. Gespräche führen, die nicht rein transaktional sind. Interesse an den Zielen der anderen Disziplinen zeigen.</p>
-<h3>Beispiel</h3>
-<blockquote>Marcus braucht Kapazitäten vom Backend-Team – das einen eigenen Teamlead und langen Backlog hat. Er geht nicht ins nächste Planning und fordert einfach Ressourcen. Stattdessen lädt er den Backend-Teamlead frühzeitig ein, das Feature mitzudenken. Er erklärt den Business Case, fragt nach technischen Bedenken und macht deutlich: „Ich möchte, dass ihr Einfluss auf die Lösung habt." Das Team fühlt sich eingebunden – und priorisiert das Feature.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Die Realität', title: 'Führung ohne Hierarchie', html: `
+          <p>Laterale Führung ist kein Notbehelf. Sie ist die Realität moderner Produktarbeit.</p>
+          <p>„Lateral" kommt vom Lateinischen <em>latus</em> – seitlich. Du führst Menschen auf derselben Hierarchieebene oder in anderen Linien. Es gibt keine Über- oder Unterordnung.</p>
+          <div class="key-insight">Du arbeitest <em>mit</em> Menschen, nicht <em>über</em> ihnen.</div>
+          <p>Und das ist keine Einschränkung – es ist eine Führungsdisziplin, die sich gezielt entwickeln lässt.</p>
+        ` },
+        { tab: '📐 Die 3 Mechanismen', kicker: 'Das Modell', title: 'Glasl & Heitger: Wie laterale Führung funktioniert', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Mechanismus 1</div>
+              <div class="concept-card-title">Vertrauen</div>
+              <p>Menschen folgen denen, denen sie vertrauen. Entsteht durch Verlässlichkeit (tust du, was du sagst?), Kompetenz und Integrität. Vertrauen ist deine wichtigste Währung.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Mechanismus 2</div>
+              <div class="concept-card-title">Expertise & Glaubwürdigkeit</div>
+              <p>Du verdienst dir Einfluss durch Wissen. Wenn du über Nutzerprobleme und Produktzusammenhänge mehr weißt, folgen Menschen dir – weil es sinnvoll ist, nicht weil sie müssen.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">Mechanismus 3</div>
+              <div class="concept-card-title">Gemeinsame Ziele</div>
+              <p>Wenn alle verstehen, <em>warum</em> etwas wichtig ist, ändert sich das Gespräch. „Wir lösen damit ein echtes Nutzerproblem" schlägt „ich brauche das bis Freitag".</p>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:0.87rem;color:var(--muted);">In cross-funktionalen Teams kommt ein vierter Faktor hinzu: <strong>Beziehungspflege</strong> – Gespräche, die nicht rein transaktional sind.</p>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Marcus und das Backend-Team', html: `
+          <blockquote>Marcus braucht Kapazitäten vom Backend-Team – das einen eigenen Teamlead und langen Backlog hat.</blockquote>
+          <div class="concept-cards" style="margin-top:14px;">
+            <div class="concept-card red">
+              <div class="concept-card-label">Ohne laterale Führung</div>
+              <p>Marcus geht ins nächste Planning und fordert Ressourcen. Das Team fühlt sich fremdgesteuert.</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">Mit lateraler Führung</div>
+              <p>Marcus lädt den Teamlead frühzeitig ein, das Feature mitzudenken. Er erklärt den Business Case, fragt nach Bedenken: „Ich möchte, dass ihr Einfluss auf die Lösung habt."</p>
+            </div>
+          </div>
+          <div class="key-insight">Das Team fühlt sich eingebunden – und priorisiert das Feature.</div>
+        ` },
+        { tab: '✍️ Reflexion', kicker: 'Jetzt anwenden', title: 'Deine laterale Beziehung', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Identifiziere eine Person in deinem Arbeitsumfeld, von der du regelmäßig etwas brauchst, über die du aber keine Autorität hast.</p>
+            <ul>
+              <li>Wie gut ist deine Beziehung zu dieser Person?</li>
+              <li>Kennt sie deine Ziele – und kennst du ihre?</li>
+              <li>Was könntest du konkret tun, um Vertrauen und gemeinsame Basis zu stärken?</li>
+            </ul>
+          </div>
+          <div class="key-insight">Laterale Führung beginnt nicht im Meeting. Sie beginnt in den Gesprächen davor.</div>
+        ` }
+      ],
       questions: [
         { text: 'Was bedeutet "lateral" im Kontext lateraler Führung?', options: ['Hierarchisch von oben nach unten', 'Auf gleicher Ebene oder über Abteilungsgrenzen hinweg', 'Ausschließlich innerhalb des eigenen Teams', 'Zwischen Management und operativer Ebene'], correct: 1, explanation: '"Lateral" kommt von latus (seitlich) – du führst Menschen auf gleicher Hierarchieebene oder in anderen Linien, ohne formale Autorität über sie.' },
         { text: 'Was ist laut Glasl und Heitger der wichtigste Mechanismus lateraler Führung?', options: ['Formale Entscheidungsbefugnisse', 'Vertrauen, Expertise und gemeinsame Ziele', 'Regelmäßige Performance-Reviews', 'Klare Rollenverteilung in der Matrix-Organisation'], correct: 1, explanation: 'Glasl und Heitger identifizieren drei Kernmechanismen: Vertrauen, Expertise/Glaubwürdigkeit und gemeinsame Ziele. Formale Autorität ist gerade das, was in lateraler Führung fehlt.' },
@@ -1255,20 +1529,88 @@ const AREAS = [
       ]
     },
     { id: 'fom-3', icon: '🧭', title: 'Situational Leadership', desc: 'Den Führungsstil bewusst an die Entwicklungsstufe anpassen',
-      content: `<h2>Situational Leadership – Den Stil an die Person anpassen</h2>
-<p>Ein häufiger Fehler in der Führung: Man hat einen Lieblingsstil und wendet ihn überall an. Das Situational Leadership Modell erklärt warum – und wie es besser geht.</p>
-<p>Paul Hersey und Ken Blanchard entwickelten folgendes Modell: Es gibt keinen universell besten Führungsstil. Der richtige Stil hängt von der <strong>Entwicklungsstufe</strong> der Person ab, bezogen auf eine konkrete Aufgabe.</p>
-<div class="info-box"><strong>Die vier Entwicklungsstufen:</strong><br><br>
-<strong>D1 – Enthusiastic Beginner:</strong> Niedrige Kompetenz, hohes Commitment. Neu, motiviert, aber noch ohne Erfahrung.<br>
-<strong>D2 – Disillusioned Learner:</strong> Etwas Kompetenz, gesunkenes Commitment. Hat erste Rückschläge erlebt.<br>
-<strong>D3 – Capable but Cautious:</strong> Hohe Kompetenz, schwankendes Commitment. Kann es, traut sich aber nicht immer zu.<br>
-<strong>D4 – Self-Reliant Achiever:</strong> Hohe Kompetenz, hohes Commitment. Erfahren, motiviert, eigenständig.</div>
-<div class="info-box"><strong>Die vier Führungsstile:</strong><br><br>
-<strong>S1 – Telling:</strong> Klare Anweisungen, enge Begleitung, viel Struktur → für D1<br>
-<strong>S2 – Selling/Coaching:</strong> Struktur + Dialog, erkläre das Warum, hole Ideen ein → für D2<br>
-<strong>S3 – Participating:</strong> Weniger Vorgaben, mehr Fragen, Verantwortung bei der Person → für D3<br>
-<strong>S4 – Delegating:</strong> Verantwortung abgeben, verfügbar bleiben → für D4</div>
-<p><strong>Wichtig:</strong> Entwicklungsstufen sind aufgabenspezifisch, nicht personenspezifisch. Eine erfahrene Entwicklerin kann in ihrer technischen Domäne D4 sein – aber beim ersten Kundengespräch eher D1.</p>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Der häufigste Fehler', title: 'Einen Stil für alle?', html: `
+          <p>Ein häufiger Fehler in der Führung: Man hat einen Lieblingsstil und wendet ihn überall an. Bei jedem. In jeder Situation.</p>
+          <p>Manchmal klappt das. Oft nicht.</p>
+          <div class="key-insight">Es gibt keinen universell besten Führungsstil. Der richtige Stil hängt von der Entwicklungsstufe der Person ab – bezogen auf eine konkrete Aufgabe.</div>
+          <p>Das ist die Kernthese von Paul Hersey und Ken Blanchard, deren Modell bis heute zu den einflussreichsten Führungsmodellen gehört.</p>
+        ` },
+        { tab: '📐 Die 4 Stufen', kicker: 'Das Modell', title: 'D1 bis D4: Entwicklungsstufen', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">D1 · Enthusiastic Beginner</div>
+              <div class="concept-card-title">Niedrige Kompetenz, hohes Commitment</div>
+              <p>Neu, motiviert, aber noch ohne Erfahrung. Will loslegen, braucht Orientierung.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">D2 · Disillusioned Learner</div>
+              <div class="concept-card-title">Etwas Kompetenz, gesunkenes Commitment</div>
+              <p>Hat erste Rückschläge erlebt, zweifelt an sich. Braucht sowohl Orientierung als auch Unterstützung.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">D3 · Capable but Cautious</div>
+              <div class="concept-card-title">Hohe Kompetenz, schwankendes Commitment</div>
+              <p>Kann es – traut sich aber nicht immer zu. Braucht Vertrauen, nicht Anleitung.</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-label">D4 · Self-Reliant Achiever</div>
+              <div class="concept-card-title">Hohe Kompetenz, hohes Commitment</div>
+              <p>Erfahren, motiviert, eigenständig. Braucht Raum, nicht Kontrolle.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '🔁 Die 4 Stile', kicker: 'Das Modell', title: 'S1 bis S4: Führungsstile', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">S1 – Telling → für D1</div>
+              <div class="concept-card-title">Klare Anweisungen, enge Begleitung</div>
+              <p>Viel Struktur, konkrete Schritte, regelmäßiges Check-in. Die Person will loslegen – braucht aber den Rahmen.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">S2 – Selling/Coaching → für D2</div>
+              <div class="concept-card-title">Struktur + Dialog</div>
+              <p>Erkläre das Warum, hole Ideen ein, gib Feedback. Sowohl Richtung als auch emotionale Unterstützung.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">S3 – Participating → für D3</div>
+              <div class="concept-card-title">Weniger Vorgaben, mehr Fragen</div>
+              <p>Verantwortung liegt bei der Person. Du coachst, ermutigst, hörst zu. Vertrauen zeigen statt anleiten.</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-label">S4 – Delegating → für D4</div>
+              <div class="concept-card-title">Verantwortung abgeben</div>
+              <p>Ziele und Kontext geben – Ausführung loslassen. Verfügbar bleiben, aber nicht einmischen.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Julia und Tom im Vergleich', html: `
+          <blockquote>Sophia arbeitet mit zwei Designerinnen zusammen.</blockquote>
+          <div class="concept-cards" style="margin-top:14px;">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Julia · D4</div>
+              <p>Drei Jahre Erfahrung, gestaltet User Flows eigenständig und sicher. Sophia gibt Ziele und Kontext – und hält sich aus der Ausführung heraus (S4).</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Tom · D1</div>
+              <p>Werkstudent, enthusiastisch, hat noch nie Nutzertests moderiert. Sophia erklärt Schritt für Schritt, gibt eine Checkliste, begleitet die ersten Sessions (S1).</p>
+            </div>
+          </div>
+          <div class="key-insight">S1 für Julia wäre demotivierend. S4 für Tom wäre überfordend. Gleicher Stil – unterschiedliche Wirkung.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Dein Führungsstil-Check', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Wähle zwei Personen aus deinem aktuellen oder letzten Projekt. Ordne sie für eine konkrete Aufgabe in das D1–D4-Schema ein.</p>
+            <ul>
+              <li>Welcher Führungsstil wäre jeweils passend?</li>
+              <li>Wie führst du sie tatsächlich gerade?</li>
+              <li>Gibt es einen Mismatch?</li>
+            </ul>
+          </div>
+          <div class="key-insight">Entwicklungsstufen sind aufgabenspezifisch, nicht personenspezifisch. Eine D4-Person kann in einer neuen Aufgabe D1 sein.</div>
+        ` }
+      ],
       questions: [
         { text: 'Was ist die Kernthese des Situational Leadership Modells?', options: ['Jede Führungskraft sollte einen konsistenten Führungsstil pflegen', 'Es gibt keinen universell besten Führungsstil – er hängt von der Entwicklungsstufe ab', 'Demokratischer Führungsstil ist immer am effektivsten', 'Führungsstil hängt von der Unternehmensgröße ab'], correct: 1, explanation: 'Hersey und Blanchard: Der effektivste Führungsstil hängt von der Entwicklungsstufe der Person für eine konkrete Aufgabe ab – nicht von einer generellen Best Practice.' },
         { text: 'Tom hat gerade seinen ersten Nutzertest eigenständig vorbereitet, zweifelt aber an seiner Arbeit. Welcher Führungsstil passt?', options: ['S1 – Telling: klare Anweisungen geben', 'S2 – Selling/Coaching: Struktur und Dialog kombinieren', 'S3 – Participating: mehr Fragen als Vorgaben', 'S4 – Delegating: vollständig loslassen'], correct: 1, explanation: 'Tom zeigt das D2-Profil: vorhandene Kompetenz, aber gesunkenes Commitment/Selbstvertrauen. S2 (Coaching) kombiniert Orientierung mit Dialog und Ermutigungen – genau das, was D2 braucht.' },
@@ -1278,16 +1620,75 @@ const AREAS = [
       ]
     },
     { id: 'fom-4', icon: '🎯', title: 'Einfluss gestalten', desc: 'Aristoteles, Stakeholder-Mapping und psychologische Sicherheit',
-      content: `<h2>Einfluss gestalten – Praktische Werkzeuge</h2>
-<p>Führung ohne Macht ist keine Frage der Persönlichkeit. Sie ist eine Frage der Techniken, die du bewusst einsetzt.</p>
-<div class="info-box"><strong>Die drei Überzeugungswege nach Aristoteles:</strong><br><br>
-<strong>Logos (Logik):</strong> Du überzeugst durch Argumente und Daten. „Nutzer brechen den Checkout in 40 % der Fälle ab – hier liegt das größte Potenzial."<br><br>
-<strong>Ethos (Glaubwürdigkeit):</strong> Du überzeugst, weil man dir vertraut. Entsteht durch Vorbereitung, Verlässlichkeit und konsistentes Handeln.<br><br>
-<strong>Pathos (Emotion):</strong> Du überzeugst durch Verbindung – zur Nutzerperson, zur Mission. Eine gut erzählte Nutzergeschichte bewegt mehr als ein perfektes Datensheet.</div>
-<p><strong>Stakeholder-Mapping:</strong> Bevor du jemanden überzeugen willst, verstehe seine Motivationen. Ein 2×2-Raster (Einfluss × Interesse) hilft: Wer hat viel Einfluss, aber wenig Interesse? Informiert halten. Wer hat viel Einfluss und viel Interesse? Aktiv einbinden.</p>
-<p><strong>Frühzeitig einbinden statt fertig präsentieren:</strong> Menschen, die mitgedacht haben, verteidigen das Ergebnis mit. Wer eine fertige Folie präsentiert bekommt, lehnt sie viel leichter ab.</p>
-<p><strong>Psychologische Sicherheit (Amy Edmondson):</strong> Teams arbeiten besser zusammen, wenn Mitglieder ohne Angst vor negativen Konsequenzen sprechen können. Gestalte das aktiv: Fragen stellen statt Antworten geben, Fehler offen besprechen, Dissens einladen.</p>
-<p><strong>Commitment durch Fragen:</strong> „Kannst du das bis Freitag schaffen?" erzeugt mehr Commitment als „Ich brauche das bis Freitag." Selbst artikuliertes Commitment ist stärker als erzwungenes.</p>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Die Grundlage', title: 'Einfluss ist kein Talent', html: `
+          <p>Führung ohne Macht ist keine Frage der Persönlichkeit. Sie ist eine Frage der Techniken, die du bewusst einsetzt.</p>
+          <div class="key-insight">Einfluss entsteht nicht durch Autorität – sondern durch Überzeugung, Glaubwürdigkeit und Einbindung.</div>
+          <p>Aristoteles hat bereits vor 2.400 Jahren drei Wege der Überzeugung beschrieben, die bis heute gültig sind. Dazu kommen moderne Erkenntnisse aus Organisations- und Verhaltenspsychologie.</p>
+        ` },
+        { tab: '📐 Aristoteles', kicker: 'Das Modell', title: 'Logos · Ethos · Pathos', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Logos · Logik</div>
+              <div class="concept-card-title">Überzeugen durch Argumente</div>
+              <p>Daten, Fakten, rationale Nachvollziehbarkeit. „Nutzer brechen den Checkout in 40 % der Fälle an Schritt 3 ab – hier liegt das größte Potenzial."</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">Ethos · Glaubwürdigkeit</div>
+              <div class="concept-card-title">Überzeugen durch Vertrauen</div>
+              <p>Menschen folgen dir, weil man dir Kompetenz zuschreibt. Entsteht durch Vorbereitung, Verlässlichkeit und konsistentes Handeln über Zeit.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Pathos · Emotion</div>
+              <div class="concept-card-title">Überzeugen durch Verbindung</div>
+              <p>Eine gut erzählte Nutzergeschichte bewegt mehr als ein perfektes Datensheet. Verbindung zu Menschen, Mission, Bedeutung.</p>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:0.87rem;color:var(--muted);">Im PM-Alltag nutzt du alle drei – oft gleichzeitig.</p>
+        ` },
+        { tab: '🗺️ Weitere Tools', kicker: 'Das Werkzeugset', title: 'Stakeholder-Mapping & Einbindung', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Stakeholder-Mapping</div>
+              <div class="concept-card-title">Wer hat Einfluss, wer hat Interesse?</div>
+              <p>2×2-Raster: Hoher Einfluss + geringes Interesse → informiert halten. Hoher Einfluss + hohes Interesse → aktiv einbinden. Energie gezielt verteilen.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Frühzeitig einbinden</div>
+              <div class="concept-card-title">Statt fertige Lösung zu präsentieren</div>
+              <p>Wer mitgedacht hat, verteidigt das Ergebnis mit. Wer eine fertige Folie bekommt, lehnt sie leichter ab.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">Psychologische Sicherheit</div>
+              <div class="concept-card-title">Amy Edmondson</div>
+              <p>Teams performen besser, wenn Mitglieder ohne Angst sprechen können. Aktiv gestalten: Fragen stellen, Fehler besprechen, Dissens einladen.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Daniel überzeugt den Vertrieb', html: `
+          <blockquote>Daniel muss das Vertriebsteam überzeugen, einen neuen Onboarding-Flow zu testen. Der Vertrieb ist skeptisch – sie befürchten schlechtere Conversion.</blockquote>
+          <p style="margin-top:14px;">Daniels Vorgehen:</p>
+          <ul>
+            <li><strong>Logos:</strong> „60 % der Neukunden schaffen die erste Session nicht."</li>
+            <li><strong>Pathos:</strong> Er erzählt von einem konkreten Kundengespräch, in dem ein Nutzer frustriert aufgab.</li>
+            <li><strong>Frühzeitig einbinden:</strong> Der Head of Sales ist schon in der Designphase dabei, nicht erst bei der Präsentation.</li>
+          </ul>
+          <div class="key-insight">Das Ergebnis: Der Vertrieb ist nicht nur einverstanden, sondern begeisterter Mitgestalter.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Dein Einfluss-Plan', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Bereite für eine anstehende Situation, in der du jemanden überzeugen musst, einen kurzen Einfluss-Plan vor:</p>
+            <ol>
+              <li>Was ist dein Ziel?</li>
+              <li>Was sind die Motive und Bedenken deines Gegenübers?</li>
+              <li>Welchen Logos-, Ethos- und Pathos-Ansatz nutzt du?</li>
+              <li>Wie kannst du die Person frühzeitig einbinden?</li>
+            </ol>
+          </div>
+          <div class="key-insight">Commitment durch Fragen: „Kannst du das bis Freitag schaffen?" erzeugt mehr Commitment als „Ich brauche das bis Freitag."</div>
+        ` }
+      ],
       questions: [
         { text: 'Was beschreibt „Pathos" in Aristoteles Überzeugungsmodell?', options: ['Überzeugen durch logische Argumente und Daten', 'Überzeugen durch Glaubwürdigkeit und Kompetenz', 'Überzeugen durch emotionale Verbindung und Geschichten', 'Überzeugen durch formale Autorität'], correct: 2, explanation: 'Pathos = emotionale Überzeugungskraft: Verbindung herstellen – zu Nutzern, zur Mission, zu etwas, das wichtig ist. Eine gut erzählte Story bewegt oft mehr als Daten alleine.' },
         { text: 'Was ist der Hauptvorteil davon, Stakeholder früh in den Denkprozess einzubinden?', options: ['Der Prozess wird schneller, weil mehr Leute mitarbeiten', 'Wer mitgedacht hat, verteidigt das Ergebnis eher mit statt dagegen', 'Frühe Einbindung vermeidet alle späteren Konflikte', 'Es braucht dann keine finale Präsentation mehr'], correct: 1, explanation: 'Psychologisch entscheidend: Commitment, das jemand selbst mitentwickelt hat, ist stärker als Commitment bei fertigen Lösungen. Frühzeitige Einbindung schafft Mit-Eigentümerschaft.' },
@@ -1299,14 +1700,44 @@ const AREAS = [
   ]},
   { id: 'priorisierung', icon: '🎯', color: '#ffc942', title: 'Priorisierung', desc: 'Fokus finden, Entscheidungen treffen und konstruktiv Nein sagen', status: 'active', modules: [
     { id: 'prio-1', icon: '🧠', title: 'Warum Priorisierung schwer fällt', desc: 'Zeigarnik-Effekt, Multitasking-Mythos und kognitive Grundlagen',
-      content: `<h2>Warum Priorisierung so schwer fällt – und warum sie unverzichtbar ist</h2>
-<p>Kennst du das Gefühl, den ganzen Tag beschäftigt gewesen zu sein, aber abends das Gefühl zu haben, nichts Wichtiges geschafft zu haben? Das ist kein Zeichen von mangelndem Einsatz. Es ist ein Zeichen von fehlender Priorisierung.</p>
-<div class="info-box"><strong>Multitasking ist ein Mythos:</strong> Wir wechseln schnell zwischen Aufgaben hin und her – aber wirklich parallel arbeiten können wir nicht. Jeder Wechsel kostet kognitive Energie und Zeit, auch wenn wir es nicht merken.</div>
-<div class="info-box"><strong>Der Zeigarnik-Effekt:</strong> Unfertige Aufgaben bleiben im Hinterkopf aktiv und erzeugen einen leisen, anhaltenden Stress. Je voller unsere To-Do-Liste, desto mehr mentale Kapazität verbraucht sie – ohne dass wir etwas produzieren.</div>
-<p><strong>Das Paradoxe:</strong> Wer alles für gleich wichtig hält, schafft am Ende am wenigsten. Priorisierung ist kein Luxus – sie ist eine Grundbedingung für Konzentration auf das Wesentliche.</p>
-<p>Ohne Priorisierung verlieren wir das Gefühl von Kontrolle über unsere Arbeit – das erhöht Stress und blockiert genau die kognitiven Ressourcen, die wir für anspruchsvolle Aufgaben brauchen.</p>
-<h3>Beispiel</h3>
-<blockquote>Lena arbeitet als Junior Product Managerin. Jeden Morgen: 27 ungelesene Nachrichten, drei offene Tickets, ein Meeting in einer Stunde. Sie arbeitet den ganzen Tag – aber am Ende hat sie hauptsächlich auf Nachrichten reagiert. Ihre eigentliche Aufgabe für die Woche – eine Wettbewerbsanalyse – hat sie nicht angefangen. Was Lena fehlt, ist nicht mehr Zeit. Sie braucht einen Rahmen: Was mache ich heute zuerst – und was mache ich bewusst nicht?</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Das Problem', title: 'Beschäftigt, aber nicht produktiv?', html: `
+          <p>Kennst du das Gefühl, den ganzen Tag beschäftigt gewesen zu sein – aber abends das Gefühl zu haben, nichts wirklich Wichtiges geschafft zu haben?</p>
+          <p>Das ist kein Zeichen von mangelndem Einsatz. Es ist ein Zeichen von fehlender Priorisierung.</p>
+          <div class="key-insight">Wer alles für gleich wichtig hält, schafft am Ende am wenigsten.</div>
+          <p>Priorisierung ist kein Luxus für gut organisierte Menschen. Sie ist eine Grundbedingung dafür, dass wir uns überhaupt auf das Wesentliche konzentrieren können.</p>
+        ` },
+        { tab: '🧪 Wissenschaft', kicker: 'Was im Kopf passiert', title: 'Multitasking & der Zeigarnik-Effekt', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Mythos</div>
+              <div class="concept-card-title">Multitasking existiert nicht</div>
+              <p>Wir wechseln sehr schnell zwischen Aufgaben hin und her – aber wirklich parallel arbeiten können wir nicht. Jeder Wechsel kostet kognitive Energie und Zeit, auch wenn wir es nicht merken.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Psychologie</div>
+              <div class="concept-card-title">Der Zeigarnik-Effekt</div>
+              <p>Unfertige Aufgaben bleiben im Hinterkopf aktiv und erzeugen einen leisen, anhaltenden Stress. Je voller unsere To-Do-Liste, desto mehr mentale Kapazität verbraucht sie – ohne dass wir etwas produzieren.</p>
+            </div>
+          </div>
+          <div class="key-insight">Priorisierung gibt uns Kontrolle zurück – und Kontrolle reduziert Stress, der kreatives Denken blockiert.</div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Lenas Morgen', html: `
+          <blockquote>Lena arbeitet als Junior Product Managerin. Jeden Morgen: 27 ungelesene Nachrichten, drei offene Tickets, ein Meeting in einer Stunde. Sie arbeitet den ganzen Tag – aber am Ende hat sie hauptsächlich auf Nachrichten reagiert. Ihre eigentliche Aufgabe für die Woche – eine Wettbewerbsanalyse – hat sie nicht angefangen.</blockquote>
+          <p style="margin-top:16px;">Was Lena fehlt, ist nicht mehr Zeit. Sie braucht einen Rahmen, der ihr hilft, jeden Morgen zu entscheiden:</p>
+          <div class="key-insight">Was mache ich heute zuerst – und was mache ich bewusst nicht?</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt ausprobieren', title: 'Deine Prioritätenfrage', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Schau dir deine aktuelle To-Do-Liste an (oder schreib spontan die 5–8 Dinge auf, die dir gerade im Kopf herumschwirren).</p>
+            <p>Frage dich für jeden Punkt:</p>
+          </div>
+          <div class="key-insight">Wäre ich morgen früh froh, wenn ich das heute erledigt hätte?</div>
+          <p>Markiere die Punkte, bei denen die Antwort klar <strong>Ja</strong> ist. Das sind deine Kandidaten für echte Prioritäten.</p>
+          <p>Alles andere: Bewusst nach hinten stellen – nicht ignorieren, aber einordnen.</p>
+        ` }
+      ],
       questions: [
         { text: 'Was beschreibt der Zeigarnik-Effekt?', options: ['Abgeschlossene Aufgaben werden besser erinnert als angefangene', 'Unfertige Aufgaben bleiben mental aktiv und erzeugen anhaltenden Stress', 'Menschen arbeiten effizienter unter Zeitdruck', 'Dopamin-Ausschüttung verhindert fokussiertes Arbeiten'], correct: 1, explanation: 'Der Zeigarnik-Effekt: Unabgeschlossene Aufgaben verbleiben im Arbeitsgedächtnis aktiv und erzeugen latenten Stress – was erklärt, warum lange To-Do-Listen mental erschöpfend sind, noch bevor wir etwas getan haben.' },
         { text: 'Warum ist Multitasking ein Mythos?', options: ['Wir können maximal drei Aufgaben gleichzeitig bearbeiten', 'Wir wechseln nur schnell zwischen Aufgaben, jeder Wechsel kostet kognitive Energie', 'Multitasking funktioniert nur für kreative Aufgaben', 'Menschen ohne Erfahrung können nicht multitasken'], correct: 1, explanation: 'Neurowissenschaftlich gibt es kein echtes Parallel-Processing für komplexe Aufgaben. Wir wechseln zwischen Tasks – und jeder Wechsel kostet Zeit und Energie (Task-Switching-Kosten).' },
@@ -1316,16 +1747,69 @@ const AREAS = [
       ]
     },
     { id: 'prio-2', icon: '⬛', title: 'Die Eisenhower-Matrix', desc: 'Dringend vs. wichtig – strategisch denken statt reagieren',
-      content: `<h2>Die Eisenhower-Matrix – Was wirklich wichtig ist</h2>
-<p><em>„Was wichtig ist, ist selten dringend. Was dringend ist, ist selten wichtig."</em> – zugeschrieben Dwight D. Eisenhower</p>
-<p>Die Matrix teilt Aufgaben nach zwei Dimensionen ein: <strong>Dringlichkeit</strong> (muss ich das jetzt erledigen?) und <strong>Wichtigkeit</strong> (bringt mich das meinen Zielen näher?).</p>
-<div class="info-box"><strong>Q1 – Dringend &amp; Wichtig:</strong> Krisen, Deadlines, unvorhergesehene Probleme. Sofort erledigen. Wer hier dauerhaft lebt, ist im Reaktionsmodus gefangen.<br><br>
-<strong>Q2 – Wichtig, nicht dringend:</strong> Strategie, Weiterbildung, Beziehungsaufbau. Der wertvollste Quadrant – hier passiert nachhaltige Arbeit. Wird am häufigsten vernachlässigt, weil er nie „brennt".<br><br>
-<strong>Q3 – Dringend, nicht wichtig:</strong> Viele E-Mails, spontane Meetings, anderer Leute Prioritäten. Fühlen sich wichtig an, sind es aber oft nicht.<br><br>
-<strong>Q4 – Weder dringend noch wichtig:</strong> Ablenkungen, Aufgaben ohne Mehrwert.</div>
-<p><strong>Das Ziel:</strong> Nicht Q1 leeren, sondern mehr Zeit in Q2 investieren – und Q3/Q4 konsequent reduzieren.</p>
-<h3>Beispiel</h3>
-<blockquote>Jonas sortiert seine Aufgaben: Board-Präsentation morgen (Q1) · Konzept für neues Onboarding (Q2 – er verschiebt es jede Woche) · CC-E-Mails beantworten (Q3) · LinkedIn durchscrollen (Q4). Erkenntnis: Er verbringt 70 % der Zeit in Q1 und Q3. Q2 – die Arbeit, die seinen Bereich voranbringt – kommt kaum dran.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Die Kernunterscheidung', title: 'Dringend ≠ Wichtig', html: `
+          <p><em>„Was wichtig ist, ist selten dringend. Was dringend ist, ist selten wichtig."</em></p>
+          <p style="font-size:0.8rem;color:var(--muted);margin-top:-6px;">— Dwight D. Eisenhower</p>
+          <p>Die Eisenhower-Matrix ordnet Aufgaben nach zwei Dimensionen:</p>
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-title">Wichtigkeit</div>
+              <p>Bringt mich diese Aufgabe meinen eigenen Zielen näher?</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-title">Dringlichkeit</div>
+              <p>Muss diese Aufgabe jetzt sofort erledigt werden?</p>
+            </div>
+          </div>
+          <p>Diese zwei Fragen ergeben vier Quadranten – und zeigen dir, wo du deine Energie wirklich einsetzen solltest.</p>
+        ` },
+        { tab: '📐 Die 4 Quadranten', kicker: 'Das Modell', title: 'Q1 bis Q4 im Überblick', html: `
+          <div class="concept-cards">
+            <div class="concept-card red">
+              <div class="concept-card-label">Q1 · Tu es jetzt</div>
+              <div class="concept-card-title">Dringend & Wichtig</div>
+              <p>Krisen, Deadlines, unvorhergesehene Probleme. Sofort erledigen – aber: Wer dauerhaft hier lebt, ist im Reaktionsmodus gefangen.</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">Q2 · Investiere hier</div>
+              <div class="concept-card-title">Wichtig, nicht dringend</div>
+              <p>Strategie, Weiterbildung, Beziehungsaufbau. Der wertvollste Quadrant – wird am häufigsten vernachlässigt, weil er nie „brennt".</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Q3 · Delegiere oder kürze</div>
+              <div class="concept-card-title">Dringend, nicht wichtig</div>
+              <p>Viele E-Mails, spontane Meetings, anderer Leute Prioritäten. Fühlen sich wichtig an – sind es aber oft nicht.</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-label">Q4 · Eliminiere</div>
+              <div class="concept-card-title">Weder dringend noch wichtig</div>
+              <p>Ablenkungen, endloses Scrollen, Aufgaben ohne Mehrwert. Kosten Zeit und geben nichts zurück.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Jonas sortiert seine Woche', html: `
+          <blockquote>Jonas sortiert seine Aufgaben für die Woche:<br><br>
+          📌 <strong>Board-Präsentation morgen</strong> → Q1, sofort erledigen<br>
+          📌 <strong>Konzept für neues Onboarding</strong> → Q2, er verschiebt es jede Woche – und wundert sich, warum das Onboarding nie besser wird<br>
+          📌 <strong>CC-E-Mails beantworten</strong> → Q3, dringend wirkend, aber nicht wirklich wichtig<br>
+          📌 <strong>LinkedIn durchscrollen</strong> → Q4</blockquote>
+          <div class="key-insight">Jonas erkennt: Er verbringt 70 % der Zeit in Q1 und Q3. Q2 – die Arbeit, die seinen Bereich wirklich voranbringt – kommt kaum dran.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Deine Matrix', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Zeichne die Matrix auf einem Blatt oder in einem Dokument. Nimm deine aktuelle To-Do-Liste und ordne jeden Punkt einem Quadranten zu.</p>
+          </div>
+          <p style="margin-top:16px;">Dann frage dich:</p>
+          <ul>
+            <li>In welchem Quadranten verbringst du die meiste Zeit?</li>
+            <li>Welcher Quadrant würde deiner Arbeit am meisten nützen, wenn du dort mehr Zeit investierst?</li>
+            <li>Was kannst du aus Q3 und Q4 eliminieren oder delegieren?</li>
+          </ul>
+          <div class="key-insight">Ziel ist nicht Q1 zu leeren – sondern mehr Zeit in Q2 zu schaffen.</div>
+        ` }
+      ],
       questions: [
         { text: 'In welchem Quadranten der Eisenhower-Matrix ist strategische Planung einzuordnen?', options: ['Q1 – Dringend & Wichtig', 'Q2 – Wichtig, nicht dringend', 'Q3 – Dringend, nicht wichtig', 'Q4 – Weder dringend noch wichtig'], correct: 1, explanation: 'Strategische Planung ist wichtig für langfristige Ziele, aber selten dringend – klassisches Q2. Dieser Quadrant wird am häufigsten vernachlässigt, weil er nicht brennt.' },
         { text: 'Warum wird Q2 trotz hoher Wichtigkeit oft vernachlässigt?', options: ['Q2-Aufgaben sind zu komplex für den Alltag', 'Q2 brennt nie – es entsteht kein unmittelbarer Druck, es zu erledigen', 'Q2 braucht immer externe Ressourcen', 'Q2-Aufgaben haben keine messbaren Ergebnisse'], correct: 1, explanation: 'Q2-Aufgaben haben keine drängende Deadline. Ohne externen Druck verlieren sie im Alltag gegen Q1 und Q3 – obwohl sie langfristig den größten Wert haben.' },
@@ -1335,15 +1819,57 @@ const AREAS = [
       ]
     },
     { id: 'prio-3', icon: '🏷️', title: 'MoSCoW', desc: 'Scope klar definieren und Scope-Creep verhindern',
-      content: `<h2>MoSCoW – Scope klar definieren</h2>
-<p>Wer alles zur Priorität erklärt, hat keine Prioritäten. MoSCoW hilft dir, Klarheit zu schaffen – besonders wenn mehrere Personen oder Teams beteiligt sind.</p>
-<div class="info-box"><strong>Must-have:</strong> Ohne das funktioniert das Produkt/Projekt nicht. Nicht verhandelbar für diesen Release.<br><br>
-<strong>Should-have:</strong> Sehr wertvoll, aber kurzfristig nicht zwingend notwendig. Kommt nach Must-haves.<br><br>
-<strong>Could-have:</strong> Nette Extras, die Wert steigern, aber keinen Kernbedarf abdecken. Rein, wenn Zeit und Budget es erlauben.<br><br>
-<strong>Won't-have (this time):</strong> Bewusst ausgeschlossen – nicht weil unwichtig, sondern für jetzt nicht dran. Macht explizit, was NICHT passiert, und verhindert stille Erwartungen.</div>
-<p>Der Unterschied zu einer einfachen Prioritätenliste: MoSCoW erzwingt ein Gespräch darüber, was wirklich kern-notwendig ist. Das hilft besonders, <strong>Scope-Creep</strong> zu verhindern – das schleichende Anwachsen von Anforderungen, bis ein Projekt unkontrollierbar wird.</p>
-<h3>Beispiel</h3>
-<blockquote>Mia entwickelt ein neues Lernmodul: <strong>Must:</strong> Kernthemen, Fortschrittsanzeige, Zugangskontrolle · <strong>Should:</strong> Quizfragen, Downloadmöglichkeit · <strong>Could:</strong> Badges, Community-Forum · <strong>Won't (this release):</strong> KI-adaptives Lernen, Video-Produktionen. Das Team weiß jetzt, worauf sie sich konzentrieren – und welche Ideen warten können.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Das Problem', title: 'Wenn alles Priorität ist…', html: `
+          <p>Wer alles zur Priorität erklärt, hat keine Prioritäten.</p>
+          <p>MoSCoW hilft dir, Klarheit zu schaffen – und in Teams ein ehrliches Gespräch darüber zu führen, was wirklich kern-notwendig ist.</p>
+          <div class="key-insight">MoSCoW verhindert Scope-Creep – das schleichende Anwachsen von Anforderungen, bis ein Projekt unkontrollierbar wird.</div>
+          <p>MoSCoW ist kein Ranking. Es ist eine Kategorisierung: Was ist nicht verhandelbar? Was ist wertvoll, aber wartbar? Und was passiert in diesem Release bewusst nicht?</p>
+        ` },
+        { tab: '📐 Die 4 Kategorien', kicker: 'Das Modell', title: 'Must · Should · Could · Won\'t', html: `
+          <div class="concept-cards">
+            <div class="concept-card red">
+              <div class="concept-card-label">M · Must-have</div>
+              <div class="concept-card-title">Nicht verhandelbar</div>
+              <p>Ohne das funktioniert das Produkt oder Projekt nicht. Testfrage: Was passiert, wenn wir das weglassen? Wenn die Antwort „nichts Wesentliches" ist, gehört es nicht hierhin.</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">S · Should-have</div>
+              <div class="concept-card-title">Sehr wertvoll, aber nicht sofort</div>
+              <p>Wichtig, aber kurzfristig nicht zwingend. Wird eingeplant, sobald Must-haves erfüllt sind.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">C · Could-have</div>
+              <div class="concept-card-title">Nice-to-have</div>
+              <p>Steigert den Wert, deckt aber keinen Kernbedarf ab. Kommt rein, wenn Zeit und Budget es erlauben.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">W · Won't-have (this time)</div>
+              <div class="concept-card-title">Bewusst ausgeschlossen</div>
+              <p>Nicht weil unwichtig – sondern weil es jetzt nicht dran ist. Diese Kategorie verhindert stille Erwartungen und ist genauso wichtig wie die anderen drei.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Mias Lernmodul', html: `
+          <blockquote>Mia entwickelt ein neues Lernmodul für ihre Abteilung und sortiert ihre Ideen gemeinsam mit dem Team:</blockquote>
+          <div class="concept-cards" style="margin-top:14px;">
+            <div class="concept-card red"><div class="concept-card-label">Must</div><p>Inhalte zu den drei Kernthemen · Fortschrittsanzeige · Zugangskontrolle</p></div>
+            <div class="concept-card accent"><div class="concept-card-label">Should</div><p>Quizfragen am Ende jedes Kapitels · Downloadmöglichkeit für Zusammenfassungen</p></div>
+            <div class="concept-card yellow"><div class="concept-card-label">Could</div><p>Gamification-Elemente (Badges) · Community-Forum für Fragen</p></div>
+            <div class="concept-card blue"><div class="concept-card-label">Won't (this release)</div><p>KI-gestütztes adaptives Lernen · Video-Produktionen</p></div>
+          </div>
+          <p style="margin-top:14px;">Das Team weiß jetzt genau, worauf sie sich konzentrieren – und welche Ideen gut sind, aber warten können.</p>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Dein MoSCoW-Board', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Nimm ein aktuelles Projekt oder eine Aufgabe, bei der du dir unsicher bist, wo du anfangen sollst. Schreibe alle Elemente oder Teilaufgaben auf und teile sie in die vier MoSCoW-Kategorien ein.</p>
+          </div>
+          <p style="margin-top:16px;">Frage dich bei jedem Punkt:</p>
+          <div class="key-insight">Was passiert, wenn wir das weglassen?</div>
+          <p>Wenn die Antwort „nichts Wesentliches" ist, gehört es nicht ins Must-have. Sei ehrlich – und sei bereit, Won't-have zu befüllen. Das ist kein Versagen, sondern Klarheit.</p>
+        ` }
+      ],
       questions: [
         { text: 'Was ist der Hauptunterschied zwischen "Won\'t-have" und "nicht wichtig"?', options: ['Won\'t-have bedeutet, die Aufgabe wird an jemand anderen delegiert', 'Won\'t-have bedeutet bewusste Ausgrenzung für diesen Release, nicht dauerhaft unwichtig', 'Won\'t-have Aufgaben werden in Q4 der Eisenhower-Matrix eingeordnet', 'Won\'t-have ist gleichbedeutend mit "niemals"'], correct: 1, explanation: 'Won\'t-have (this time) ist eine bewusste Entscheidung für diesen Release – nicht eine permanente Absage. Es macht explizit, was jetzt NICHT passiert, und managt Erwartungen.' },
         { text: 'Welches Problem löst die MoSCoW-Methode besonders in Teams?', options: ['Fehlende Kommunikation zwischen Engineering und Design', 'Scope-Creep – das schleichende Anwachsen von Anforderungen', 'Unklare Rollenverteilung im Team', 'Fehlende Deadline-Planung'], correct: 1, explanation: 'MoSCoW erzwingt ein explizites Gespräch darüber, was Must, Should, Could und Won\'t ist – und verhindert so, dass immer mehr Anforderungen hinzukommen, bis ein Projekt unkontrollierbar wird.' },
@@ -1353,16 +1879,62 @@ const AREAS = [
       ]
     },
     { id: 'prio-4', icon: '🔄', title: 'Keep / Stop / Start', desc: 'Den Sunk-Cost-Bias überwinden und Altes loslassen',
-      content: `<h2>Keep / Stop / Start – Altes loslassen können</h2>
-<p>Priorisierung ist nicht nur entscheiden, was wir anfangen. Es ist auch entscheiden, was wir aufhören. Und das ist schwerer.</p>
-<div class="info-box"><strong>Sunk-Cost-Bias:</strong> Wir führen Aufgaben und Projekte weiter, in die wir bereits Zeit investiert haben – selbst wenn sie keinen Mehrwert mehr liefern. Weil wir investiert haben, fällt es uns schwer loszulassen, obwohl es rational klüger wäre aufzuhören.</div>
-<p>Das Keep/Stop/Start-Framework macht Depriorisierung zu einem expliziten Schritt:</p>
-<div class="info-box"><strong>Keep:</strong> Was läuft gut und bringt echten Wert? Weitermachen.<br><br>
-<strong>Stop:</strong> Was kostet Zeit und Energie ohne entsprechenden Nutzen? Was läuft aus Gewohnheit weiter, nicht aus strategischen Gründen? Beenden.<br><br>
-<strong>Start:</strong> Was fehlt? Was würden wir angehen, wenn wir durch das Stoppen Kapazität freischaufeln?</div>
-<p><strong>Wichtig:</strong> Die „Stop"-Kategorie ist kein Eingeständnis von Scheitern. Sie ist ein Zeichen von Reife und strategischem Denken.</p>
-<h3>Beispiel</h3>
-<blockquote>Das L&amp;D-Team macht ein quartalsweises Keep/Stop/Start-Review. Stop-Liste: wöchentliches Status-Update per Mail (das niemand liest), eine monatliche Präsentation für eine Abteilung mit eigenem Prozess, ein Wiki seit zwei Jahren nicht aktualisiert. Ergebnis: ~5 Stunden/Woche zurückgewonnen – genutzt für ein neues Mentoring-Programm aus der Start-Liste.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Das übersehene Problem', title: 'Priorisierung heißt auch: aufhören', html: `
+          <p>Priorisierung ist nicht nur entscheiden, was wir anfangen. Es ist auch entscheiden, was wir aufhören.</p>
+          <p>Und das ist schwerer.</p>
+          <div class="key-insight">Wer keine Kapazität freiräumt, kann keine neuen Prioritäten setzen – egal wie gut das Framework ist.</div>
+          <p>Dahinter steckt ein kognitiver Fehler, der uns alle betrifft.</p>
+        ` },
+        { tab: '🧪 Sunk-Cost-Bias', kicker: 'Die Psychologie', title: 'Warum wir nicht loslassen können', html: `
+          <div class="concept-card accent" style="margin-bottom:16px;">
+            <div class="concept-card-label">Psychologie</div>
+            <div class="concept-card-title">Sunk-Cost-Bias</div>
+            <p>Wir führen Aufgaben und Projekte weiter, in die wir bereits Zeit investiert haben – selbst wenn sie keinen Mehrwert mehr liefern. Weil wir investiert haben, fällt es uns schwer loszulassen, obwohl es rational klüger wäre aufzuhören.</p>
+          </div>
+          <p>„Ich habe schon so viel Zeit reingesteckt, jetzt kann ich nicht mehr aufhören" – das klingt vernünftig, ist es aber nicht.</p>
+          <div class="key-insight">Vergangene Investitionen sind vorbei. Die Frage ist nicht: Was habe ich schon reingesteckt? Sondern: Was bringt mir das in Zukunft?</div>
+        ` },
+        { tab: '📐 Das Framework', kicker: 'Das Modell', title: 'Keep · Stop · Start', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Keep ✓</div>
+              <div class="concept-card-title">Was läuft gut?</div>
+              <p>Was bringt echten Wert und sollte weitergeführt werden? Das weitermachen.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">Stop ✗</div>
+              <div class="concept-card-title">Was läuft aus Gewohnheit?</div>
+              <p>Was kostet Zeit und Energie ohne entsprechenden Nutzen? Was läuft weiter, nicht aus strategischen Gründen, sondern weil es immer so war? Beenden.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Start ＋</div>
+              <div class="concept-card-title">Was fehlt?</div>
+              <p>Was würden wir angehen, wenn wir durch das Stoppen Kapazität freischaufeln? Neu beginnen.</p>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:0.87rem;color:var(--muted);">Die Stop-Kategorie ist kein Eingeständnis von Scheitern. Sie ist ein Zeichen von Reife.</p>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Das L&D-Team macht Platz', html: `
+          <blockquote>Das Learning & Development-Team macht jedes Quartal ein Keep/Stop/Start-Review. Auf der Stop-Liste landen diesmal:<br><br>
+          ✗ Wöchentliches Status-Update per Mail (das niemand liest)<br>
+          ✗ Monatliche Präsentation für eine Abteilung, die längst ihren eigenen Prozess hat<br>
+          ✗ Ein internes Wiki, das seit zwei Jahren nicht mehr aktualisiert wurde</blockquote>
+          <div class="key-insight">Ergebnis: ~5 Stunden pro Woche zurückgewonnen – die das Team jetzt für ein neues Mentoring-Programm nutzt, das schon lange auf der Start-Liste stand.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Dein Stop-Review', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Schreib eine Liste aller wiederkehrenden Aufgaben oder Projekte, an denen du gerade beteiligt bist. Gehe sie durch und markiere:</p>
+            <ul>
+              <li>Was würde wirklich fehlen, wenn es wegfällt?</li>
+              <li>Was läuft aus purer Gewohnheit weiter?</li>
+            </ul>
+          </div>
+          <p style="margin-top:16px;">Identifiziere mindestens <strong>eine Sache</strong>, die du stoppen oder reduzieren könntest.</p>
+          <div class="key-insight">Was würdest du mit der gewonnenen Zeit anfangen?</div>
+        ` }
+      ],
       questions: [
         { text: 'Was ist der Sunk-Cost-Bias?', options: ['Die Tendenz, neue Aufgaben immer zuerst zu priorisieren', 'Das Festhalten an Projekten, in die man bereits investiert hat, auch wenn es rational wäre aufzuhören', 'Die Unterschätzung von Projektkosten bei der Planung', 'Das Überschätzen des eigenen Fortschritts'], correct: 1, explanation: 'Sunk-Cost-Bias: Wir lassen uns von bereits investierter Zeit/Energie leiten, statt von zukünftigem Nutzen. "Ich habe so viel reingesteckt, ich kann jetzt nicht aufhören" – obwohl Weitermachen die schlechtere Entscheidung ist.' },
         { text: 'Was ist der Hauptzweck der "Stop"-Kategorie im Keep/Stop/Start-Framework?', options: ['Aufgaben identifizieren, die an andere delegiert werden', 'Kapazität freischaufeln, indem man Wertloses explizit beendet', 'Fehler der Vergangenheit dokumentieren', 'Das Team von unbeliebten Aufgaben entlasten'], correct: 1, explanation: 'Stop macht Depriorisierung explizit und bewusst – nicht als Versagen, sondern als strategische Entscheidung. Nur wer etwas stoppt, hat Kapazität für das wirklich Wichtige.' },
@@ -1372,17 +1944,54 @@ const AREAS = [
       ]
     },
     { id: 'prio-5', icon: '🚫', title: 'Nein sagen als Skill', desc: 'Grenzen setzen, ohne Beziehungen zu beschädigen',
-      content: `<h2>Nein sagen als Skill – Grenzen setzen ohne Brücken zu verbrennen</h2>
-<p>Priorisierung endet nicht bei der eigenen Liste. Sie beginnt auch dann, wenn jemand anderes etwas von dir will.</p>
-<p>Wer Prioritäten setzt, muss zwangsläufig Nein sagen – zu Anfragen, Meetings, Aufgaben, die andere für wichtig halten. Das fühlt sich unangenehm an. Wir wollen hilfreich sein, Konflikte vermeiden, keine Chancen verpassen.</p>
-<p><strong>Aber:</strong> Ein Ja ohne Kapazität ist kein echtes Ja. Es ist ein aufgeschobenes Nein – oft eines, das teurer wird, weil es mit einer verpassten Deadline oder schlechter Qualität bezahlt wird.</p>
-<div class="info-box"><strong>Techniken für konstruktives Nein:</strong><br><br>
-<strong>„Ja zur Person, Nein zur Aufgabe":</strong> „Ich sehe, dass das für dich wichtig ist – ich bin gerade so ausgelastet, dass ich das nicht gut machen könnte. Gibt es jemand anderen, der das übernehmen kann?"<br><br>
-<strong>Timing nennen:</strong> „Das kann ich nicht diese Woche schaffen, aber in zwei Wochen wäre ich dabei."<br><br>
-<strong>Prioritäten transparent machen:</strong> „Ich arbeite gerade an X und Y für das Quartalsziel – ich kann aktuell nichts Weiteres annehmen."<br><br>
-<strong>Hinterfragen, was wirklich gebraucht wird:</strong> „Was genau brauchst du von mir? Vielleicht gibt es einen schnelleren Weg."</div>
-<h3>Beispiel</h3>
-<blockquote>Sara soll kurzfristig eine Präsentation übernehmen, obwohl sie schon an drei anderen Projekten arbeitet. Statt reflexartig Ja zu sagen, antwortet sie: „Ich möchte das gerne gut machen – aber ehrlich gesagt habe ich diese Woche schon A, B und C auf dem Tisch. Wenn ich die Präsentation übernehme, wäre eine davon nicht mehr bis Freitag fertig. Welche Aufgabe soll ich verschieben?" Das ist kein Nein – es ist eine ehrliche Priorisierungsfrage.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Der blinde Fleck', title: 'Priorisierung beginnt auch bei anderen', html: `
+          <p>Priorisierung endet nicht bei der eigenen Liste. Sie beginnt auch dann, wenn jemand anderes etwas von dir will.</p>
+          <p>Wer Prioritäten setzt, muss zwangsläufig Nein sagen – zu Anfragen, Meetings, Aufgaben, die andere für wichtig halten.</p>
+          <p>Das fühlt sich unangenehm an. Wir wollen hilfreich sein, keine Konflikte, keine verpassten Chancen.</p>
+          <div class="key-insight">Ein Ja ohne Kapazität ist kein echtes Ja. Es ist ein aufgeschobenes Nein – oft eines, das teurer wird.</div>
+          <p>Es wird bezahlt mit verpassten Deadlines, schlechterer Qualität oder Burnout.</p>
+        ` },
+        { tab: '📐 4 Techniken', kicker: 'Das Handwerkszeug', title: 'Konstruktiv Nein sagen', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">Technik 1</div>
+              <div class="concept-card-title">Ja zur Person, Nein zur Aufgabe</div>
+              <p>„Ich sehe, dass das für dich wichtig ist – ich bin gerade so ausgelastet, dass ich das nicht gut machen könnte. Gibt es jemand anderen, der das übernehmen kann?"</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Technik 2</div>
+              <div class="concept-card-title">Timing nennen</div>
+              <p>„Das kann ich nicht diese Woche schaffen, aber in zwei Wochen wäre ich dabei."</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">Technik 3</div>
+              <div class="concept-card-title">Prioritäten transparent machen</div>
+              <p>„Ich arbeite gerade an X und Y für das Quartalsziel – ich kann aktuell nichts Weiteres annehmen."</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-label">Technik 4</div>
+              <div class="concept-card-title">Das Bedürfnis hinterfragen</div>
+              <p>„Was genau brauchst du von mir? Vielleicht gibt es einen schnelleren Weg."</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Saras konstruktives Nein', html: `
+          <blockquote>Sara bekommt von ihrer Führungskraft eine Anfrage: Sie soll kurzfristig eine Präsentation für ein externes Meeting übernehmen, obwohl sie diese Woche schon an drei anderen Projekten arbeitet.</blockquote>
+          <p style="margin-top:16px;"><strong>Statt reflexartig Ja zu sagen, antwortet sie:</strong></p>
+          <div class="key-insight">„Ich möchte das gerne gut machen – aber ehrlich gesagt habe ich diese Woche schon A, B und C auf dem Tisch. Wenn ich die Präsentation übernehme, wäre eine davon nicht mehr bis Freitag fertig. Welche Aufgabe soll ich verschieben?"</div>
+          <p>Das ist kein Nein – es ist eine ehrliche Priorisierungsfrage, die die Entscheidung dorthin verlagert, wo sie hingehört: zur Führungskraft.</p>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Dein alternatives Nein', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Überlege dir eine Situation aus den letzten Wochen, in der du Ja gesagt hast, obwohl du eigentlich hättest Nein sagen sollen.</p>
+            <p>Schreib auf: Wie hättest du in dieser Situation anders antworten können?</p>
+          </div>
+          <p style="margin-top:16px;">Formuliere eine konkrete Alternative – so, wie du sie beim nächsten Mal wirklich sagen würdest.</p>
+          <div class="key-insight">Nein sagen ist kein Charakterzug. Es ist ein Skill, den du mit konkreten Sätzen lernen und üben kannst.</div>
+        ` }
+      ],
       questions: [
         { text: 'Warum ist „ein Ja ohne Kapazität kein echtes Ja"?', options: ['Weil man zu ehrlich sein muss', 'Weil es ein aufgeschobenes Nein ist, das später mit Deadline-Versäumnis oder schlechter Qualität bezahlt wird', 'Weil Ja sagen immer Overcommitment bedeutet', 'Weil man dadurch keine Priorisierung mehr betreiben kann'], correct: 1, explanation: 'Ein Ja, das man ohne Kapazität gibt, ist eine Verschiebung des Problems. Das eigentliche Nein kommt später – aber dann teurer: durch verpasste Deadlines, schlechtere Ergebnisse oder Burnout.' },
         { text: 'Was demonstriert Saras Antwort in Bezug auf konstruktives Nein sagen?', options: ['Sie verweigert Hilfe und schützt ihre Komfortzone', 'Sie verlagert die Priorisierungsentscheidung dorthin, wo sie hingehört: zur Führungskraft', 'Sie gibt indirekt Ja, ohne die Konsequenzen zu kommunizieren', 'Sie delegiert die Aufgabe an eine Kollegin'], correct: 1, explanation: 'Sara sagt nicht einfach Nein – sie macht transparent, was das Ja bedeuten würde, und stellt die Priorisierungsfrage dorthin zurück, wo die Entscheidungshoheit liegt: bei der Führungskraft.' },
@@ -1394,16 +2003,58 @@ const AREAS = [
   ]},
   { id: 'konfliktmanagement', icon: '🤜', color: '#fd1e3e', title: 'Konfliktmanagement', desc: 'Schwierige Gespräche vorbereiten, führen und Konflikte konstruktiv lösen', status: 'active', modules: [
     { id: 'km-1', icon: '🎭', title: 'Emotionen verstehen mit RULER', desc: 'Emotionale Intelligenz als Basis für Konfliktkompetenz',
-      content: `<h2>Emotionen verstehen mit RULER</h2>
-<p>Konflikte entstehen selten aus dem Nichts. Hinter den meisten eskalierenden Situationen stecken unausgesprochene oder schlecht regulierte Emotionen – bei dir und bei der anderen Person. Wer Emotionen frühzeitig erkennt und versteht, kann deeskalieren, bevor ein Gespräch aus dem Ruder läuft.</p>
-<div class="info-box">Das <strong>RULER-Framework</strong> (Yale Center for Emotional Intelligence):<br><br>
-<strong>R – Recognize (Erkennen):</strong> Emotionen zeigen sich in Mimik, Körperhaltung, Tonfall und Wortwahl – bei dir und deinem Gegenüber. Bewusst wahrnehmen, bevor du reagierst.<br><br>
-<strong>U – Understand (Verstehen):</strong> Was hat die Situation ausgelöst? Was war die Absicht der anderen Person – und was war der tatsächliche Einfluss auf dich? Absicht und Wirkung klaffen oft auseinander.<br><br>
-<strong>L – Label (Benennen):</strong> Je präziser du Emotionen benennen kannst, desto besser kannst du mit ihnen umgehen. „Ich bin irgendwie genervt" ist schwieriger zu bearbeiten als „Ich fühle mich übergangen und nicht wertgeschätzt."<br><br>
-<strong>E – Express (Ausdrücken):</strong> Wie und wann du eine Emotion ausdrückst, hängt vom Kontext ab. Nicht jede Emotion muss sofort raus – aber sie sollte irgendwann ausgedrückt werden.<br><br>
-<strong>R – Regulate (Regulieren):</strong> Du kannst aktiv beeinflussen, welche Emotionen du fühlst und wie stark. Von kurzfristiger Pause bis zu Reframing: „Was könnte hinter dem Verhalten stecken?"</div>
-<h3>Beispiel</h3>
-<blockquote>Lea merkt, dass ihr Kollege Jonas bei jeder ihrer Ideen die Augen verdreht. Sie fühlt sich provoziert. Statt sofort zu reagieren, hält sie inne (Regulate) und fragt sich: Was steckt bei Jonas dahinter? Nach dem Meeting spricht sie ihn an – und erfährt, dass er sich schon länger nicht einbezogen fühlt (Understand). Das ändert die Qualität des Gesprächs komplett.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Die unsichtbare Wurzel', title: 'Warum Konflikte eskalieren', html: `
+          <p>Konflikte entstehen selten aus dem Nichts. Hinter den meisten eskalierenden Situationen stecken unausgesprochene oder schlecht regulierte Emotionen – bei dir und bei der anderen Person.</p>
+          <div class="key-insight">Wer Emotionen frühzeitig erkennt und versteht, kann deeskalieren, bevor ein Gespräch aus dem Ruder läuft.</div>
+          <p>Das RULER-Framework (Yale Center for Emotional Intelligence) gibt dir dafür ein konkretes Werkzeug in die Hand.</p>
+        ` },
+        { tab: '📐 Die 5 Schritte', kicker: 'Das Framework', title: 'RULER – Schritt für Schritt', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-label">R – Recognize</div>
+              <div class="concept-card-title">Erkennen</div>
+              <p>Emotionen zeigen sich in Mimik, Körperhaltung, Tonfall und Wortwahl – bei dir und deinem Gegenüber. Bewusst wahrnehmen, bevor du reagierst.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-label">U – Understand</div>
+              <div class="concept-card-title">Verstehen</div>
+              <p>Was hat die Situation ausgelöst? Was war die Absicht – und was war die tatsächliche Wirkung auf dich? Absicht und Wirkung klaffen oft auseinander.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">L – Label</div>
+              <div class="concept-card-title">Benennen</div>
+              <p>Je präziser du Emotionen benennen kannst, desto besser kannst du mit ihnen umgehen. „Genervt" ist schwerer zu bearbeiten als „übergangen und nicht wertgeschätzt".</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-label">E – Express</div>
+              <div class="concept-card-title">Ausdrücken</div>
+              <p>Wie und wann du eine Emotion ausdrückst, hängt vom Kontext ab. Nicht jede Emotion muss sofort raus – aber sie sollte irgendwann ausgedrückt werden.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">R – Regulate</div>
+              <div class="concept-card-title">Regulieren</div>
+              <p>Du kannst aktiv beeinflussen, welche Emotionen du fühlst und wie stark. Von der kurzen Pause bis zum Reframing: „Was könnte hinter dem Verhalten stecken?"</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Lea und Jonas', html: `
+          <blockquote>Lea merkt, dass ihr Kollege Jonas bei jeder ihrer Ideen die Augen verdreht. Sie fühlt sich provoziert. Statt sofort zu reagieren, hält sie inne <strong>(Regulate)</strong> und fragt sich: Was steckt bei Jonas dahinter? Nach dem Meeting spricht sie ihn an – und erfährt, dass er sich schon länger nicht einbezogen fühlt <strong>(Understand)</strong>.</blockquote>
+          <div class="key-insight">Das ändert die Qualität des Gesprächs komplett – von Konfrontation zu Klärung.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Dein RULER-Moment', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Denk an eine Situation, in der du dich zuletzt in einem Gespräch unwohl oder gereizt gefühlt hast.</p>
+            <ul>
+              <li><strong>Recognize:</strong> Was hast du wahrgenommen – bei dir und der anderen Person?</li>
+              <li><strong>Label:</strong> Welche Emotion war das genau? Versuch, sie präzise zu benennen.</li>
+              <li><strong>Understand:</strong> Was könnte die andere Person bewegt haben?</li>
+            </ul>
+          </div>
+          <div class="key-insight">Präzises Emotion-Labeling ist die Basis für alles Weitere. Wer nicht benennen kann, was er fühlt, kann es nicht regulieren.</div>
+        ` }
+      ],
       questions: [
         { text: 'Welcher RULER-Schritt beschreibt das präzise Benennen von Emotionen?', options: ['R – Recognize', 'U – Understand', 'L – Label', 'E – Express'], correct: 2, explanation: 'L – Label: Emotionen präzise benennen. „Ich bin irgendwie genervt" ist weniger handlungsfähig als „Ich fühle mich übergangen und nicht wertgeschätzt." Präzises Labeling macht Emotionen bearbeitbar.' },
         { text: 'Was beschreibt den Unterschied zwischen Absicht und Wirkung im U-Schritt?', options: ['Absicht ist wichtiger als Wirkung bei der Konfliktlösung', 'Die Absicht des anderen und die Wirkung auf dich können sich stark unterscheiden – beide sind relevant', 'Wirkung ist nur relevant, wenn sie beabsichtigt war', 'Absicht und Wirkung sind in Konflikten immer identisch'], correct: 1, explanation: 'U – Understand: Jemand kann gut gemeint handeln und trotzdem einen negativen Effekt auslösen. Beide Perspektiven zu verstehen – Absicht und Wirkung – ist Voraussetzung für konstruktive Gespräche.' },
@@ -1413,19 +2064,61 @@ const AREAS = [
       ]
     },
     { id: 'km-2', icon: '🙈', title: 'Vermeidung erkennen und überwinden', desc: 'Typische Ausreden entlarven und den Mut zum Gespräch finden',
-      content: `<h2>Vermeidung erkennen und überwinden</h2>
-<p>Wir alle kennen das Gefühl: Ein Gespräch muss geführt werden, aber der Zeitpunkt ist nie der richtige. Das Aufschieben schwieriger Gespräche ist menschlich – und trotzdem fast immer kontraproduktiv. Je länger du wartest, desto größer wird das Problem.</p>
-<div class="info-box"><strong>Typische Vermeidungsmuster:</strong><br><br>
-<strong>Rationalisieren:</strong> „Freitag ist kein guter Tag dafür" oder „Ich warte bis zum nächsten Review." Klingt vernünftig, ist aber meistens Aufschieberitis.<br><br>
-<strong>Delegieren oder Ignorieren:</strong> Man hofft, dass jemand anderes das Problem anspricht, oder dass es sich von selbst löst. Tut es selten.<br><br>
-<strong>Harmonie über Klarheit stellen:</strong> „Ich will die Teamdynamik nicht gefährden." Tatsächlich ist dauerhafte Unklarheit langfristig weit schädlicher für das Team.<br><br>
-<strong>Symptome statt Ursachen ansprechen:</strong> Man redet über einzelne Fehler statt über das eigentliche Muster. Das löst nichts.</div>
-<p><strong>Hilfreiche Gegenfragen:</strong><br>
-• Was passiert, wenn ich das Gespräch weiter verschiebe?<br>
-• Wäre ich an Stelle der anderen Person lieber im Unklaren oder würde ich die Rückmeldung wollen?<br>
-• Wie viel Energie kostet mich das Nicht-Ansprechen – im Vergleich zum Gespräch selbst?</p>
-<h3>Beispiel</h3>
-<blockquote>Stefan bemerkt seit Wochen, dass Maria regelmäßig zu spät in Meetings erscheint. Er sagt sich: „Passiert doch allen mal." Drei Monate später ist das Verhalten zur Norm geworden, andere Teammitglieder ärgern sich – und Stefan steht vor einem viel größeren Gespräch, als wenn er früh reagiert hätte.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Das stille Problem', title: 'Wenn der Zeitpunkt nie kommt', html: `
+          <p>Wir alle kennen das Gefühl: Ein Gespräch muss geführt werden, aber der Zeitpunkt ist nie der richtige.</p>
+          <p>Das Aufschieben schwieriger Gespräche ist menschlich – und trotzdem fast immer kontraproduktiv.</p>
+          <div class="key-insight">Je länger du wartest, desto größer wird das Problem. Was heute ein kleines Gespräch ist, wird morgen ein großes.</div>
+        ` },
+        { tab: '🪞 Vermeidungsmuster', kicker: 'Die Psychologie', title: '4 typische Ausreden', html: `
+          <div class="concept-cards">
+            <div class="concept-card red">
+              <div class="concept-card-label">Muster 1</div>
+              <div class="concept-card-title">Rationalisieren</div>
+              <p>„Freitag ist kein guter Tag dafür" oder „Ich warte bis zum nächsten Review." Klingt vernünftig, ist aber meistens Aufschieberitis.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">Muster 2</div>
+              <div class="concept-card-title">Delegieren oder Ignorieren</div>
+              <p>Man hofft, dass jemand anderes das Problem anspricht, oder dass es sich von selbst löst. Tut es selten.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">Muster 3</div>
+              <div class="concept-card-title">Harmonie über Klarheit stellen</div>
+              <p>„Ich will die Teamdynamik nicht gefährden." Tatsächlich ist dauerhafte Unklarheit langfristig weit schädlicher für das Team.</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">Muster 4</div>
+              <div class="concept-card-title">Symptome statt Ursachen ansprechen</div>
+              <p>Man redet über einzelne Fehler statt über das eigentliche Muster. Das löst nichts.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '❓ Gegenfragen', kicker: 'Der Ausweg', title: 'Fragen, die Vermeidung aufbrechen', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <p><strong>Was passiert, wenn ich das Gespräch weiter verschiebe?</strong></p>
+              <p style="font-size:0.87rem;color:var(--muted);">Macht die Kosten des Schweigens sichtbar.</p>
+            </div>
+            <div class="concept-card accent">
+              <p><strong>Wäre ich an Stelle der anderen Person lieber im Unklaren – oder würde ich die Rückmeldung wollen?</strong></p>
+              <p style="font-size:0.87rem;color:var(--muted);">Aktiviert Empathie und Perspektivwechsel.</p>
+            </div>
+            <div class="concept-card accent">
+              <p><strong>Wie viel Energie kostet mich das Nicht-Ansprechen – im Vergleich zum Gespräch selbst?</strong></p>
+              <p style="font-size:0.87rem;color:var(--muted);">Oft kostet das Schweigen deutlich mehr als das Gespräch.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Stefan und Maria', html: `
+          <blockquote>Stefan bemerkt seit Wochen, dass Maria regelmäßig zu spät in Meetings erscheint. Er sagt sich: „Passiert doch allen mal." Drei Monate später ist das Verhalten zur Norm geworden, andere Teammitglieder ärgern sich – und Stefan steht vor einem viel größeren Gespräch, als wenn er früh reagiert hätte.</blockquote>
+          <div class="key-insight">Ein kleines Gespräch früh ist fast immer leichter als ein großes Gespräch spät.</div>
+          <div class="exercise-box" style="margin-top:16px;">
+            <div class="exercise-label">✍️ Reflexion</div>
+            <p>Gibt es gerade ein Gespräch, das du vor dir herschiebst? Welches Muster steckt dahinter?</p>
+          </div>
+        ` }
+      ],
       questions: [
         { text: 'Was ist das Hauptproblem damit, Harmonie über Klarheit zu stellen?', options: ['Es zeigt mangelnde Führungsstärke', 'Kurzfristige Harmonie erzeugt langfristig mehr Schaden als ein offenes Gespräch', 'Harmonie ist in Teams generell unwichtig', 'Es funktioniert nur in kleinen Teams'], correct: 1, explanation: 'Dauerhafte Unklarheit ist langfristig weit schädlicher für Teamdynamik als ein offenes Gespräch. Nicht angesprochene Probleme wachsen und belasten alle – auch wenn das Vermeiden kurzfristig friedlich wirkt.' },
         { text: 'Welches Vermeidungsmuster zeigt Stefan im Beispiel?', options: ['Er delegiert das Gespräch an HR', 'Er rationalisiert ("Passiert doch allen mal") und schiebt das Gespräch zu lange auf', 'Er spricht Symptome statt Ursachen an', 'Er versucht das Problem durch E-Mail zu lösen'], correct: 1, explanation: 'Stefan rationalisiert: „Passiert doch allen mal" klingt tolerant, ist aber eine Ausrede, um das Gespräch zu vermeiden. Das Ergebnis: Das Problem eskaliert, bis ein viel schwereres Gespräch notwendig ist.' },
@@ -1435,20 +2128,63 @@ const AREAS = [
       ]
     },
     { id: 'km-3', icon: '📝', title: 'Das schwierige Gespräch vorbereiten', desc: 'SBIN-Modell und strukturierte Gesprächsvorbereitung',
-      content: `<h2>Das schwierige Gespräch vorbereiten</h2>
-<p>Ein schwieriges Gespräch unvorbereitet anzugehen ist wie ohne Karte in unbekanntes Gelände zu starten. Gute Vorbereitung gibt dir Sicherheit – und erhöht die Chance auf ein konstruktives Ergebnis erheblich.</p>
-<p><strong>Drei Kernfragen vor dem Gespräch:</strong><br>
-1. <strong>Was ist mein Ziel?</strong> Formuliere ein konkretes, positives Ergebnis – nicht „Ich will, dass er aufhört", sondern „Wir finden gemeinsam eine Lösung für X."<br>
-2. <strong>Wie wird die andere Person wahrscheinlich reagieren?</strong> Antizipiere: Wird sie defensiv? Überrascht? Bereite dich gedanklich vor.<br>
-3. <strong>Was ist meine innere Haltung?</strong> Gehst du in Neugier oder in Anklage? Deine innere Haltung prägt deinen Tonfall, auch wenn du die Worte sorgfältig wählst.</p>
-<div class="info-box"><strong>Das SBIN-Modell:</strong><br><br>
-<strong>S – Situation:</strong> Was war der konkrete Kontext? („In unserem Meeting am Dienstag...")<br><br>
-<strong>B – Behavior:</strong> Was hast du beobachtet? Nur Verhalten, keine Interpretation. („...hast du zweimal das Wort ergriffen, bevor andere ausreden konnten.")<br><br>
-<strong>I – Impact:</strong> Was war die Wirkung – auf dich, das Team, die Ergebnisse? („Das hat dazu geführt, dass andere Ideen nicht gehört wurden.")<br><br>
-<strong>N – Next Steps:</strong> Was schlägst du vor? („Ich würde mir wünschen, dass wir Beiträge reihum sammeln.")</div>
-<p>SBIN hält das Gespräch sachlich und verhindert, dass die andere Person in eine Verteidigungsposition gedrängt wird.</p>
-<h3>Beispiel</h3>
-<blockquote>Anna nutzt SBIN statt „Du bist in Meetings immer so dominant": „In unserem letzten Projekt-Update (S) hast du drei Mal das Wort übernommen, bevor andere ihre Punkte beendet hatten (B). Das hat dazu geführt, dass Claras Einwand zum Budget komplett unterging (I). Ich würde vorschlagen, dass wir in Zukunft eine Redeliste führen (N)."</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Vorbereitung ist alles', title: 'Nicht ohne Karte ins Gelände', html: `
+          <p>Ein schwieriges Gespräch unvorbereitet anzugehen ist wie ohne Karte in unbekanntes Gelände zu starten.</p>
+          <div class="key-insight">Gute Vorbereitung gibt dir Sicherheit – und erhöht die Chance auf ein konstruktives Ergebnis erheblich.</div>
+          <p>Drei Fragen, die du dir vorher stellen solltest:</p>
+          <div class="concept-cards">
+            <div class="concept-card accent"><p><strong>Was ist mein Ziel?</strong> Formuliere ein konkretes, positives Ergebnis – nicht „Ich will, dass er aufhört", sondern „Wir finden gemeinsam eine Lösung."</p></div>
+            <div class="concept-card accent"><p><strong>Wie wird die andere Person reagieren?</strong> Antizipiere: defensiv? überrascht? Bereite dich gedanklich vor.</p></div>
+            <div class="concept-card accent"><p><strong>Was ist meine innere Haltung?</strong> Gehst du in Neugier oder in Anklage? Deine Haltung prägt den Tonfall – auch wenn du die Worte sorgfältig wählst.</p></div>
+          </div>
+        ` },
+        { tab: '📐 SBIN-Modell', kicker: 'Das Werkzeug', title: 'Sachlich und konkret formulieren', html: `
+          <div class="concept-cards">
+            <div class="concept-card blue">
+              <div class="concept-card-label">S – Situation</div>
+              <div class="concept-card-title">Kontext benennen</div>
+              <p>Was war der konkrete Kontext? „In unserem Meeting am Dienstag..."</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">B – Behavior</div>
+              <div class="concept-card-title">Verhalten beschreiben</div>
+              <p>Was hast du beobachtet? Nur Verhalten, keine Interpretation. „...hast du zweimal das Wort ergriffen, bevor andere ausreden konnten."</p>
+            </div>
+            <div class="concept-card red">
+              <div class="concept-card-label">I – Impact</div>
+              <div class="concept-card-title">Wirkung benennen</div>
+              <p>Was war die Wirkung – auf dich, das Team, die Ergebnisse? „Das hat dazu geführt, dass andere Ideen nicht gehört wurden."</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">N – Next Steps</div>
+              <div class="concept-card-title">Vorschlag machen</div>
+              <p>Was schlägst du vor? „Ich würde mir wünschen, dass wir Beiträge reihum sammeln."</p>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:0.87rem;color:var(--muted);">SBIN hält das Gespräch sachlich und verhindert, dass die andere Person in eine Verteidigungsposition gedrängt wird.</p>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Anna nutzt SBIN', html: `
+          <p><strong>Ohne SBIN:</strong></p>
+          <blockquote style="border-left-color:var(--red);">„Du bist in Meetings immer so dominant."</blockquote>
+          <p style="margin-top:16px;"><strong>Mit SBIN:</strong></p>
+          <blockquote>„In unserem letzten Projekt-Update <strong>(S)</strong> hast du drei Mal das Wort übernommen, bevor andere ihre Punkte beendet hatten <strong>(B)</strong>. Das hat dazu geführt, dass Claras Einwand zum Budget komplett unterging <strong>(I)</strong>. Ich würde vorschlagen, dass wir in Zukunft eine Redeliste führen <strong>(N)</strong>."</blockquote>
+          <div class="key-insight">Konkrete Beobachtungen sind schwerer zu bestreiten als Interpretationen – und öffnen das Gespräch statt es zu schließen.</div>
+        ` },
+        { tab: '✍️ Übung', kicker: 'Jetzt anwenden', title: 'Deine SBIN-Botschaft', html: `
+          <div class="exercise-box">
+            <div class="exercise-label">✍️ Übung</div>
+            <p>Denk an ein Gespräch, das du führen müsstest. Schreib eine SBIN-Botschaft dazu:</p>
+            <ul>
+              <li><strong>S:</strong> In welcher konkreten Situation?</li>
+              <li><strong>B:</strong> Was hast du beobachtet (nur Verhalten)?</li>
+              <li><strong>I:</strong> Was war die Wirkung?</li>
+              <li><strong>N:</strong> Was würdest du dir wünschen?</li>
+            </ul>
+          </div>
+          <div class="key-insight">Wenn du das einmal aufgeschrieben hast, ist das Gespräch halb gewonnen.</div>
+        ` }
+      ],
       questions: [
         { text: 'Was gehört in den B-Teil (Behavior) einer SBIN-Botschaft?', options: ['Die Gefühle, die das Verhalten ausgelöst hat', 'Interpretation, warum sich jemand so verhalten hat', 'Konkrete beobachtete Handlungen – ohne Bewertung oder Interpretation', 'Die gewünschten nächsten Schritte'], correct: 2, explanation: 'B steht für beobachtetes Verhalten – faktisch und ohne Interpretation. „Du hast dreimal unterbrochen" (Beobachtung) ist etwas anderes als „Du bist dominant" (Interpretation, die sofort Abwehr erzeugt).' },
         { text: 'Warum beginnt man eine SBIN-Botschaft mit der Situation (S)?', options: ['Um möglichst viel Kontext zu geben und Zeit zu gewinnen', 'Um einen konkreten, geteilten Kontext zu schaffen, der das Gespräch verankert', 'Um die andere Person an vergangene Fehler zu erinnern', 'Weil es die einfachste Komponente ist'], correct: 1, explanation: 'Die Situation schafft gemeinsamen Boden: Beide Gesprächspartner beziehen sich auf dasselbe konkrete Ereignis. Das reduziert Missverständnisse und verhindert, dass das Gespräch abstrakt und defensiv wird.' },
@@ -1458,19 +2194,57 @@ const AREAS = [
       ]
     },
     { id: 'km-4', icon: '🗣️', title: 'Das Gespräch führen', desc: 'Das 4-Schritte-Framework für schwierige Gespräche',
-      content: `<h2>Das Gespräch führen – Schritt für Schritt</h2>
-<p>Vorbereitung schützt dich nicht vor dem Unerwarteten. Was hilft: ein klares Grundgerüst, das dir Orientierung gibt – und Flexibilität, um auf das zu reagieren, was wirklich passiert.</p>
-<div class="info-box"><strong>Das 4-Schritte-Framework:</strong><br><br>
-<strong>Schritt 1 – Einstieg und Rahmen setzen:</strong> Erkläre kurz den Zweck des Gesprächs. „Ich möchte heute mit dir über etwas sprechen, das mir in den letzten Wochen aufgefallen ist. Es geht mir darum, gemeinsam eine gute Lösung zu finden."<br><br>
-<strong>Schritt 2 – Das Problem klar benennen:</strong> Bring deine SBIN-Botschaft. Bleib konkret, bleib bei Fakten. Vermeide Verallgemeinerungen wie „immer" oder „nie".<br><br>
-<strong>Schritt 3 – Zuhören und Raum geben:</strong> Lass die andere Person reagieren – und zwar wirklich. Halte Stille aus. Frage offen: „Wie siehst du das?" Verstehen kommt vor Lösung.<br><br>
-<strong>Schritt 4 – Gemeinsam einen Weg nach vorne finden:</strong> Bitte um Vorschläge. Diskutiere Optionen. Triff eine klare Vereinbarung mit konkreten nächsten Schritten und halte sie schriftlich fest. Plane ein Follow-up.</div>
-<p><strong>Wichtige Grundsätze:</strong><br>
-• Die <strong>Form</strong> entscheidet mit über den Ausgang: Ein fair empfundenes Gespräch erhöht die Bereitschaft zur Veränderung.<br>
-• <strong>Du weißt nur, wie jemand auf dich wirkt – nicht, was seine Absicht war.</strong><br>
-• <strong>Emotionen gehören dazu.</strong> Wenn die andere Person emotional wird: anerkennen. „Ich merke, dass dich das beschäftigt. Ich höre zu."</p>
-<h3>Beispiel</h3>
-<blockquote>Marc spricht mit Julia über verpasste Deadlines. Er folgt dem Framework, fragt dann: „Was war aus deiner Sicht der Grund?" – und erfährt, dass Julia mit einem parallelen Projekt überlastet war. Gemeinsam priorisieren sie neu. Das Gespräch endet mit klarer Vereinbarung und Folgetermin in zwei Wochen.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Im Gespräch selbst', title: 'Orientierung im Unbekannten', html: `
+          <p>Vorbereitung schützt dich nicht vor dem Unerwarteten. Was hilft: ein klares Grundgerüst, das dir Orientierung gibt – und Flexibilität, um auf das zu reagieren, was wirklich passiert.</p>
+          <div class="key-insight">Das 4-Schritte-Framework gibt dir Struktur ohne Starrheit.</div>
+          <p>Du führst das Gespräch – nicht das Skript. Das Framework ist dein Anker, kein Drehbuch.</p>
+        ` },
+        { tab: '📐 4 Schritte', kicker: 'Das Framework', title: 'Schritt für Schritt durchs Gespräch', html: `
+          <div class="concept-cards">
+            <div class="concept-card blue">
+              <div class="concept-card-label">Schritt 1</div>
+              <div class="concept-card-title">Einstieg und Rahmen setzen</div>
+              <p>Erkläre kurz den Zweck. „Ich möchte heute über etwas sprechen, das mir aufgefallen ist. Es geht mir darum, gemeinsam eine gute Lösung zu finden."</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-label">Schritt 2</div>
+              <div class="concept-card-title">Das Problem klar benennen</div>
+              <p>Bring deine SBIN-Botschaft. Bleib konkret, bleib bei Fakten. Vermeide Verallgemeinerungen wie „immer" oder „nie".</p>
+            </div>
+            <div class="concept-card accent">
+              <div class="concept-card-label">Schritt 3</div>
+              <div class="concept-card-title">Zuhören und Raum geben</div>
+              <p>Lass die andere Person wirklich reagieren. Halte Stille aus. Frage offen: „Wie siehst du das?" Verstehen kommt vor Lösung.</p>
+            </div>
+            <div class="concept-card">
+              <div class="concept-card-label">Schritt 4</div>
+              <div class="concept-card-title">Gemeinsam Weg nach vorne finden</div>
+              <p>Bitte um Vorschläge. Triff eine klare Vereinbarung mit konkreten Schritten – halte sie schriftlich fest und plane ein Follow-up.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '⚡ Grundsätze', kicker: 'Was wirklich zählt', title: '3 Prinzipien für das Gespräch', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-title">Form entscheidet mit</div>
+              <p>Ein fair empfundenes Gespräch erhöht die Bereitschaft zur Veränderung – unabhängig vom Inhalt.</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-title">Wirkung ≠ Absicht</div>
+              <p>Du weißt, wie jemand auf dich wirkt – nicht, was seine Absicht war. Beides anzuerkennen öffnet Gespräche.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-title">Emotionen gehören dazu</div>
+              <p>Wenn die andere Person emotional wird: anerkennen. „Ich merke, dass dich das beschäftigt. Ich höre zu." Das deeskaliert fast immer.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Marc und Julia', html: `
+          <blockquote>Marc spricht mit Julia über verpasste Deadlines. Er folgt dem Framework, fragt dann: „Was war aus deiner Sicht der Grund?" – und erfährt, dass Julia mit einem parallelen Projekt überlastet war. Gemeinsam priorisieren sie neu.</blockquote>
+          <div class="key-insight">Das Gespräch endet mit klarer Vereinbarung und einem Folgetermin in zwei Wochen – weil Marc in Schritt 3 zugehört hat, bevor er in Schritt 4 Lösungen gesucht hat.</div>
+        ` }
+      ],
       questions: [
         { text: 'In welchem Schritt des 4-Schritte-Frameworks kommt das SBIN-Modell zum Einsatz?', options: ['Schritt 1 – Einstieg und Rahmen setzen', 'Schritt 2 – Das Problem klar benennen', 'Schritt 3 – Zuhören und Raum geben', 'Schritt 4 – Gemeinsam Weg nach vorne finden'], correct: 1, explanation: 'SBIN gehört in Schritt 2: Nachdem du den Rahmen gesetzt hast, bringst du deine konkrete, sachliche Botschaft. Situation, Behavior, Impact, Next Steps – in dieser Reihenfolge.' },
         { text: 'Warum ist Schritt 3 (Zuhören) so wichtig, bevor Schritt 4 (Lösungen) kommt?', options: ['Weil es höflicher ist, die andere Person zuerst reden zu lassen', 'Weil Verstehen vor Lösung kommt – ohne die Perspektive der anderen Person zu kennen, fehlt wichtiger Kontext', 'Weil die andere Person sonst die Vereinbarung nicht unterschreibt', 'Weil Schritt 4 nur vom Management durchgeführt werden darf'], correct: 1, explanation: 'Marc erfährt erst in Schritt 3, dass Julia überlastet war – Information, die seine Lösungsfindung komplett verändert. Wer zu schnell zu Lösungen springt, löst oft das falsche Problem.' },
@@ -1480,19 +2254,64 @@ const AREAS = [
       ]
     },
     { id: 'km-5', icon: '🔍', title: 'Nach dem Gespräch', desc: 'Reflexion, Follow-up und kontinuierliche Verbesserung',
-      content: `<h2>Nach dem Gespräch – Reflexion und Weiterentwicklung</h2>
-<p>Ein schwieriges Gespräch ist keine einmalige Sache. Wer sich danach nicht reflektiert, verschenkt die wichtigste Lernchance. Und: Was vereinbart wurde, muss nachverfolgt werden.</p>
-<div class="info-box"><strong>Ebene 1: Vereinbarungen dokumentieren und verfolgen</strong><br><br>
-Was wurde vereinbart? Bis wann? Wer braucht welche Unterstützung? Halte das schriftlich fest – auch informell per E-Mail ist besser als gar nicht. Plane einen konkreten Folgetermin. Ohne Follow-up verlieren Vereinbarungen ihre Wirkung.</div>
-<div class="info-box"><strong>Ebene 2: Das eigene Handeln reflektieren</strong><br><br>
-Nach jedem schwierigen Gespräch drei Fragen:<br>
-• Was lief gut?<br>
-• Was habe ich gelernt?<br>
-• Was würde ich beim nächsten Mal anders machen?<br><br>
-Regelmäßige Reflexion ist der größte Hebel für Weiterentwicklung. Wer nach zehn schwierigen Gesprächen zehnmal reflektiert, wird merklich besser.</div>
-<p><strong>Konfliktkompetenz ist eine Fertigkeit, keine Persönlichkeitseigenschaft.</strong> Sie lässt sich trainieren.</p>
-<h3>Beispiel</h3>
-<blockquote>Nach dem Gespräch mit Julia schreibt Marc eine kurze Zusammenfassung der Vereinbarungen und schickt sie ihr per Mail. Für sich notiert er: Was gut lief – er war ruhig und hat gut zugehört. Was er lernt – er hatte die Überlastung nicht gesehen, weil er zu wenig nachgefragt hat. Was er ändert – alle zwei Wochen kurze Check-ins einführen, bevor Probleme sich aufstauen.</blockquote>`,
+      slides: [
+        { tab: '🎯 Einstieg', kicker: 'Der übersehene Schritt', title: 'Was nach dem Gespräch zählt', html: `
+          <p>Ein schwieriges Gespräch ist kein einmaliges Ereignis. Es braucht ein Nachher – auf zwei Ebenen.</p>
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-title">Ebene 1: Vereinbarungen</div>
+              <p>Was wurde vereinbart? Wird es auch umgesetzt?</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-title">Ebene 2: Reflexion</div>
+              <p>Was hast du gelernt? Was machst du beim nächsten Mal besser?</p>
+            </div>
+          </div>
+          <div class="key-insight">Wer nach jedem schwierigen Gespräch reflektiert, baut echte Konfliktkompetenz auf – nicht durch Talent, sondern durch Praxis.</div>
+        ` },
+        { tab: '📋 Vereinbarungen', kicker: 'Ebene 1', title: 'Verbindlichkeit herstellen', html: `
+          <p>Vereinbarungen ohne Dokumentation und Follow-up verlieren ihre Wirkung – oft noch am selben Tag.</p>
+          <div class="concept-cards">
+            <div class="concept-card yellow">
+              <div class="concept-card-title">Schriftlich festhalten</div>
+              <p>Was wurde vereinbart? Bis wann? Wer ist verantwortlich? Auch eine kurze Zusammenfassungs-Mail ist besser als nichts.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-title">Folgetermin planen</div>
+              <p>Ein konkreter Termin schafft Verbindlichkeit – und gibt beiden Seiten die Möglichkeit, Fortschritt zu besprechen.</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-title">Unterstützung klären</div>
+              <p>Wer braucht was, um die Vereinbarung umsetzen zu können? Hindernisse frühzeitig adressieren.</p>
+            </div>
+          </div>
+        ` },
+        { tab: '🪞 Reflexion', kicker: 'Ebene 2', title: '3 Fragen für echtes Lernen', html: `
+          <div class="concept-cards">
+            <div class="concept-card accent">
+              <div class="concept-card-title">Was lief gut?</div>
+              <p>Was hat funktioniert? Was hat du richtig gemacht – auch wenn es sich nicht perfekt angefühlt hat?</p>
+            </div>
+            <div class="concept-card blue">
+              <div class="concept-card-title">Was habe ich gelernt?</div>
+              <p>Was überraschte dich? Was hast du über die andere Person, über dich oder die Situation erfahren?</p>
+            </div>
+            <div class="concept-card yellow">
+              <div class="concept-card-title">Was würde ich anders machen?</div>
+              <p>Konkret – nicht „besser vorbereiten", sondern: Was genau würdest du beim nächsten Mal anders formulieren oder tun?</p>
+            </div>
+          </div>
+          <p style="margin-top:14px;font-size:0.87rem;color:var(--muted);">Wer nach zehn schwierigen Gesprächen zehnmal reflektiert, wird merklich besser. Konfliktkompetenz ist eine Fertigkeit, keine Persönlichkeitseigenschaft.</p>
+        ` },
+        { tab: '💡 Beispiel', kicker: 'In der Praxis', title: 'Marcs Reflexion', html: `
+          <blockquote>Nach dem Gespräch mit Julia schreibt Marc eine kurze Zusammenfassung der Vereinbarungen und schickt sie ihr per Mail. Für sich notiert er: Was gut lief – er war ruhig und hat gut zugehört. Was er lernt – er hatte Julias Überlastung nicht gesehen, weil er zu wenig nachgefragt hatte. Was er ändert – alle zwei Wochen kurze Check-ins einführen, bevor Probleme sich aufstauen.</blockquote>
+          <div class="key-insight">Reflexion führt zu konkreter Verhaltensänderung – nicht zu allgemeinen Vorsätzen.</div>
+          <div class="exercise-box" style="margin-top:16px;">
+            <div class="exercise-label">✍️ Abschluss</div>
+            <p>Welches schwierige Gespräch aus diesem Kurs wirst du als Nächstes führen? Schreib es auf – und wann.</p>
+          </div>
+        ` }
+      ],
       questions: [
         { text: 'Warum ist schriftliche Dokumentation nach einem schwierigen Gespräch wichtig?', options: ['Weil mündliche Vereinbarungen rechtlich nicht bindend sind', 'Weil Vereinbarungen ohne schriftliche Dokumentation und Follow-up ihre Wirkung verlieren', 'Weil das Management immer informiert werden muss', 'Weil man sich nie auf das Gedächtnis verlassen kann'], correct: 1, explanation: 'Ohne Dokumentation und Follow-up sind Vereinbarungen oft unverbindlich. Eine kurze Mail mit den besprochenen Punkten schafft gemeinsames Verständnis und hält beide Seiten accountable.' },
         { text: 'Welche drei Reflexionsfragen helfen nach einem schwierigen Gespräch?', options: ['Was hätte ich anders sagen sollen? / Wie hätte die Person besser reagieren können? / Was war das Kernproblem?', 'Was lief gut? / Was habe ich gelernt? / Was würde ich beim nächsten Mal anders machen?', 'War das Gespräch erfolgreich? / Was denkt die andere Person? / Muss ich weiteres Feedback geben?', 'Wie hat die andere Person reagiert? / Wurde die Vereinbarung eingehalten? / Muss ich eskalieren?'], correct: 1, explanation: 'Die drei Fragen (gut lief / gelernt / anders machen) fokussieren auf das eigene Handeln und das Lernen daraus – nicht auf die Bewertung der anderen Person. Das fördert echte Kompetenzentwicklung.' },
@@ -1679,13 +2498,15 @@ function renderLesson() {
 
   document.getElementById('lessonNavIndicator').textContent = `Modul ${idx + 1} von ${total}`;
 
+  const contentHtml = mod.slides ? renderSlider(mod.slides) : mod.content;
+
   const container = document.getElementById('lessonContent');
   container.innerHTML = `
     <div class="lesson-header">
       <div class="lesson-tag">${area.title} · Modul ${idx + 1}</div>
       <h2>${mod.icon} ${mod.title}</h2>
     </div>
-    ${mod.content}
+    ${contentHtml}
     <div class="quiz-section">
       <h3>📝 Lerncheck</h3>
       <p class="quiz-intro">Beantworte alle ${mod.questions.length} Fragen. Du bekommst nach dem Absenden direktes Feedback.</p>
@@ -1697,7 +2518,67 @@ function renderLesson() {
     </div>
   `;
 
+  if (mod.slides) initSlider();
   renderLessonBottomNav();
+}
+
+function renderSlider(slides) {
+  const tabs = slides.map((s, i) =>
+    `<button class="slider-tab${i === 0 ? ' active' : ''}" onclick="goToSlide(${i})">${s.tab}</button>`
+  ).join('');
+  const panels = slides.map((s, i) =>
+    `<div class="slide-panel${i === 0 ? ' active' : ''}" id="slide_${i}">
+      <div class="slide-kicker">${s.kicker || ''}</div>
+      <div class="slide-title">${s.title}</div>
+      ${s.html}
+    </div>`
+  ).join('');
+  const dots = slides.map((_, i) =>
+    `<button class="slider-dot${i === 0 ? ' active' : ''}" onclick="goToSlide(${i})"></button>`
+  ).join('');
+
+  return `<div class="lesson-slider" id="lessonSlider">
+    <div class="slider-tabs" id="sliderTabs">${tabs}</div>
+    ${panels}
+    <div class="slider-footer">
+      <button class="slider-arrow" id="sliderPrev" onclick="prevSlide()" disabled>← Zurück</button>
+      <div class="slider-dots" id="sliderDots">${dots}</div>
+      <button class="slider-arrow" id="sliderNext" onclick="nextSlide()">Weiter →</button>
+    </div>
+  </div>`;
+}
+
+let _currentSlide = 0;
+let _totalSlides = 0;
+
+function initSlider() {
+  const mod = getCurrentModule();
+  _currentSlide = 0;
+  _totalSlides = mod.slides ? mod.slides.length : 0;
+  updateSliderState();
+}
+
+function goToSlide(idx) {
+  _currentSlide = idx;
+  updateSliderState();
+  document.querySelector('.lesson-slider')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function nextSlide() { if (_currentSlide < _totalSlides - 1) goToSlide(_currentSlide + 1); }
+function prevSlide() { if (_currentSlide > 0) goToSlide(_currentSlide - 1); }
+
+function updateSliderState() {
+  document.querySelectorAll('.slide-panel').forEach((p, i) => p.classList.toggle('active', i === _currentSlide));
+  document.querySelectorAll('.slider-tab').forEach((t, i) => t.classList.toggle('active', i === _currentSlide));
+  document.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === _currentSlide));
+  const prev = document.getElementById('sliderPrev');
+  const next = document.getElementById('sliderNext');
+  if (prev) prev.disabled = _currentSlide === 0;
+  if (next) next.disabled = _currentSlide === _totalSlides - 1;
+  // Scroll active tab into view
+  const tabs = document.getElementById('sliderTabs');
+  const activeTab = tabs?.querySelectorAll('.slider-tab')[_currentSlide];
+  if (activeTab) activeTab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
 
 function renderLessonBottomNav() {
