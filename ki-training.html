@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Learning Hub | Digitale Leute School</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f8f8;
+    --card: #ffffff;
+    --text: #111111;
+    --muted: #6b7280;
+    --primary: #000000;
+    --accent: #02f3da;
+    --yellow: #ffc942;
+    --red: #fd1e3e;
+    --blue: #699fff;
+    --border: #e5e7eb;
+    --success: #10b981;
+    --warning: #f59e0b;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Manrope', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: #ffffff;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .nav-area-progress {
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 180px;
+  }
+  .nav-area-progress.visible { display: flex; }
+  .progress-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+  }
+  .progress-bar {
+    height: 5px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  /* HERO */
+  .hero {
+    background: #ffffff;
+    color: var(--text);
+    padding: 64px 24px 56px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(2,243,218,0.1) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,201,66,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(2,243,218,0.1);
+    color: #009e8e;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(2,243,218,0.3);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    line-height: 1.1;
+    color: var(--primary);
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* AREAS GRID */
+  .areas-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 860px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .areas-grid { grid-template-columns: 1fr; } }
+
+  .area-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+  }
+  .area-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(2,243,218,0.18);
+    transform: translateY(-2px);
+  }
+  .area-card.coming-soon {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+  .area-card.coming-soon:hover {
+    border-color: var(--border);
+    box-shadow: none;
+    transform: none;
+  }
+  .area-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .area-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .area-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .area-badge.active {
+    background: rgba(2,243,218,0.12);
+    color: #00a896;
+    border: 1px solid rgba(2,243,218,0.35);
+  }
+  .area-badge.soon {
+    background: #f3f4f6;
+    color: var(--muted);
+  }
+  .area-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+  .area-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .area-progress-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 4px;
+  }
+  .area-progress-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+  .area-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-top: 4px;
+  }
+  .area-cta .arrow { color: var(--accent); font-size: 1rem; }
+
+  /* AREA VIEW */
+  .area-view-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 28px 24px;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px 0;
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-family: 'Manrope', sans-serif;
+    transition: color 0.2s;
+  }
+  .back-btn:hover { color: var(--primary); }
+
+  .area-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .area-header-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .area-header-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    background: var(--primary);
+  }
+  .area-header h2 {
+    font-size: 1.7rem;
+    font-weight: 800;
+  }
+  .area-header p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+    max-width: 560px;
+  }
+  .area-header-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .area-stat {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .area-stat strong { color: var(--text); }
+
+  /* MODULE LIST */
+  .modules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .module-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .module-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 3px 14px rgba(2,243,218,0.14);
+    transform: translateY(-1px);
+  }
+  .module-card.completed { border-color: #d1fae5; background: #f0fdf4; }
+  .module-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--primary);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .module-card.completed .module-icon { background: linear-gradient(135deg, #059669, #10b981); }
+  .module-meta { flex: 1; }
+  .module-number { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+  .module-title { font-size: 0.98rem; font-weight: 700; margin: 2px 0 3px; }
+  .module-desc { font-size: 0.8rem; color: var(--muted); }
+  .module-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .module-card.completed .module-badge { background: #dcfce7; color: #15803d; }
+
+  /* LESSON VIEW */
+  .lesson-view {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .lesson-nav-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    gap: 12px;
+  }
+  .lesson-nav-top button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px 0;
+    font-weight: 600;
+    font-family: 'Manrope', sans-serif;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .lesson-nav-top button:hover { color: var(--primary); }
+  .lesson-nav-indicator {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-align: center;
+    white-space: nowrap;
+  }
+  .lesson-header { margin-bottom: 24px; }
+  .lesson-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .lesson-header h2 { font-size: 1.55rem; font-weight: 800; line-height: 1.2; }
+
+  /* CONTENT BLOCKS */
+  .content-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px;
+    margin-bottom: 16px;
+  }
+  .content-block h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .content-block p { font-size: 0.92rem; line-height: 1.7; margin-bottom: 10px; }
+  .content-block p:last-child { margin-bottom: 0; }
+
+  .info-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 12px 0; }
+  .info-table th {
+    background: #f8f9fa;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 700;
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+  .info-table td { padding: 9px 12px; border: 1px solid var(--border); vertical-align: top; font-size: 0.85rem; }
+  .info-table tr:nth-child(even) td { background: #fafafa; }
+
+  .highlight-box {
+    background: rgba(2,243,218,0.07);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 13px 16px;
+    margin: 12px 0;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  .highlight-box strong { color: var(--primary); }
+
+  .example-box {
+    background: #fafafa;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 13px 15px;
+    margin: 10px 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+  .example-box .label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+  .tag {
+    background: rgba(2,243,218,0.09);
+    color: var(--primary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(2,243,218,0.28);
+  }
+
+  /* VIDEO */
+  .video-block {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: #000;
+  }
+  .video-label {
+    background: var(--primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 9px 16px;
+    letter-spacing: 0.04em;
+  }
+
+  /* QUIZ */
+  .quiz-section {
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 26px;
+    margin-top: 24px;
+  }
+  .quiz-section h3 { font-size: 0.98rem; font-weight: 800; margin-bottom: 5px; }
+  .quiz-intro { font-size: 0.82rem; color: var(--muted); margin-bottom: 22px; }
+  .question-block { margin-bottom: 26px; padding-bottom: 26px; border-bottom: 1px solid var(--border); }
+  .question-block:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .question-num { font-size: 0.68rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 5px; }
+  .question-text { font-size: 0.95rem; font-weight: 700; margin-bottom: 13px; line-height: 1.4; }
+  .options { display: flex; flex-direction: column; gap: 7px; }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 11px 13px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.87rem;
+    line-height: 1.4;
+    background: white;
+    font-family: 'Manrope', sans-serif;
+  }
+  .option:hover:not(.answered) { border-color: var(--accent); background: rgba(2,243,218,0.05); }
+  .option input[type="radio"] { flex-shrink: 0; margin-top: 2px; accent-color: var(--accent); }
+  .option.correct { border-color: var(--success); background: #f0fdf4; color: #14532d; }
+  .option.wrong { border-color: var(--red); background: #fff1f2; color: #7f1d1d; }
+  .option.missed { border-color: var(--success); background: #f0fdf4; opacity: 0.7; }
+
+  .feedback {
+    display: none;
+    margin-top: 10px;
+    padding: 11px 13px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+  .feedback.correct { background: #dcfce7; border: 1px solid #86efac; color: #14532d; }
+  .feedback.wrong { background: #fee2e2; border: 1px solid #fca5a5; color: #7f1d1d; }
+
+  .submit-quiz {
+    width: 100%;
+    margin-top: 22px;
+    padding: 13px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: opacity 0.2s;
+  }
+  .submit-quiz:hover { opacity: 0.85; }
+  .submit-quiz:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* QUIZ RESULT */
+  .quiz-result {
+    display: none;
+    margin-top: 22px;
+    padding: 22px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .quiz-result.passed { background: #f0fdf4; border: 2px solid var(--success); }
+  .quiz-result.failed { background: #fffbeb; border: 2px solid var(--warning); }
+  .result-emoji { font-size: 2.4rem; margin-bottom: 6px; }
+  .result-score { font-size: 1.8rem; font-weight: 800; margin: 6px 0; }
+  .quiz-result.passed .result-score { color: var(--success); }
+  .quiz-result.failed .result-score { color: var(--warning); }
+  .result-msg { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 10px 22px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: opacity 0.2s;
+    margin: 4px;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-secondary {
+    display: inline-block;
+    padding: 10px 22px;
+    background: white;
+    color: var(--primary);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: all 0.2s;
+    margin: 4px;
+  }
+  .btn-secondary:hover { border-color: var(--primary); }
+
+  /* LESSON BOTTOM NAV */
+  .lesson-nav-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    gap: 12px;
+  }
+  .lesson-nav-bottom button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    color: var(--text);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .lesson-nav-bottom button:hover { border-color: var(--primary); }
+  .lesson-nav-bottom button.next-btn {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+  }
+  .lesson-nav-bottom button.next-btn:hover { opacity: 0.85; }
+  .lesson-nav-bottom .overview-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    transition: color 0.2s;
+    padding: 10px 4px;
+    white-space: nowrap;
+  }
+  .lesson-nav-bottom .overview-link:hover { color: var(--primary); }
+
+  /* FINISH SCREEN */
+  .finish-screen {
+    max-width: 640px;
+    margin: 60px auto;
+    padding: 24px;
+    text-align: center;
+  }
+  .finish-trophy { font-size: 4rem; margin-bottom: 16px; }
+  .finish-screen h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 8px; }
+  .finish-screen > p { color: var(--muted); font-size: 0.92rem; margin-bottom: 28px; }
+  .finish-stats { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .finish-stat {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 22px;
+    min-width: 110px;
+  }
+  .finish-stat .num { font-size: 1.7rem; font-weight: 800; color: var(--accent); }
+  .finish-stat .lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+
+  .takeaways-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: left;
+    margin-bottom: 28px;
+  }
+  .takeaways-box h3 { font-size: 0.9rem; font-weight: 800; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .takeaways-box ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .takeaways-box li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .takeaways-box li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 800;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.8rem; }
+    .content-block, .quiz-section { padding: 18px; }
+    .info-table { font-size: 0.78rem; }
+    .info-table th, .info-table td { padding: 7px 8px; }
+    .lesson-nav-bottom { flex-wrap: wrap; }
+    .nav-area-progress { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goHome()">
+      <img src="dl-school-logo.svg" alt="Digitale Leute School">
+    </div>
+    <div class="nav-right">
+      <div class="nav-area-progress" id="navProgress">
+        <div class="progress-label">
+          <span id="navProgressLabel">Fortschritt</span>
+          <span id="navProgressText"></span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="navProgressFill"></div></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME VIEW -->
+<div id="homeView">
+  <div class="hero">
+    <div class="hero-eyebrow">PM Bootcamp · Digitale Leute School</div>
+    <h1>Product Management<br><span>Bites & Deep Dives</span></h1>
+    <p>Vertiefe dein Bootcamp Wissen gezielt und in deinem eigenen Tempo. Wähle einen Themenbereich und starte sofort.</p>
+  </div>
+  <div class="areas-section">
+    <div class="section-label">Lernbereiche</div>
+    <div class="areas-grid" id="areasGrid"></div>
+  </div>
+</div>
+
+<!-- AREA VIEW -->
+<div id="areaView" style="display:none">
+  <div class="area-view-inner">
+    <button class="back-btn" onclick="goHome()">&#8592; Alle Lernbereiche</button>
+    <div id="areaHeader"></div>
+    <div class="modules-list" id="modulesList"></div>
+  </div>
+</div>
+
+<!-- LESSON VIEW -->
+<div id="lessonView" style="display:none">
+  <div class="lesson-view">
+    <div class="lesson-nav-top">
+      <button onclick="goToArea()">&#8592; Übersicht</button>
+      <div class="lesson-nav-indicator" id="lessonNavIndicator"></div>
+      <button style="visibility:hidden">placeholder</button>
+    </div>
+    <div id="lessonContent"></div>
+    <div class="lesson-nav-bottom" id="lessonNavBottom"></div>
+  </div>
+</div>
+
+<!-- FINISH VIEW -->
+<div id="finishView" style="display:none">
+  <div class="finish-screen" id="finishScreen"></div>
+</div>
+
+<script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+
+const AREAS = [
+  {
+    id: 'ki-kompetenz',
+    icon: '🤖',
+    color: '#02f3da',
+    title: 'KI-Kompetenz',
+    desc: 'Von KI-Grundlagen bis zu konkreten Anwendungsfällen im Produktmanagement',
+    status: 'active',
+    duration: '~45 Min',
+    takeaways: [
+      'KI ist ein Oberbegriff – LLMs wie ChatGPT sind Generative AI, eine Untergruppe von Deep Learning → ML → KI.',
+      'LLMs halluzinieren: Zahlen, Quellen und Fakten immer selbst verifizieren, bevor du sie verwendest.',
+      'Gutes Prompting = Kontext + Aufgabe + Format + Einschränkungen. Je präziser du formulierst, desto weniger Nacharbeit.',
+      'Starte mit Augmentation – KI als Co-Pilot für bekannte Aufgaben ist der richtige Einstieg.',
+      'Du bleibst verantwortlich – KI kann Arbeit abnehmen, aber keine Verantwortung übernehmen.',
+      'KI-Arbeit ist iterativ: Der Description-Discernment-Loop führt zum guten Ergebnis, nicht der erste Versuch.',
+      'Datenschutz zuerst: Keine personenbezogenen Daten (PII) in öffentliche KI-Tools eingeben.'
+    ],
+    modules: [
+      {
+        id: 1,
+        icon: "🤖",
+        title: "Was ist Künstliche Intelligenz?",
+        desc: "KI-Ökosystem, LLMs und der Unterschied zu Generativer KI",
+        content: `
+          <div class="video-block">
+            <div class="video-label">🎬 Erklärvideo · Das KI-Ökosystem</div>
+            <video controls preload="metadata" style="width:100%;border-radius:0 0 10px 10px;display:block;">
+              <source src="Das_KI-Ökosystem.mp4" type="video/mp4">
+              Dein Browser unterstützt kein HTML5-Video.
+            </video>
+          </div>
+          <div class="content-block">
+            <h3>📊 Das KI-Ökosystem</h3>
+            <p>Der Begriff 'Künstliche Intelligenz' ist ein Oberbegriff für eine Vielzahl von Technologien. Um aktuelle KI-Systeme einordnen zu können, hilft es, die Zusammenhänge zu verstehen:</p>
+            <table class="info-table">
+              <tr><th>Begriff</th><th>Bedeutung</th></tr>
+              <tr><td><strong>KI / AI</strong></td><td>Oberbegriff für Systeme, die Aufgaben erledigen, die normalerweise menschliche Intelligenz erfordern.</td></tr>
+              <tr><td><strong>Machine Learning (ML)</strong></td><td>KI-Systeme, die aus Daten lernen, ohne explizit programmiert zu werden.</td></tr>
+              <tr><td><strong>Deep Learning (DL)</strong></td><td>Teilbereich von ML mit neuronalen Netzwerken. Ermöglicht Sprach- und Bilderkennung.</td></tr>
+              <tr><td><strong>Generative AI</strong></td><td>KI-Systeme, die neue Inhalte erzeugen: Texte, Bilder, Code, Audio.</td></tr>
+              <tr><td><strong>NLP</strong></td><td>Technologien zur Verarbeitung und zum Verständnis von menschlicher Sprache.</td></tr>
+              <tr><td><strong>LLMs</strong></td><td>Große Sprachmodelle, trainiert auf riesigen Textmengen. Verstehen und erzeugen menschliche Sprache.</td></tr>
+            </table>
+            <div class="highlight-box"><strong>Wichtig:</strong> LLMs wie ChatGPT, Claude oder Gemini sind Generative AI Systeme, die auf Deep Learning basieren. Sie sind eine <em>Untergruppe</em> von KI, nicht KI als Ganzes.</div>
+          </div>
+          <div class="content-block">
+            <h3>⚡ Traditionelle KI vs. Generative AI</h3>
+            <table class="info-table">
+              <tr><th>Traditionelle KI</th><th>Generative AI</th></tr>
+              <tr><td>Klassifiziert vorhandene Inhalte (Spam/kein Spam)</td><td>Erstellt völlig neue Inhalte</td></tr>
+              <tr><td>Gibt vorgegebene Antworten (ja/nein, Kategorie)</td><td>Erzeugt flexible, kreative Ausgaben</td></tr>
+              <tr><td>Optimiert für eine spezifische Aufgabe</td><td>Kann vielseitig eingesetzt werden</td></tr>
+              <tr><td>Beispiel: Spam-Filter</td><td>Beispiel: Schreibt eine E-Mail für dich</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>🧠 Was sind Large Language Models (LLMs)?</h3>
+            <p>LLMs sind KI-Systeme, die auf riesigen Textmengen trainiert wurden und in der Lage sind, menschliche Sprache zu verstehen und zu erzeugen.</p>
+            <div class="tag-list">
+              <span class="tag">Trainiert auf Milliarden Texten</span>
+              <span class="tag">Milliarden Parameter</span>
+              <span class="tag">Sprache + Code verarbeiten</span>
+              <span class="tag">Generative Modelle</span>
+            </div>
+            <p style="margin-top:10px;">Bekannte LLMs: Claude (Anthropic), GPT-4o (OpenAI), Gemini (Google), Llama (Meta)</p>
+          </div>
+        `,
+        questions: [
+          { text: "Was ist der korrekte Zusammenhang zwischen KI, Machine Learning und Deep Learning?", options: ["Deep Learning ist der Oberbegriff, ML und KI sind Untergruppen","KI ist der Oberbegriff → ML ist eine Untergruppe → Deep Learning ist eine Untergruppe von ML","Machine Learning und Deep Learning sind gleichwertige Oberbegriffe","KI und Machine Learning sind identisch"], correct: 1, explanation: "KI ist der Oberbegriff. Machine Learning ist eine Untergruppe von KI (lernt aus Daten). Deep Learning ist eine Untergruppe von ML (nutzt neuronale Netze mit vielen Schichten)." },
+          { text: "Was unterscheidet Generative AI von traditioneller KI am deutlichsten?", options: ["Generative AI ist schneller als traditionelle KI","Traditionelle KI kann nur Bilder verarbeiten, Generative AI auch Text","Generative AI erschafft neue Inhalte, traditionelle KI klassifiziert vorhandene","Generative AI braucht keine Trainingsdaten"], correct: 2, explanation: "Generative AI erzeugt neue Inhalte (Texte, Bilder, Code), während traditionelle KI vorhandene Inhalte klassifiziert und vorgegebene Antworten liefert (z.B. Spam/kein Spam)." },
+          { text: "Ein Produktmanager sagt: 'ChatGPT ist KI.' Wie präzise ist diese Aussage?", options: ["Vollständig korrekt – ChatGPT ist KI","Technisch stimmt's, aber unvollständig: ChatGPT ist ein LLM, das auf Generative AI basiert, welche eine Untergruppe von KI ist","Falsch – ChatGPT ist kein KI-System","Korrekt, da alle LLMs direkt KI sind ohne weitere Einordnung"], correct: 1, explanation: "Die Aussage ist zwar technisch nicht falsch, aber unvollständig. Präziser: ChatGPT ist ein LLM, basiert auf Generativer AI, die eine Untergruppe von Deep Learning → ML → KI ist." },
+          { text: "Was macht LLMs zu 'generativen' Modellen?", options: ["Sie generieren automatisch Code ohne Anweisung","Sie erzeugen neue Inhalte basierend auf statistischen Mustern aus dem Training","Sie generieren ihre eigenen Trainingsdaten","Sie können sich selbst verbessern ohne menschliche Hilfe"], correct: 1, explanation: "LLMs sind generativ, weil sie neue Inhalte erzeugen können – Texte, Zusammenfassungen, Code – basierend auf statistischen Mustern aus dem Training." },
+          { text: "Welches Modell wäre relevant, wenn dein Unternehmen aus Datenschutzgründen KI lokal betreiben muss?", options: ["Claude (Anthropic)","GPT-4o (OpenAI)","Llama (Meta) – da Open-Source und lokal betreibbar","Gemini (Google)"], correct: 2, explanation: "Llama von Meta ist ein Open-Source-Modell, das lokal oder in der eigenen Infrastruktur betrieben werden kann – besonders relevant für datenschutzkritische Anwendungen." }
+        ]
+      },
+      {
+        id: 2,
+        icon: "⚙️",
+        title: "Wie KI funktioniert",
+        desc: "Pre-Training, Context Window, Temperature und Reasoning-Modelle",
+        content: `
+          <div class="content-block">
+            <h3>🔮 Die drei Säulen des KI-Durchbruchs</h3>
+            <table class="info-table">
+              <tr><th>Säule</th><th>Bedeutung</th></tr>
+              <tr><td><strong>Algorithmen</strong></td><td>Die Transformer-Architektur (2017) revolutionierte die Verarbeitung langer Texte. Modelle erkennen Beziehungen zwischen Wörtern über lange Abstände.</td></tr>
+              <tr><td><strong>Daten</strong></td><td>Explosion digitaler Daten (Websites, Code, Bücher) lieferte das Rohmaterial für das Training.</td></tr>
+              <tr><td><strong>Rechenleistung</strong></td><td>Dramatische Steigerungen der GPU-Leistung machten das Training auf diesen Datenmengen möglich.</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>📚 Wie LLMs lernen: Pre-Training und Fine-Tuning</h3>
+            <p><strong>Phase 1 – Pre-Training:</strong> Das Modell analysiert Milliarden von Textbeispielen und lernt, das nächste Wort vorherzusagen. Dabei entwickelt es Verständnis von Sprache, Kontext und Fakten.</p>
+            <p><strong>Phase 2 – Fine-Tuning:</strong> Das vortrainierte Modell wird weiter verfeinert. Durch menschliches Feedback (RLHF) wird das Verhalten angepasst.</p>
+            <div class="example-box">
+              <div class="label">Analogie</div>
+              Pre-Training = Tausende Bücher und Webseiten lesen in der Kindheit<br>
+              Fine-Tuning = Professionelle Ausbildung, wie man dieses Wissen hilfreich einsetzt
+            </div>
+          </div>
+          <div class="content-block">
+            <h3>🪟 Das Context Window</h3>
+            <p>Das Context Window bezeichnet die Menge an Informationen, die ein KI-Modell in einem Moment verarbeiten kann. Alles in einem Gespräch – Anweisungen, Dokumente, Gesprächsverlauf – landet im Context Window.</p>
+            <table class="info-table">
+              <tr><th>Modell</th><th>Context Window</th></tr>
+              <tr><td>Claude 3.5 / 3.7</td><td>200.000 Token (~150.000 Wörter)</td></tr>
+              <tr><td>GPT-4o</td><td>128.000 Token (~96.000 Wörter)</td></tr>
+              <tr><td>Gemini 1.5 Pro / 2.0</td><td>1 Mio. – 2 Mio. Token</td></tr>
+            </table>
+            <div class="highlight-box"><strong>Praktische Konsequenz:</strong> Lange Dokumente nur in relevanten Auszügen hochladen. Bei neuen Themen empfiehlt sich ein frischer Chat.</div>
+          </div>
+          <div class="content-block">
+            <h3>🌡️ Temperature: Kreativität steuern</h3>
+            <table class="info-table">
+              <tr><th>Einstellung</th><th>Verhalten</th><th>Gut für</th></tr>
+              <tr><td>Hoch (&gt; 1.0)</td><td>Kreativ, unvorhersehbar</td><td>Brainstorming, kreative Texte</td></tr>
+              <tr><td>Mittel (0.5–1.0)</td><td>Ausgewogen</td><td>Die meisten Aufgaben</td></tr>
+              <tr><td>Niedrig (&lt; 0.5)</td><td>Präzise, deterministisch</td><td>Code, Fakten, klare Anweisungen</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>🤔 Reasoning-Modelle & RAG</h3>
+            <p><strong>Reasoning-Modelle</strong> (z.B. Claude Extended Thinking, OpenAI o1) denken Probleme Schritt für Schritt durch. Besonders hilfreich bei komplexen Analysen und Trade-off-Entscheidungen.</p>
+            <p><strong>RAG (Retrieval Augmented Generation)</strong> verbindet KI-Modelle mit externen Wissensquellen – z.B. internen Dokumenten oder Confluence-Seiten.</p>
+          </div>
+        `,
+        questions: [
+          { text: "Was lernt ein LLM während des Pre-Trainings?", options: ["Wie man auf Nutzeranweisungen höflich antwortet","Statistische Muster aus Milliarden Texten – im Kern: das nächste Wort vorherzusagen","Spezifische Unternehmensregeln und Compliance-Anforderungen","Wie man Bilder erkennt und beschreibt"], correct: 1, explanation: "Beim Pre-Training lernt das Modell statistische Muster aus riesigen Textmengen – das Kernprinzip ist das Vorhersagen des nächsten Wortes." },
+          { text: "Du arbeitest mit KI an einem sehr langen Projekt (50.000 Wörter Gesprächsverlauf). Was solltest du beachten?", options: ["Nichts – KI hat unbegrenztes Gedächtnis","Das Context Window könnte überschritten werden; frühere Infos können an Relevanz verlieren – ein frischer Chat kann helfen","Das Problem tritt nur bei Gemini auf","Längere Gespräche verbessern immer die Qualität"], correct: 1, explanation: "Das Context Window ist begrenzt. Sehr lange Gespräche können dazu führen, dass frühere Informationen an Relevanz verlieren. Bei neuen Themen empfiehlt sich ein frischer Chat." },
+          { text: "Wann wäre ein Reasoning-Modell besonders sinnvoll?", options: ["Um eine kurze E-Mail-Vorlage zu generieren","Für eine komplexe Roadmap-Priorisierung mit vielen Abwägungen und Trade-offs","Zum Übersetzen eines kurzen Textes","Für die Erstellung einer einfachen Checkliste"], correct: 1, explanation: "Reasoning-Modelle sind besonders hilfreich bei komplexen, mehrstufigen Problemen – wie strategische Priorisierungen und Trade-off-Analysen." },
+          { text: "Was beschreibt RLHF (Reinforcement Learning from Human Feedback)?", options: ["Eine Methode, bei der KI sich selbst ohne Menschenbeteiligung verbessert","Eine Technik im Fine-Tuning, bei der menschliches Feedback das Modellverhalten anpasst","Das Vortraining auf riesigen Datensätzen","Die Verbindung von KI mit externen Datenbanken"], correct: 1, explanation: "RLHF ist Teil des Fine-Tuning-Prozesses. Menschen bewerten Modell-Antworten, und dieses Feedback wird genutzt, um das Modellverhalten gezielt anzupassen." },
+          { text: "Welche der drei Säulen des KI-Durchbruchs beschreibt die Transformer-Architektur?", options: ["Daten","Rechenleistung","Algorithmen","Infrastruktur"], correct: 2, explanation: "Die Transformer-Architektur (2017) gehört zur Säule 'Algorithmen'. Sie revolutionierte die Verarbeitung langer Texte." }
+        ]
+      },
+      {
+        id: 3,
+        icon: "⚠️",
+        title: "Möglichkeiten und Limitierungen",
+        desc: "Stärken, Halluzinationen, Bias und KI-Modelle im Überblick",
+        content: `
+          <div class="content-block">
+            <h3>✅ Was KI heute sehr gut kann</h3>
+            <table class="info-table">
+              <tr><th>Fähigkeit</th><th>In der Praxis</th></tr>
+              <tr><td>Sprachliche Vielseitigkeit</td><td>Texte schreiben, überarbeiten, zusammenfassen, übersetzen – in jedem Ton</td></tr>
+              <tr><td>Kontextuelles Gespräch</td><td>Gesprächsverlauf im Blick behalten und nahtlos aufbauen</td></tr>
+              <tr><td>Aufgabenwechsel</td><td>Von PM-Dokument zu Code zu Kreativtext – ohne Neukonfiguration</td></tr>
+              <tr><td>Strukturierung</td><td>Komplexe Infos ordnen, priorisieren und auf den Punkt bringen</td></tr>
+              <tr><td>Code schreiben</td><td>Code-Snippets, SQL-Queries, Prototypen schnell erstellen</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>🚫 Aktuelle Limitierungen – die man kennen muss</h3>
+            <div class="example-box"><div class="label">Halluzinationen</div>KI-Modelle erzeugen manchmal Inhalte, die plausibel klingen, aber falsch sind. Sie "erfinden" Quellen, Zahlen oder Fakten. → Wichtige Fakten immer verifizieren.</div>
+            <div class="example-box"><div class="label">Knowledge Cutoff</div>Jedes Modell wurde zu einem bestimmten Zeitpunkt trainiert. Neuere Ereignisse sind unbekannt. → Aktuelle Infos direkt in den Prompt einbinden oder Web-Search nutzen.</div>
+            <div class="example-box"><div class="label">Komplexes Schlussfolgern & Mathematik</div>LLMs sind keine Taschenrechner – sie schätzen Antworten auf Basis von Mustern. → Reasoning-Modelle verwenden; kritische Berechnungen extern prüfen.</div>
+            <div class="example-box"><div class="label">Bias (Vorurteile)</div>Modelle können systematische Verzerrungen aus Trainingsdaten übernehmen. → Ergebnisse kritisch prüfen; bei sensiblen Themen auf Balance achten.</div>
+          </div>
+          <div class="content-block">
+            <h3>🔬 Drei Lehrbeispiele für KI-Grenzen</h3>
+            <div class="example-box"><div class="label">🍓 Strawberry-Fehler</div>ChatGPT antwortet auf "Wie viele Rs hat 'strawberry'?" mit 2 statt 3. Grund: LLMs tokenisieren Text ("str" + "awberry"), nicht als Zeichenfolge. → KI ist kein Zeichenzähler.</div>
+            <div class="example-box"><div class="label">🍷 Das halbvolle Glas</div>Bild-KI zeichnet ein volles Weinglas halb voll – weil die meisten Trainingsbilder halbvolle Gläser zeigen. → KI reproduziert den statistischen Durchschnitt.</div>
+            <div class="example-box"><div class="label">👔 Amazon Bias (2014)</div>Amazons KI-Recruiting-Tool benachteiligte Frauen, weil Trainingsdaten aus historisch männerdominierten Einstellungen stammten. → KI reproduziert historische Ungleichheiten.</div>
+          </div>
+        `,
+        questions: [
+          { text: "Du verwendest KI, um eine Marktanalyse mit konkreten Statistiken zu erstellen. Was musst du beachten?", options: ["Nichts – KI-Fakten sind immer verlässlich","Alle Zahlen, Quellen und Fakten müssen verifiziert werden, da KI halluzinieren kann","Nur bei GPT-4o sind Fakten unzuverlässig","KI kann keine Statistiken liefern"], correct: 1, explanation: "Halluzinationen sind ein bekanntes Problem aller LLMs. Besonders bei Zahlen, Statistiken und Quellenangaben ist Verifikation Pflicht." },
+          { text: "Warum konnte das Amazon-Recruiting-KI-System Frauen systematisch benachteiligen?", options: ["Das System wurde absichtlich so programmiert","KI kann kein Gender erkennen","Das Modell wurde auf historischen Einstellungsdaten trainiert, die männerdominiert waren – und lernte dieses Muster","Frauen bewarben sich weniger"], correct: 2, explanation: "Das System wurde auf 10 Jahre Einstellungsdaten trainiert – aus einer Branche, in der Männer historisch dominierten. Die KI lernte dieses Muster und reproduzierte es." },
+          { text: "Warum antwortet ChatGPT auf die Frage nach den Rs in 'strawberry' falsch?", options: ["Das Modell hatte zu wenige Trainingsbeispiele","LLMs verarbeiten Text als Tokens, nicht als einzelne Zeichen – 'strawberry' wird in Teilstücke geteilt","Die Frage war zu komplex formuliert","ChatGPT kann grundsätzlich keine Buchstaben zählen aufgrund eines Bugs"], correct: 1, explanation: "LLMs tokenisieren Text – sie verarbeiten keine einzelnen Zeichen. 'Strawberry' wird z.B. als 'str' + 'awberry' tokenisiert. LLMs sind keine Zeichenzähler." },
+          { text: "Was bedeutet 'Knowledge Cutoff' und wie gehst du damit um?", options: ["Die maximale Textmenge die KI verarbeiten kann – Lösung: kürzere Prompts","Das Datum, nach dem das Modell keine aktuellen Infos hat – Lösung: aktuelle Daten selbst einbringen","Ein Sicherheitsfilter, der schädliche Inhalte blockiert","Die Begrenzung auf bestimmte Sprachen"], correct: 1, explanation: "Nach dem Cutoff-Datum weiß das Modell nichts über neue Ereignisse. Als PM: aktuelle Infos selbst in den Prompt einbinden oder Web-Search-Funktionen nutzen." },
+          { text: "Wann ist KI laut Trainingsinhalt besonders schwach?", options: ["Beim Übersetzen von Texten","Beim Strukturieren und Zusammenfassen","Bei innovativen, randständigen Use Cases und exakter Mathematik","Beim Schreiben von Code-Snippets"], correct: 2, explanation: "KI ist schwächer bei: innovativen, ungewohnten Use Cases (sie reproduziert den statistischen Durchschnitt), exakter Mathematik/Zähloperationen und komplexem mehrstufigem Schlussfolgern." }
+        ]
+      },
+      {
+        id: 4,
+        icon: "🎯",
+        title: "KI-Kompetenz: Das Framework",
+        desc: "Die 5 Kern-Skills, drei Interaktionsmodi und Verantwortung",
+        content: `
+          <div class="content-block">
+            <h3>🎓 Was ist KI-Kompetenz?</h3>
+            <p>KI-Kompetenz (AI Fluency) ist die Fähigkeit, mit KI-Systemen <strong>effektiv, effizient, ethisch und sicher</strong> zu arbeiten.</p>
+            <div class="tag-list">
+              <span class="tag">Effektiv: richtige Aufgaben delegieren</span>
+              <span class="tag">Effizient: Zeit sparen</span>
+              <span class="tag">Ethisch: verantwortungsbewusst</span>
+              <span class="tag">Sicher: Grenzen kennen</span>
+            </div>
+          </div>
+          <div class="content-block">
+            <h3>🔄 Die drei Interaktionsmodi</h3>
+            <table class="info-table">
+              <tr><th>Modus</th><th>Beschreibung</th><th>Beispiel</th></tr>
+              <tr><td><strong>Automatisierung</strong></td><td>KI erledigt eine klar definierte Aufgabe selbstständig</td><td>E-Mail-Template generieren, Meeting-Notizen transkribieren</td></tr>
+              <tr><td><strong>Augmentation</strong></td><td>Du und KI als Denkpartner – iteratives Hin und Her</td><td>Business Case entwickeln, User Stories verfeinern</td></tr>
+              <tr><td><strong>Agency</strong></td><td>KI handelt selbstständig in deinem Namen, auch mit anderen Systemen</td><td>KI-Agent für Wettbewerbsmonitoring</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>🛠️ Die 5 Kern-Skills</h3>
+            <div class="example-box"><div class="label">Skill 1: Denken & Entscheiden (Klarheit)</div>Bevor du promptest: Weißt du, was du willst? Welcher Modus passt? Welches Modell? Faustregel: Wenn du die Aufgabe nicht in einem klaren Satz beschreiben könntest, bist du noch nicht bereit.</div>
+            <div class="example-box"><div class="label">Skill 2: Formulieren (Prompting)</div>Kontext geben, Erwartungen definieren, Einschränkungen benennen, Rollen setzen. Je präziser du formulierst, desto weniger Nachkorrekturen brauchst du.</div>
+            <div class="example-box"><div class="label">Skill 3: Bewerten (Urteilsvermögen)</div>Outputs kritisch prüfen: Stimmt es? Ist es vollständig? Ist der Ansatz sinnvoll? Setzt dein Fachwissen voraus – das ist der Grund, warum du unersetzbar bleibst.</div>
+            <div class="example-box"><div class="label">Skill 4: Iterieren (Arbeitsweise)</div>Gute Ergebnisse entstehen selten auf Anhieb. Formulieren → Output erhalten → Bewerten → Verfeinern → Wiederholen.</div>
+            <div class="example-box"><div class="label">Die Klammer: Verantwortung</div>Verantwortung für Ergebnis, Richtigkeit, Kontext & Wirkung, Daten und Entscheidungen. KI kann unterstützen, aber nicht haften.</div>
+          </div>
+        `,
+        questions: [
+          { text: "Ein PM erhält einen Stakeholder-Brief von einer KI und schickt ihn ohne Überprüfung weiter. Welches Prinzip wird verletzt?", options: ["Skill 2: Formulieren – der Prompt war nicht gut genug","Die Klammer: Verantwortung – der PM bleibt Absender und Verantwortlicher","Skill 1: Denken – er hätte zuerst überlegen müssen","Skill 4: Iterieren – er hat nicht genug Schleifen gedreht"], correct: 1, explanation: "Verantwortung ist die Klammer: Auch wenn KI Inhalte erzeugt, bleibt der PM der Verantwortliche. 'Du sendest es ab, du unterschreibst es, du vertrittst es.'" },
+          { text: "Welcher Interaktionsmodus passt am besten, wenn du täglich 200+ App-Store-Reviews automatisch kategorisieren lassen möchtest?", options: ["Augmentation – du und KI arbeiten gemeinsam durch die Reviews","Agency – ein KI-Agent übernimmt die Aufgabe selbstständig","Automatisierung – du richtest den Prozess ein, KI führt regelmäßig aus","Keiner – das ist zu komplex für KI"], correct: 2, explanation: "Automatisierung passt hier: eine klar definierte, wiederkehrende Aufgabe mit definiertem Output. Du richtest den Prozess einmal ein – dann läuft er ohne weiteren Aufwand." },
+          { text: "Was ist laut Framework der Unterschied zwischen Augmentation und Agency?", options: ["Bei Augmentation ist KI schneller, bei Agency qualitativ besser","Augmentation = PM bleibt im Loop; Agency = KI handelt selbstständig und interagiert mit anderen Systemen","Augmentation erfordert mehr Prompting, Agency weniger","Es gibt keinen bedeutenden Unterschied"], correct: 1, explanation: "Augmentation: iteratives Hin und Her, PM bleibt Entscheidungsträger. Agency: KI handelt weitgehend selbstständig, auch mit anderen Systemen oder Menschen." },
+          { text: "Du bekommst einen KI-Output mit überzeugend klingenden Zahlen zu Marktgrößen. Welcher Skill ist jetzt gefragt?", options: ["Skill 1 (Denken)","Skill 2 (Formulieren)","Skill 3 (Bewerten) – kritische Prüfung auf Richtigkeit, besonders Zahlen und Fakten","Skill 4 (Iterieren) – einfach nochmal prompten"], correct: 2, explanation: "Skill 3 (Bewerten): KI-Ausgaben klingen oft überzeugend – das ist kein Zeichen für Richtigkeit. 'Plausibel klingend und inhaltlich richtig sind zwei verschiedene Dinge.'" },
+          { text: "Warum bleibt laut Framework das menschliche Fachwissen unersetzbar?", options: ["Weil KI noch zu teuer ist","Weil nur Fachwissen ermöglicht, KI-Outputs wirklich zu bewerten (Skill 3) und Verantwortung zu übernehmen","Weil KI-Modelle zu langsam sind","Das menschliche Fachwissen ist laut Framework nicht unersetzbar"], correct: 1, explanation: "Outputs können nur dann wirklich bewertet werden, wenn Expertise im Bereich vorhanden ist. Zudem bleibt Verantwortung für Entscheidungen stets menschlich." }
+        ]
+      },
+      {
+        id: 5,
+        icon: "✍️",
+        title: "Prompt Engineering",
+        desc: "6 Grundtechniken, Description-Discernment-Loop und Reverse Prompting",
+        content: `
+          <div class="content-block">
+            <h3>📝 Die 6 Grundtechniken</h3>
+            <div class="example-box"><div class="label">Technik 1: Kontext geben</div>Je mehr relevanter Kontext, desto besser die Antwort. Nicht nur WAS, sondern auch WARUM und FÜR WEN.<br><br><em>Schwach:</em> "Schreib eine User Story."<br><em>Stark:</em> "Ich bin PM bei einem B2B-SaaS für Buchhaltungssoftware. Zielgruppe sind KMU-Buchhalter ohne Tech-Kenntnisse. Schreib eine User Story für Automatischer Rechnungsimport."</div>
+            <div class="example-box"><div class="label">Technik 2: Beispiele zeigen (Few-Shot Learning)</div>KI lernt aus Beispielen. Zeig, wie das gewünschte Ergebnis aussehen soll – dann trifft sie deinen Stil viel besser.</div>
+            <div class="example-box"><div class="label">Technik 3: Einschränkungen definieren</div>Format, Länge, Ton, Struktur explizit vorgeben. Z.B.: "Maximal 5 Sätze. Einfache Sprache. Dritte Person."</div>
+            <div class="example-box"><div class="label">Technik 4: Komplexe Aufgaben aufteilen</div>Statt einer riesigen Aufgabe: mehrere Schritte. Erst analysieren, dann Hypothesen, dann Experimente.</div>
+            <div class="example-box"><div class="label">Technik 5: Erst denken lassen (Chain-of-Thought)</div>"Denke Schritt für Schritt durch, wie Prioritäten bewertet werden sollten, bevor du eine Empfehlung aussprichst."</div>
+            <div class="example-box"><div class="label">Technik 6: Rolle definieren</div>"Agiere als erfahrener Product Coach..." / "Antworte wie ein kritischer Stakeholder..."</div>
+          </div>
+          <div class="content-block">
+            <h3>🔄 Der Description-Discernment-Loop</h3>
+            <p>Gute KI-Arbeit ist iterativ, kein einmaliger Austausch:</p>
+            <div class="highlight-box">1. <strong>Beschreiben</strong> → 2. Output erhalten → 3. <strong>Bewerten</strong> → 4. Verfeinern → 5. Wiederholen</div>
+            <p>Dieser Loop ist normal und gewünscht. Auch menschliche Mitarbeiter brauchen Feedback-Runden.</p>
+          </div>
+          <div class="content-block">
+            <h3>🔃 Reverse Prompting</h3>
+            <p>Statt der KI eine vollständige Aufgabe zu geben, bittest du sie, dich durch klärende Fragen zum Ziel zu führen. Besonders wertvoll bei komplexen, noch nicht vollständig durchdachten Aufgaben.</p>
+            <table class="info-table">
+              <tr><th>Normaler Prompt</th><th>Reverse Prompt</th></tr>
+              <tr><td>"Schreib ein PRD für ein neues Feature."</td><td>"Ich möchte ein PRD schreiben, bin noch unsicher über den Scope. Stell mir 5 Fragen, bevor du anfängst."</td></tr>
+              <tr><td>"Priorisiere diese 10 Features."</td><td>"Frag mich nach Business Goals, Constraints und Nutzerkontext, bevor du eine Empfehlung gibst."</td></tr>
+            </table>
+          </div>
+        `,
+        questions: [
+          { text: "Warum ist 'Schreib eine User Story.' ein schwacher Prompt?", options: ["User Stories sind zu komplex für KI","Es fehlt Kontext: kein Produkt, keine Zielgruppe, kein Feature – die KI hat keine Basis für eine relevante Antwort","User Stories müssen immer auf Englisch geschrieben werden","Der Prompt ist zu kurz – er muss mindestens 100 Wörter haben"], correct: 1, explanation: "Technik 1 (Kontext geben): Ein guter Prompt erklärt WARUM und FÜR WEN. Ohne Produkt, Zielgruppe und Feature muss die KI alles raten und liefert generische Ergebnisse." },
+          { text: "Was bedeutet 'Few-Shot Learning' im Kontext von Prompting?", options: ["Das Modell wird mit nur wenigen Parametern trainiert","Du gibst dem Modell im Prompt Beispiele, wie das gewünschte Ergebnis aussehen soll","Du stellst mehrere kurze Fragen hintereinander","Das Modell braucht nur wenige Sekunden zum Antworten"], correct: 1, explanation: "Few-Shot Learning = KI lernt aus Beispielen im Prompt. Wenn du zeigst, wie dein gewünschtes Ergebnis aussehen soll, trifft die KI deinen Stil und deine Erwartungen deutlich besser." },
+          { text: "Wann ist Reverse Prompting besonders sinnvoll?", options: ["Wenn du eine sehr klare, einfache Aufgabe mit definiertem Output hast","Wenn du weißt was du willst, aber noch nicht genau wie es aussehen soll – oder bei Aufgaben mit vielen möglichen Richtungen","Immer – Reverse Prompting ist grundsätzlich besser","Nur bei technischen Aufgaben wie Code schreiben"], correct: 1, explanation: "Reverse Prompting lohnt sich besonders wenn die Aufgabe viele Richtungen hat oder wenn normale Prompts zu generische Ergebnisse liefern." },
+          { text: "Du hast einen komplexen Prompt für eine Backlog-Priorisierung, aber die Antwort ist unbefriedigend. Was rät der Description-Discernment-Loop?", options: ["Das Modell wechseln","Die Aufgabe aufgeben – wenn der erste Versuch scheitert, ist die Aufgabe zu komplex","Den Output bewerten, verstehen warum er nicht passt, und den Prompt gezielt verfeinern","Mehr Text in den Prompt schreiben"], correct: 2, explanation: "Der Description-Discernment-Loop ist iterativ: Beschreiben → Output → Bewerten → Verfeinern → Wiederholen. Der erste Entwurf ist ein Startpunkt, kein Endprodukt." },
+          { text: "Welche Prompting-Technik nutzt du, wenn du schreibst: 'Denke Schritt für Schritt durch, wie ich priorisieren sollte, bevor du eine Empfehlung gibst'?", options: ["Technik 1: Kontext geben","Technik 3: Einschränkungen definieren","Technik 5: Erst denken lassen (Chain-of-Thought)","Technik 6: Rolle definieren"], correct: 2, explanation: "Das ist Technik 5: Chain-of-Thought Prompting. Du weist die KI an, ihren Denkprozess vor der Antwort zu zeigen – führt bei komplexen Fragen zu besseren Ergebnissen." }
+        ]
+      },
+      {
+        id: 6,
+        icon: "📋",
+        title: "KI im Produktmanagement",
+        desc: "Anwendungsfälle nach PM-Phase und Delegation-Entscheidungen",
+        content: `
+          <div class="content-block">
+            <h3>📊 Das Spektrum: Von Augmentation zu Product Native</h3>
+            <table class="info-table">
+              <tr><th>Stufe</th><th>Beschreibung</th><th>Beispiel</th></tr>
+              <tr><td><strong>PM Augmentation</strong></td><td>KI als Co-Pilot, PM bleibt vollständig in Kontrolle</td><td>Schnellere PRDs, bessere Meeting-Vorbereitung</td></tr>
+              <tr><td><strong>PM Transformation</strong></td><td>KI verändert, wie PM-Aufgaben grundlegend erledigt werden</td><td>Kontinuierliche User Research durch KI-Analyse</td></tr>
+              <tr><td><strong>Product Native</strong></td><td>Das Produkt selbst ist durch KI fundamental verändert</td><td>KI-gesteuerte Personalisierung im Kernprodukt</td></tr>
+            </table>
+            <div class="highlight-box">Die meisten PMs starten bei Augmentation. Das ist der richtige Einstieg.</div>
+          </div>
+          <div class="content-block">
+            <h3>🔍 Discovery & Research</h3>
+            <table class="info-table">
+              <tr><th>Anwendungsfall</th><th>Was KI konkret tut</th></tr>
+              <tr><td>Nutzer-Feedback analysieren</td><td>App-Store-Reviews, Support-Tickets in Minuten auf Themen clustern</td></tr>
+              <tr><td>Interview-Vorbereitung</td><td>Hypothesen formulieren, Interviewleitfäden erstellen</td></tr>
+              <tr><td>Wettbewerbsanalyse</td><td>Öffentliche Infos zu Konkurrenzprodukten strukturiert zusammenfassen</td></tr>
+              <tr><td>Persona-Erstellung</td><td>Erste Persona-Entwürfe auf Basis von Research-Insights generieren</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>📐 Definition & Planning</h3>
+            <table class="info-table">
+              <tr><th>Anwendungsfall</th><th>Was KI konkret tut</th></tr>
+              <tr><td>PRDs und Feature-Specs</td><td>Erste Entwürfe erstellen, Lücken identifizieren</td></tr>
+              <tr><td>User Stories & Acceptance Criteria</td><td>Aus Anforderungen konkrete, gut formulierte Stories ableiten</td></tr>
+              <tr><td>Priorisierungs-Frameworks</td><td>RICE, ICE, MoSCoW – KI hilft Kriterien zu definieren und anzuwenden</td></tr>
+              <tr><td>OKR-Formulierung</td><td>Objectives und Key Results scharfstellen, auf Ambition und Messbarkeit prüfen</td></tr>
+            </table>
+          </div>
+          <div class="content-block">
+            <h3>⚖️ Delegation-Entscheidungen</h3>
+            <table class="info-table">
+              <tr><th>Empfehlung</th><th>Aufgaben</th></tr>
+              <tr><td>✅ Sehr gut für KI</td><td>Erste Entwürfe, Struktur und Format, große Textmengen, Optionen generieren</td></tr>
+              <tr><td>⚠️ Vorsichtig angehen</td><td>Zahlen und Fakten (prüfen!), unternehmensinternes Wissen, rechtliche Themen</td></tr>
+              <tr><td>👤 Besser selbst</td><td>Strategische Entscheidungen, Stakeholder-Beziehungen, Vision setzen, Ethik-Abwägungen</td></tr>
+            </table>
+          </div>
+        `,
+        questions: [
+          { text: "Du kopierst 50 App-Store-Reviews in einen KI-Chat und bittest um Analyse der Top-5-Beschwerden. Welche PM-Phase unterstützt KI hier?", options: ["Delivery & Launch","Discovery & Research – Nutzer-Feedback analysieren","Definition & Planning – User Stories schreiben","Keine – KI ist für qualitative Daten ungeeignet"], correct: 1, explanation: "Das ist ein klassischer Discovery & Research Anwendungsfall: KI kann App-Store-Reviews in Minuten auf Themen clustern und priorisieren." },
+          { text: "Welche Aufgabe sollte laut Trainingsinhalt NICHT an KI delegiert werden?", options: ["Ersten Entwurf einer E-Mail formulieren","Strategische Entscheidungen und Stakeholder-Beziehungen pflegen","Release Notes aus Ticket-Beschreibungen generieren","Interviewleitfäden erstellen"], correct: 1, explanation: "Strategische Entscheidungen, Stakeholder-Beziehungen und Vision gehören zu 'besser selbst'. KI kennt keine echten Trade-offs im Unternehmenskontext." },
+          { text: "Auf welcher Stufe soll ein neu eingestiegener PM laut Trainingsinhalt mit KI anfangen?", options: ["Direkt mit Product Native","PM Augmentation – KI als Co-Pilot für bekannte Aufgaben ist der richtige Einstieg","PM Transformation","Noch gar nicht mit KI arbeiten"], correct: 1, explanation: "'Die meisten Produktmanager starten bei Augmentation. Das ist der richtige Einstieg.' Mit wachsender KI-Kompetenz bewegen sich Teams natürlich weiter." },
+          { text: "Du lässt KI eine Wettbewerbsanalyse mit Marktanteilen erstellen. Was musst du beachten?", options: ["Nichts – KI-Recherchen sind zuverlässig","Zahlen und Fakten immer verifizieren (Halluzinationsgefahr)","KI kann keine Wettbewerbsanalysen","Nur bei GPT-4o müssen Fakten geprüft werden"], correct: 1, explanation: "Wettbewerbsanalysen gehören zu 'vorsichtig angehen': Zahlen müssen immer geprüft werden (Halluzinationsgefahr), und KI hat kein unternehmensinternes Wissen." },
+          { text: "Was ist der Unterschied zwischen PM Augmentation und PM Transformation?", options: ["Augmentation nutzt GPT-4o, Transformation nutzt Claude","Augmentation = KI beschleunigt bekannte Aufgaben; Transformation = KI verändert, wie PM-Aufgaben grundlegend erledigt werden","Transformation ist teurer","Es gibt keinen praktischen Unterschied"], correct: 1, explanation: "PM Augmentation: KI als Co-Pilot für bekannte Aufgaben. PM Transformation: KI verändert die Arbeitsweise grundlegend – neue Arbeitsweisen entstehen." }
+        ]
+      },
+      {
+        id: 7,
+        icon: "🛡️",
+        title: "Verantwortungsvoller Umgang mit KI",
+        desc: "Datenschutz, Transparenz und eigene KI-Leitlinien entwickeln",
+        content: `
+          <div class="content-block">
+            <h3>🔒 Datenschutz und Sicherheit</h3>
+            <p>Als PM arbeitest du häufig mit vertraulichen Informationen: Nutzerdaten, Unternehmensstrategien, nicht-öffentliche Produktpläne. Grundregeln:</p>
+            <div class="tag-list">
+              <span class="tag">Keine PII in öffentliche KI-Chats (DSGVO!)</span>
+              <span class="tag">Keine nicht-öffentlichen Infos ohne Genehmigung</span>
+              <span class="tag">Unternehmens-KI priorisieren</span>
+              <span class="tag">Datenschutzrichtlinien kennen</span>
+              <span class="tag">Im Zweifel: anonymisieren</span>
+            </div>
+          </div>
+          <div class="content-block">
+            <h3>🔍 Transparenz und Rechenschaft</h3>
+            <p>Es gibt kein universelles 'richtiges' Maß an Transparenz. Drei Leitfragen für Transparency Diligence:</p>
+            <div class="highlight-box">
+              1. <strong>Wer ist die Zielgruppe</strong> und welche Erwartungen hat sie?<br>
+              2. <strong>Welchen Einfluss</strong> hatte KI auf das Ergebnis?<br>
+              3. <strong>Welche Verantwortung</strong> trage ich für diesen Inhalt?
+            </div>
+            <div class="example-box">
+              <div class="label">Praxisbeispiel: Ghibli-Stil & Copyright</div>
+              2025 erzeugten Millionen Nutzer Bilder im Ghibli-Stil mit ChatGPT. Problem: Diese Bildsprache ist geistiges Eigentum von Studio Ghibli. KI-generierte Stilkopien ohne Genehmigung sind eine rechtliche Grauzone. → Als PM: bei KI-generierten Inhalten immer Copyright, Lizenz und Trainingsdaten des Modells prüfen.
+            </div>
+          </div>
+          <div class="content-block">
+            <h3>📋 Eigene KI-Leitlinien entwickeln</h3>
+            <table class="info-table">
+              <tr><th>Frage</th><th>Was zu klären ist</th></tr>
+              <tr><td>Wann dürfen wir KI einsetzen?</td><td>Aufgabentypen und Kontexte definieren</td></tr>
+              <tr><td>Welche Daten dürfen geteilt werden?</td><td>Klare Regeln für sensible vs. öffentliche Infos</td></tr>
+              <tr><td>Wie kommunizieren wir KI-Nutzung?</td><td>Standards für interne und externe Transparenz</td></tr>
+              <tr><td>Wie prüfen wir KI-Ergebnisse?</td><td>Review-Prozesse für kritische KI-generierte Inhalte</td></tr>
+              <tr><td>Welche Tools sind freigegeben?</td><td>Genehmigte KI-Plattformen und Datenschutz-Anforderungen</td></tr>
+            </table>
+          </div>
+        `,
+        questions: [
+          { text: "Du möchtest Nutzerfeedback-Tickets in einem öffentlichen KI-Tool analysieren. Was ist zu beachten?", options: ["Nichts – KI-Tools speichern keine Daten","Personenbezogene Daten (PII) müssen vorher entfernt oder anonymisiert werden – DSGVO-Konformität ist Pflicht","Nur bei Support-Tickets, nicht bei App-Store-Reviews","Nur wenn mehr als 100 Tickets vorhanden sind"], correct: 1, explanation: "Grundregel: Keine PII in öffentliche KI-Chats – das ist eine DSGVO-Anforderung. Im Zweifel: Daten anonymisieren oder unternehmenseigene KI-Lösung nutzen." },
+          { text: "Wer trägt die Verantwortung für einen KI-generierten Stakeholder-Report mit fehlerhaften Zahlen?", options: ["Der KI-Anbieter","Niemand – KI-Fehler sind höhere Gewalt","Der PM, der den Report verschickt hat – er bleibt Absender und Verantwortlicher","Der Stakeholder, der den Report nicht geprüft hat"], correct: 2, explanation: "'KI klingt überzeugend – auch wenn sie falsch liegt.' Der PM bleibt der Verantwortliche. KI kann Arbeit abnehmen, aber keine Verantwortung." },
+          { text: "Dein Team möchte Bilder im Ghibli-Stil für Marketing-Materialien mit KI generieren. Was rät der Trainingsinhalt?", options: ["Das ist problemlos – KI-generierte Bilder haben kein Copyright","Copyright-Fragen prüfen: Welche Trainingsdaten? Welche Nutzungsbedingungen? In welchen Regionen?","Nur bei kommerzieller Nutzung über 10.000 Euro prüfen","Ghibli-Stil ist frei nutzbar, da es nur ein Stil ist"], correct: 1, explanation: "Das Ghibli-Beispiel zeigt: KI-generierte Stilkopien sind eine rechtliche Grauzone. Als PM klären: Trainingsdaten, Nutzungsbedingungen, regionale Gesetze." },
+          { text: "Was ist der erste Schritt, wenn dein Team eigene KI-Leitlinien entwickeln möchte?", options: ["Direkt alle KI-Tools verbieten","Definieren, wann und für welche Aufgabentypen KI-Nutzung erlaubt oder empfohlen ist","Das IT-Team fragen","Auf EU-Regulierung warten"], correct: 1, explanation: "Der erste Schritt: Wann dürfen wir KI einsetzen? – Aufgabentypen und Kontexte definieren, in denen KI-Nutzung erlaubt oder empfohlen ist." },
+          { text: "In einer Brainstorming-Session präsentierst du KI-generierte Ideen ohne explizit darauf hinzuweisen. Wie ist das zu bewerten?", options: ["Klarer Verstoß gegen Transparenzpflicht – muss immer offengelegt werden","Kontextabhängig – in kreativen Brainstorming-Sessions ist das selbstverständlich; bei rechtlich relevanten Dokumenten gelten andere Standards","Nur problematisch wenn mehr als 50% der Ideen von KI stammen","Immer in Ordnung – KI ist nur ein Werkzeug"], correct: 1, explanation: "Es gibt kein universelles Maß an Transparenz. In einer Brainstorming-Session ist es selbstverständlich, KI-Ideen einzubringen. Bei rechtlich relevanten Dokumenten gelten andere Standards." }
+        ]
+      }
+    ]
+  },
+  { id: 'produktstrategie', icon: '🎯', color: '#699fff', title: 'Produktstrategie', desc: 'Vision, Roadmap und strategische Entscheidungen im Produktmanagement', status: 'coming-soon', modules: [] },
+  { id: 'discovery-research', icon: '🔍', color: '#ffc942', title: 'Discovery & Research', desc: 'Nutzerforschung, Interviews und Insights in die Praxis umsetzen', status: 'coming-soon', modules: [] },
+  { id: 'financial-basics', icon: '💰', color: '#10b981', title: 'Financial Basics', desc: 'Grundlagen der Unternehmensfinanzierung und Produktkennzahlen verstehen', status: 'coming-soon', modules: [] },
+  { id: 'testing-experimentation', icon: '🧪', color: '#fd1e3e', title: 'Testing & Experimentation', desc: 'A/B-Tests, Hypothesen validieren und datengetriebene Entscheidungen treffen', status: 'coming-soon', modules: [] },
+  { id: 'kommunikation', icon: '💬', color: '#a855f7', title: 'Effektive Kommunikation', desc: 'Stakeholder überzeugen, Präsentationen halten und klar kommunizieren', status: 'coming-soon', modules: [] }
+];
+
+// ─── STATE ───────────────────────────────────────────────────────────────────
+
+let state = {
+  areas: JSON.parse(localStorage.getItem('dl_progress') || '{}'),
+  currentAreaId: null,
+  currentModuleIdx: null
+};
+
+function getAreaProgress(areaId) {
+  if (!state.areas[areaId]) state.areas[areaId] = { completed: [], scores: {} };
+  return state.areas[areaId];
+}
+
+function saveState() {
+  localStorage.setItem('dl_progress', JSON.stringify(state.areas));
+}
+
+function getCurrentArea() {
+  return AREAS.find(a => a.id === state.currentAreaId);
+}
+
+function getCurrentModule() {
+  const area = getCurrentArea();
+  return area ? area.modules[state.currentModuleIdx] : null;
+}
+
+// ─── VIEWS ───────────────────────────────────────────────────────────────────
+
+function showView(id) {
+  ['homeView','areaView','lessonView','finishView'].forEach(v => {
+    document.getElementById(v).style.display = v === id ? 'block' : 'none';
+  });
+  window.scrollTo(0, 0);
+}
+
+function updateNavProgress(areaId) {
+  const navEl = document.getElementById('navProgress');
+  if (!areaId) { navEl.classList.remove('visible'); return; }
+  const area = AREAS.find(a => a.id === areaId);
+  const prog = getAreaProgress(areaId);
+  const total = area.modules.length;
+  const done = prog.completed.length;
+  navEl.classList.add('visible');
+  document.getElementById('navProgressLabel').textContent = area.title;
+  document.getElementById('navProgressText').textContent = `${done}/${total}`;
+  document.getElementById('navProgressFill').style.width = (total ? (done/total)*100 : 0) + '%';
+}
+
+// ─── HOME ────────────────────────────────────────────────────────────────────
+
+function goHome() {
+  state.currentAreaId = null;
+  state.currentModuleIdx = null;
+  updateNavProgress(null);
+  showView('homeView');
+  renderHome();
+}
+
+function renderHome() {
+  const grid = document.getElementById('areasGrid');
+  grid.innerHTML = '';
+  AREAS.forEach(area => {
+    const prog = getAreaProgress(area.id);
+    const total = area.modules.length;
+    const done = prog.completed.length;
+    const pct = total ? Math.round((done/total)*100) : 0;
+    const active = area.status === 'active';
+
+    const card = document.createElement('div');
+    card.className = 'area-card' + (active ? '' : ' coming-soon');
+
+    card.innerHTML = `
+      <div class="area-card-top">
+        <div class="area-icon" style="background:${active ? area.color + '22' : '#f3f4f6'}">${area.icon}</div>
+        <span class="area-badge ${active ? 'active' : 'soon'}">${active ? 'Verfügbar' : 'Demnächst'}</span>
+      </div>
+      <div class="area-title">${area.title}</div>
+      <div class="area-desc">${area.desc}</div>
+      ${active ? `
+        <div class="area-progress-row">
+          <div class="area-progress-label">
+            <span>${done === 0 ? 'Noch nicht gestartet' : done === total ? 'Abgeschlossen' : 'In Bearbeitung'}</span>
+            <span>${done}/${total} Module</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+        </div>
+        <div class="area-cta">
+          <span>${done === 0 ? 'Jetzt starten' : done === total ? 'Wiederholen' : 'Weiter lernen'}</span>
+          <span class="arrow">→</span>
+        </div>
+      ` : ''}
+    `;
+
+    if (active) card.onclick = () => openArea(area.id);
+    grid.appendChild(card);
+  });
+}
+
+// ─── AREA VIEW ───────────────────────────────────────────────────────────────
+
+function openArea(areaId) {
+  state.currentAreaId = areaId;
+  updateNavProgress(areaId);
+  showView('areaView');
+  renderAreaView();
+}
+
+function goToArea() {
+  updateNavProgress(state.currentAreaId);
+  showView('areaView');
+  renderAreaView();
+}
+
+function renderAreaView() {
+  const area = getCurrentArea();
+  const prog = getAreaProgress(area.id);
+  const total = area.modules.length;
+  const done = prog.completed.length;
+
+  document.getElementById('areaHeader').innerHTML = `
+    <div class="area-header">
+      <div class="area-header-top">
+        <div class="area-header-icon" style="background:${area.color}22">${area.icon}</div>
+        <h2>${area.title}</h2>
+      </div>
+      <p>${area.desc}</p>
+      <div class="area-header-stats">
+        <span class="area-stat"><strong>${total}</strong> Module</span>
+        <span class="area-stat"><strong>${total * 5}</strong> Fragen</span>
+        <span class="area-stat"><strong>${area.duration || '~45 Min'}</strong></span>
+        <span class="area-stat"><strong>${done}/${total}</strong> abgeschlossen</span>
+      </div>
+    </div>
+  `;
+
+  const list = document.getElementById('modulesList');
+  list.innerHTML = '';
+  area.modules.forEach((mod, idx) => {
+    const done = prog.completed.includes(mod.id);
+    const score = prog.scores[mod.id];
+    const card = document.createElement('div');
+    card.className = 'module-card' + (done ? ' completed' : '');
+    card.innerHTML = `
+      <div class="module-icon">${done ? '✅' : mod.icon}</div>
+      <div class="module-meta">
+        <div class="module-number">Modul ${idx + 1} von ${area.modules.length}</div>
+        <div class="module-title">${mod.title}</div>
+        <div class="module-desc">${mod.desc}</div>
+      </div>
+      <div class="module-badge">${done ? score + '% Score' : mod.questions.length + ' Fragen'}</div>
+    `;
+    card.onclick = () => openLesson(idx);
+    list.appendChild(card);
+  });
+}
+
+// ─── LESSON VIEW ─────────────────────────────────────────────────────────────
+
+function openLesson(moduleIdx) {
+  state.currentModuleIdx = moduleIdx;
+  showView('lessonView');
+  renderLesson();
+}
+
+function renderLesson() {
+  const area = getCurrentArea();
+  const mod = getCurrentModule();
+  const idx = state.currentModuleIdx;
+  const total = area.modules.length;
+
+  document.getElementById('lessonNavIndicator').textContent = `Modul ${idx + 1} von ${total}`;
+
+  const container = document.getElementById('lessonContent');
+  container.innerHTML = `
+    <div class="lesson-header">
+      <div class="lesson-tag">${area.title} · Modul ${idx + 1}</div>
+      <h2>${mod.icon} ${mod.title}</h2>
+    </div>
+    ${mod.content}
+    <div class="quiz-section">
+      <h3>📝 Lerncheck</h3>
+      <p class="quiz-intro">Beantworte alle ${mod.questions.length} Fragen. Du bekommst nach dem Absenden direktes Feedback.</p>
+      <form id="quizForm">
+        ${mod.questions.map((q, qi) => renderQuestion(q, qi)).join('')}
+        <button type="button" class="submit-quiz" onclick="submitQuiz()">Antworten prüfen</button>
+      </form>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+  `;
+
+  renderLessonBottomNav();
+}
+
+function renderLessonBottomNav() {
+  const area = getCurrentArea();
+  const idx = state.currentModuleIdx;
+  const total = area.modules.length;
+  const nav = document.getElementById('lessonNavBottom');
+
+  const prevBtn = idx > 0
+    ? `<button onclick="openLesson(${idx - 1})">← Modul ${idx}</button>`
+    : `<button style="visibility:hidden">placeholder</button>`;
+
+  const nextBtn = idx < total - 1
+    ? `<button class="next-btn" onclick="openLesson(${idx + 1})">Modul ${idx + 2} →</button>`
+    : `<button style="visibility:hidden">placeholder</button>`;
+
+  nav.innerHTML = `
+    ${prevBtn}
+    <button class="overview-link" onclick="goToArea()">Zur Übersicht</button>
+    ${nextBtn}
+  `;
+}
+
+function renderQuestion(q, qi) {
+  return `
+    <div class="question-block" id="qblock_${qi}">
+      <div class="question-num">Frage ${qi + 1}</div>
+      <div class="question-text">${q.text}</div>
+      <div class="options">
+        ${q.options.map((opt, oi) => `
+          <label class="option" id="opt_${qi}_${oi}">
+            <input type="radio" name="q${qi}" value="${oi}">
+            <span>${opt}</span>
+          </label>
+        `).join('')}
+      </div>
+      <div class="feedback" id="fb_${qi}"></div>
+    </div>
+  `;
+}
+
+function submitQuiz() {
+  const area = getCurrentArea();
+  const mod = getCurrentModule();
+  const prog = getAreaProgress(area.id);
+
+  let correct = 0;
+  let allAnswered = true;
+
+  mod.questions.forEach((q, qi) => {
+    const selected = document.querySelector(`input[name="q${qi}"]:checked`);
+    if (!selected) { allAnswered = false; return; }
+
+    const ans = parseInt(selected.value);
+    const isCorrect = ans === q.correct;
+    if (isCorrect) correct++;
+
+    q.options.forEach((_, oi) => {
+      const optEl = document.getElementById(`opt_${qi}_${oi}`);
+      optEl.classList.add('answered');
+      if (oi === q.correct) optEl.classList.add('correct');
+      else if (oi === ans && !isCorrect) optEl.classList.add('wrong');
+      optEl.querySelector('input').disabled = true;
+    });
+
+    const fb = document.getElementById(`fb_${qi}`);
+    fb.style.display = 'block';
+    fb.className = `feedback ${isCorrect ? 'correct' : 'wrong'}`;
+    fb.innerHTML = `<span>${isCorrect ? '✅' : '❌'}</span> ${q.explanation}`;
+  });
+
+  if (!allAnswered) {
+    alert('Bitte beantworte alle Fragen, bevor du prüfst.');
+    return;
+  }
+
+  document.querySelector('.submit-quiz').disabled = true;
+
+  const score = Math.round((correct / mod.questions.length) * 100);
+  const passed = score >= 60;
+
+  if (!prog.completed.includes(mod.id)) prog.completed.push(mod.id);
+  prog.scores[mod.id] = score;
+  saveState();
+  updateNavProgress(area.id);
+
+  const allDone = prog.completed.length === area.modules.length;
+  const idx = state.currentModuleIdx;
+  const total = area.modules.length;
+
+  const resultEl = document.getElementById('quizResult');
+  resultEl.className = `quiz-result ${passed ? 'passed' : 'failed'}`;
+  resultEl.style.display = 'block';
+  resultEl.innerHTML = `
+    <div class="result-emoji">${passed ? (score === 100 ? '🌟' : '🎉') : '💪'}</div>
+    <div class="result-score">${correct}/${mod.questions.length} richtig · ${score}%</div>
+    <div class="result-msg">${passed
+      ? (score === 100 ? 'Perfekt! Alle Fragen richtig.' : 'Gut gemacht! Modul bestanden.')
+      : 'Mindestens 60% benötigt. Schau das Lernmaterial nochmal an.'
+    }</div>
+    <div>
+      ${allDone
+        ? `<button class="btn-primary" onclick="showFinish()">Training abschließen 🏆</button>`
+        : idx < total - 1
+          ? `<button class="btn-primary" onclick="openLesson(${idx + 1})">Weiter zu Modul ${idx + 2} →</button>`
+          : ''
+      }
+      <button class="btn-secondary" onclick="openLesson(${idx})">Nochmal versuchen</button>
+    </div>
+  `;
+  resultEl.scrollIntoView({ behavior: 'smooth' });
+  renderLessonBottomNav();
+}
+
+// ─── FINISH ──────────────────────────────────────────────────────────────────
+
+function showFinish() {
+  const area = getCurrentArea();
+  const prog = getAreaProgress(area.id);
+  const scores = Object.values(prog.scores);
+  const avg = scores.length ? Math.round(scores.reduce((a,b) => a+b, 0) / scores.length) : 0;
+  const total = area.modules.length;
+
+  const takeawaysHtml = (area.takeaways || []).map(t => `<li>${t}</li>`).join('');
+
+  document.getElementById('finishScreen').innerHTML = `
+    <div class="finish-trophy">🏆</div>
+    <h2>${area.title} abgeschlossen!</h2>
+    <p>Du hast alle ${total} Module durchgearbeitet. Hier sind die wichtigsten Erkenntnisse zum Mitnehmen.</p>
+    <div class="finish-stats">
+      <div class="finish-stat"><div class="num">${total}/${total}</div><div class="lbl">Module</div></div>
+      <div class="finish-stat"><div class="num">${avg}%</div><div class="lbl">Ø Score</div></div>
+    </div>
+    ${takeawaysHtml ? `
+      <div class="takeaways-box">
+        <h3>Key Takeaways</h3>
+        <ul>${takeawaysHtml}</ul>
+      </div>
+    ` : ''}
+    <div>
+      <button class="btn-primary" onclick="openArea('${area.id}')">Zur Modulübersicht</button>
+      <button class="btn-secondary" onclick="goHome()">Alle Lernbereiche</button>
+    </div>
+  `;
+
+  updateNavProgress(null);
+  showView('finishView');
+}
+
+// ─── INIT ────────────────────────────────────────────────────────────────────
+
+goHome();
+</script>
+</body>
+</html>
